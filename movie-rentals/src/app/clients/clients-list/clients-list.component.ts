@@ -18,4 +18,14 @@ export class ClientsListComponent implements OnInit{
 this.clientService.getClients()
   .subscribe(clients =>this.clients=clients);
   }
+
+  deleteClient(client: Client){
+    this.clientService.delete(client.id)
+      .subscribe(_=>{
+        this.clientService.getClients()
+          .subscribe();
+        this.clients = this.clients.filter(c=>c.id!== client.id);
+      });
+  }
+
 }
