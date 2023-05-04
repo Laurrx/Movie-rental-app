@@ -14,6 +14,10 @@ export class ClientService {
     return this.httpClient.get<Client[]>(this.clientUrl);
   }
 
+  save(client: Client):Observable<Client> {
+
+    return this.httpClient.post<Client>(this.clientUrl,client);
+  }
 }
 
 

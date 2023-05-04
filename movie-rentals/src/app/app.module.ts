@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientsListComponent } from './clients/clients-list/clients-list.component';
 import {InMemoryDataService} from "./shared/in-memory-data.service";
+import { ClientNewComponent } from './clients/client-new/client-new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
-    ClientsListComponent
+    ClientsListComponent,
+    ClientNewComponent
   ],
   imports: [
     BrowserModule,
