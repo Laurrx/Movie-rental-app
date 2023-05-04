@@ -7,20 +7,24 @@ import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientsListComponent } from './clients/clients-list/clients-list.component';
 import {InMemoryDataService} from "./shared/in-memory-data.service";
+import { ClientEditComponent } from './clients/client-edit/client-edit.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
-    ClientsListComponent
+    ClientsListComponent,
+    ClientEditComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
+      InMemoryDataService, {dataEncapsulation: false}
     ),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
