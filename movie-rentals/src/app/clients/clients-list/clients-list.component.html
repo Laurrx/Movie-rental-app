@@ -1,5 +1,5 @@
 <h2>Clients</h2>
 
 <ol>
-  <li *ngFor="let client of clients">Id:{{client.id}}, Name:{{client.name}}  <button>Edit</button> <button>Delete</button></li>
+  <li *ngFor="let client of clients">Id:{{client.id}}, Name:{{client.name}}  <button>Edit</button> <button (click)="deleteClient(client)">Delete</button></li>
 </ol>

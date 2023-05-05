@@ -21,11 +21,11 @@ this.clientService.getClients()
 
   deleteClient(client: Client){
     this.clientService.delete(client.id)
-      .subscribe(_=>{
-        this.clientService.getClients()
-          .subscribe();
+      .subscribe(_=>
+      {
         this.clients = this.clients.filter(c=>c.id!== client.id);
-      });
+      }
+      );
   }
 
 }
