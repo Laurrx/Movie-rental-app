@@ -14,6 +14,13 @@ export class InMemoryDataService implements InMemoryDbService {
       {id:3,name:'sylvester'},
       {id:4,name:'greg'},
     ];
-    return {clients};
+
+    const movies=[
+      {id:1,title:'Agent 007',description:'Movie with agents',genre:'Action'},
+      {id:2,title:'Ice Age', description:'Movie with prehistoric animals', genre:'Animation,Comedy'},
+      {id:3,title:'Harry Potter', description: 'Movie with wizards', genre: 'SF'}
+    ]
+
+    return {clients,movies};
   }
 }
