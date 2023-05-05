@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-clients-list',
@@ -10,7 +11,8 @@ import {ClientService} from "../shared/client.service";
 export class ClientsListComponent implements OnInit{
   clients:Array<Client>=[];
 
-  constructor(private clientService:ClientService) {
+  constructor(private clientService:ClientService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -18,4 +20,9 @@ export class ClientsListComponent implements OnInit{
 this.clientService.getClients()
   .subscribe(clients =>this.clients=clients);
   }
+
+  editClient(id:number){
+    this.router.navigate([`/client/edit/${id}`]);
+  }
+
 }
