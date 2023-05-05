@@ -25,4 +25,7 @@ this.clientService.getClients()
     this.router.navigate([`/client/edit/${id}`]);
   }
 
+  deleteClient() {
+
+  }
 }
