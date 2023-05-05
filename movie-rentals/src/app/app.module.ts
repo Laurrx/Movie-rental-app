@@ -8,21 +8,29 @@ import { ClientsComponent } from './clients/clients.component';
 import { ClientsListComponent } from './clients/clients-list/clients-list.component';
 import {InMemoryDataService} from "./shared/in-memory-data.service";
 import { ClientNewComponent } from './clients/client-new/client-new.component';
+import { ClientEditComponent } from './clients/client-edit/client-edit.component';
+import {FormsModule} from "@angular/forms";
+import { MoviesComponent } from './movies/movies.component';
+import { MoviesListComponent } from './movies/movies-list/movies-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     ClientsListComponent,
-    ClientNewComponent
+    ClientNewComponent,
+    ClientEditComponent,
+    MoviesComponent,
+    MoviesListComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
+      InMemoryDataService, {dataEncapsulation: false}
     ),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,4 +24,12 @@ this.clientService.getClients()
   addNewClient() {
     this.router.navigate(['clients/new'])
   }
+
+  editClient(id:number){
+    this.router.navigate([`/client/edit/${id}`]);
+  }
+
+  deleteClient() {
+
+  }
 }
