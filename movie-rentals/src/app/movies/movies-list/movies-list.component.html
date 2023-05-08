@@ -1,1 +1,5 @@
-<p>movies-list works!</p>
+<h2>Movies List</h2>
+
+<ol>
+  <li *ngFor="let movie of movies">{{movie.id}}-{{movie.title}}-{{movie.description}}-{{movie.genre}}</li>
+</ol>
