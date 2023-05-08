@@ -7,7 +7,7 @@ import {ClientEditComponent} from "./clients/client-edit/client-edit.component";
 
 const routes: Routes = [
   {path:'clients',component:ClientsComponent},
-  {path:'clients/new', component:ClientNewComponent,
+  {path:'clients/new', component:ClientNewComponent},
   {path:'movies',component:MoviesComponent},
   {path:'client/edit/:id', component:ClientEditComponent}
 ];
