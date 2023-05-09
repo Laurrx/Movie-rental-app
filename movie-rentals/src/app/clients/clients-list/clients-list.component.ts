@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class ClientsListComponent implements OnInit{
   clients:Array<Client>=[];
+  searchTerm='';
 
   constructor(private clientService:ClientService,
               private router: Router) {

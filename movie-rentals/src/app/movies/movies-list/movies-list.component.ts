@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-movies-list',
@@ -10,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class MoviesListComponent implements OnInit{
   movies:Array<Movie>=[];
+  searchTerm='';
   constructor(private movieServices:MovieService,
               private router:Router) {
   }
@@ -32,4 +34,7 @@ export class MoviesListComponent implements OnInit{
   addNewMovie() {
     this.router.navigate([`/movies/new`])
   }
+
+
+
 }

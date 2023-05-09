@@ -1,12 +1,16 @@
 <h2>Clients</h2>
 
+<label>Search clients: <input [(ngModel)]="searchTerm"/> </label>
+
 <table>
   <tr>
+    <th>#</th>
     <th>Id</th>
     <th>Name</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let client of clients">
+  <tr *ngFor="let client of clients | filter:searchTerm;index as i">
+    <td>{{i+1}}</td>
     <td >{{client.id}}</td>
     <td>{{client.name}}</td>
     <td><span><button (click)="editClient(client.id)">Edit</button></span>
