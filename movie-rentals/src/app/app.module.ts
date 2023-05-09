@@ -12,6 +12,8 @@ import { ClientEditComponent } from './clients/client-edit/client-edit.component
 import {FormsModule} from "@angular/forms";
 import { MoviesComponent } from './movies/movies.component';
 import { MoviesListComponent } from './movies/movies-list/movies-list.component';
+import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
+import { MovieNewComponent } from './movies/movie-new/movie-new.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MoviesListComponent } from './movies/movies-list/movies-list.component'
     ClientEditComponent,
     MoviesComponent,
     MoviesListComponent,
+    MovieDetailComponent,
+    MovieNewComponent,
   ],
   imports: [
     BrowserModule,
