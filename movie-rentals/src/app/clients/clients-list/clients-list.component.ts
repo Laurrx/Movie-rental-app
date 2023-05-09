@@ -29,7 +29,10 @@ this.clientService.getClients()
     this.router.navigate([`/client/edit/${id}`]);
   }
 
-  deleteClient() {
+  deleteClient(client:Client) {
+
+    this.clientService.delete(client.id)
+      .subscribe(_=>{this.clients=this.clients.filter(c=>c.id!==client.id)})
 
   }
 }

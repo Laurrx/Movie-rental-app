@@ -1,7 +1,22 @@
 <h2>Clients</h2>
 
-<ol>
-  <li *ngFor="let client of clients">Id:{{client.id}}, Name:{{client.name}}  <button (click)="editClient(client.id)">Edit</button> <button (click)="deleteClient()">Delete</button></li>
-</ol>
+<!--<ol>
+  <li *ngFor="let client of clients">Id:{{client.id}}, Name:{{client.name}}  <button (click)="editClient(client.id)">Edit</button> <button (click)="deleteClient(client)">Delete</button></li>
+</ol>-->
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let client of clients">
+    <td >{{client.id}}</td>
+    <td>{{client.name}}</td>
+    <td><span><button (click)="editClient(client.id)">Edit</button></span>
+    <span><button (click)="deleteClient(client)">Delete</button></span>
+    </td>
+  </tr>
+</table>
 
 <button (click)="addNewClient()">Add New Client</button>

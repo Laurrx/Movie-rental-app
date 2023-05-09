@@ -28,6 +28,11 @@ export class ClientService {
     const url= `${this.clientUrl}/${client.id}`;
     return this.httpClient.put<Client>(url,client);
   }
+
+  delete(id: number) {
+    const url=`${this.clientUrl}/${id}`;
+    return this.httpClient.delete(url)
+  }
 }
 
 
