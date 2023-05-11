@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
+import {debounceTime, of, Subject} from "rxjs";
 
 @Component({
   selector: 'app-movies-list',
@@ -11,12 +12,20 @@ import {Router} from "@angular/router";
 export class MoviesListComponent implements OnInit{
   movies:Array<Movie>=[];
   searchTerm='';
+  debouncedSearchTerm='';
+  modelChanged = new Subject<string>();
+  moviesSearchCriterias=['title','description','genre'];
   constructor(private movieServices:MovieService,
               private router:Router) {
   }
   ngOnInit(): void {
     this.movieServices.getMovies()
       .subscribe(movies=>this.movies=movies);
+
+    this.modelChanged.pipe(debounceTime(300)).subscribe(_=>{
+      this.debouncedSearchTerm=this.searchTerm;
+    })
+
   }
 
   editMovie(id:number) {
@@ -35,5 +44,10 @@ export class MoviesListComponent implements OnInit{
   }
 
 
+  changed(event: any) {
 
+    this.modelChanged.next(event);
+
+   //console.log(event)
+  }
 }
