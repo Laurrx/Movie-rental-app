@@ -21,7 +21,6 @@ export class ClientsListComponent implements OnInit{
 this.clientService.getClients()
   .subscribe(clients =>this.clients=clients);
   }
-// TODO
   addNewClient() {
     this.router.navigate(['clients/new'])
   }
