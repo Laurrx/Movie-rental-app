@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
-import {debounceTime, of, Subject} from "rxjs";
+import {debounceTime, Subject} from "rxjs";
 
 @Component({
   selector: 'app-movies-list',
