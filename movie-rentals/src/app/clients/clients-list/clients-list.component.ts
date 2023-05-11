@@ -3,6 +3,7 @@ import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {Router} from "@angular/router";
 import {debounceTime, Subject} from "rxjs";
+import {deleteFunction} from "../../shared/utilities";
 
 @Component({
   selector: 'app-clients-list',
@@ -39,12 +40,12 @@ export class ClientsListComponent implements OnInit {
   }
 
   deleteClient(client: Client) {
-
-    this.clientService.delete(client.id)
+    deleteFunction(this.clientService, client.id, this.clients)
+      .subscribe((items: Array<Client>) => this.clients = items);
+    /*this.clientService.delete(client.id)
       .subscribe(_ => {
         this.clients = this.clients.filter(c => c.id !== client.id)
-      })
-
+      })*/
   }
 
   changed(event: any) {
