@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {Router} from "@angular/router";
+import {debounceTime, Subject} from "rxjs";
 
 @Component({
   selector: 'app-clients-list',
@@ -11,15 +12,22 @@ import {Router} from "@angular/router";
 export class ClientsListComponent implements OnInit {
   clients: Array<Client> = [];
   searchTerm = '';
+  clientsSearchCriterias = ['name'];
+  debouncedSearchTerm = '';
+  modelChanged = new Subject<string>();
 
   constructor(private clientService: ClientService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    console.log('clients')
     this.clientService.getClients()
       .subscribe(clients => this.clients = clients);
+
+    this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
+      this.debouncedSearchTerm = this.searchTerm;
+    })
+
   }
 
   addNewClient() {
@@ -38,4 +46,10 @@ export class ClientsListComponent implements OnInit {
       })
 
   }
+
+  changed(event: any) {
+
+    this.modelChanged.next(event);
+  }
+
 }

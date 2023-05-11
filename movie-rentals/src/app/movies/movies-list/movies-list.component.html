@@ -1,6 +1,7 @@
 <h2>Movies List</h2>
 <label class="searchInput">Search Movies:
-  <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm" id="searchTerm"/>
+  <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
+         id="searchTerm"/>
 </label>
 <table>
   <tr>
@@ -12,12 +13,15 @@
     <th>Actions</th>
   </tr>
   <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias;index as i">
-    <td>{{i+1}}</td>
+    <td>{{i + 1}}</td>
     <td>{{movie.id}}</td>
     <td>{{movie.title}}</td>
     <td>{{movie.description}}</td>
     <td>{{movie.genre}}</td>
-    <td><span><button (click)="editMovie(movie.id)">Edit</button></span><span><button (click)="deleteMovie(movie)">Delete</button> </span></td>
+    <td>
+      <button (click)="editMovie(movie.id)">Edit</button>
+      <button (click)="deleteMovie(movie)">Delete</button>
+    </td>
   </tr>
 </table>
 
