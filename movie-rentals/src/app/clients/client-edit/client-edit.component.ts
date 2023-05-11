@@ -20,7 +20,7 @@ client:Client={} as Client;
 
   ngOnInit(): void {
     const id= this.activatedRoute.snapshot.paramMap.get('id');
-    this.clientService.getClient(+id!)
+    this.clientService.get(+id!)
       .subscribe(client=>this.client= client!);
   }
 

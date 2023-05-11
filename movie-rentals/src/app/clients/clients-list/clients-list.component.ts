@@ -22,7 +22,7 @@ export class ClientsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getClients()
+    this.clientService.getAll()
       .subscribe(clients => this.clients = clients);
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {

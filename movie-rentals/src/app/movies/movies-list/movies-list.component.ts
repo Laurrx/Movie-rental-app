@@ -15,6 +15,7 @@ export class MoviesListComponent implements OnInit {
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   moviesSearchCriterias = ['title', 'description', 'genre'];
+  isLoading = true;
 
   constructor(private movieServices: MovieService,
               private router: Router) {
@@ -22,7 +23,10 @@ export class MoviesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieServices.getMovies()
-      .subscribe(movies => this.movies = movies);
+      .subscribe(movies => {
+        this.movies = movies
+        this.isLoading = false;
+      });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
       this.debouncedSearchTerm = this.searchTerm;
