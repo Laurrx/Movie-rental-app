@@ -8,31 +8,34 @@ import {Router} from "@angular/router";
   templateUrl: './clients-list.component.html',
   styleUrls: ['./clients-list.component.css']
 })
-export class ClientsListComponent implements OnInit{
-  clients:Array<Client>=[];
-  searchTerm='';
+export class ClientsListComponent implements OnInit {
+  clients: Array<Client> = [];
+  searchTerm = '';
 
-  constructor(private clientService:ClientService,
+  constructor(private clientService: ClientService,
               private router: Router) {
   }
 
   ngOnInit(): void {
     console.log('clients')
-this.clientService.getClients()
-  .subscribe(clients =>this.clients=clients);
+    this.clientService.getClients()
+      .subscribe(clients => this.clients = clients);
   }
+
   addNewClient() {
     this.router.navigate(['clients/new'])
   }
 
-  editClient(id:number){
+  editClient(id: number) {
     this.router.navigate([`/client/edit/${id}`]);
   }
 
-  deleteClient(client:Client) {
+  deleteClient(client: Client) {
 
     this.clientService.delete(client.id)
-      .subscribe(_=>{this.clients=this.clients.filter(c=>c.id!==client.id)})
+      .subscribe(_ => {
+        this.clients = this.clients.filter(c => c.id !== client.id)
+      })
 
   }
 }
