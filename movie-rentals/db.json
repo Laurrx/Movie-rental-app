@@ -1,22 +1,19 @@
 {
-  "clients": [
+  "posts": [
     {
-      "name": "john",
-      "id": 1
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     }
   ],
-  "movies": [
+  "comments": [
     {
-      "id": 3,
-      "title": "Harry Potter",
-      "description": "Movie with wizards",
-      "genre": "SF"
-    },
-    {
-      "title": "Ice Age",
-      "description": "Movie with prehistoric animals",
-      "genre": "Animation",
-      "id": 4
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
     }
-  ]
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
