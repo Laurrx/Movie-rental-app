@@ -1,0 +1,7 @@
+<h2>{{movie.title}} details</h2>
+
+<label>Title: <input [(ngModel)]="movie.title"/> </label><br/>
+<label>Description: <textarea [(ngModel)]="movie.description"></textarea></label><br/>
+<label>Genre: <input [(ngModel)]="movie.genre"/> </label><br/>
+
+<button (click)="updateMovie()">Update</button>

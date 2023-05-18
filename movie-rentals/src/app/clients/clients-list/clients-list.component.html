@@ -1,0 +1,25 @@
+<h2>Clients</h2>
+
+<label class="searchInput">Search clients: <input class="searchInput" (ngModelChange)="changed($event)"
+                                                  [(ngModel)]="searchTerm"/> </label>
+<div class="table-container">
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias;index as i">
+      <td>{{i + 1}}</td>
+      <td>{{client.id}}</td>
+      <td>{{client.name}}</td>
+      <td>
+        <button (click)="editClient(client.id)">Edit</button>
+        <button (click)="deleteClient(client)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<button (click)="addNewClient()">Add New Client</button>
