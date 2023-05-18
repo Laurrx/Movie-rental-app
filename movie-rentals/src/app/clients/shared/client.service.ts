@@ -5,7 +5,7 @@ import {ApiService} from "../../shared/api.service";
   providedIn: 'root'
 })
 export class ClientService extends ApiService {
-  public override url = 'api/clients';
+  public override url = "http://localhost:3000/clients";
 }
 
 

@@ -7,7 +7,7 @@ import {map, Observable} from "rxjs";
 })
 
 export class ApiService {
-  public url = '';
+  public url = "";
 
   constructor(private httpClient: HttpClient) {
   }

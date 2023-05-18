@@ -34,9 +34,6 @@ import {MyCustomSearchPipe} from "./movies/shared/my-custom-search.pipe";
     BrowserModule,
     Ng2SearchPipeModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
     AppRoutingModule,
     FormsModule
   ],

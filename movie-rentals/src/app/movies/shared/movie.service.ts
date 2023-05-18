@@ -7,7 +7,7 @@ import {Movie} from "./movie.model";
   providedIn: 'root'
 })
 export class MovieService {
-private movieUrl = '/api/movies'
+private movieUrl = "http://localhost:3000/movies"
   constructor(private httpClient:HttpClient) { }
 
   getMovies():Observable<Movie[]>{

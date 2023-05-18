@@ -3,6 +3,7 @@ import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
 import {debounceTime, Subject} from "rxjs";
+import {deleteFunction} from "../../shared/utilities";
 
 @Component({
   selector: 'app-movies-list',
@@ -39,10 +40,12 @@ export class MoviesListComponent implements OnInit {
   }
 
   deleteMovie(movie: Movie) {
-    this.movieServices.delete(movie.id)
-      .subscribe(_ => {
-        this.movies = this.movies.filter(m => m.id !== movie.id);
-      });
+    if (window.confirm("Are you sure you want to delete " + movie.title + "?")) {
+      deleteFunction(this.movieServices, movie.id, this.movies)
+        .subscribe((items: Array<Movie>) => {
+          this.movies = items;
+        });
+    }
   }
 
   addNewMovie() {

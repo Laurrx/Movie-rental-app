@@ -40,8 +40,9 @@ export class ClientsListComponent implements OnInit {
   }
 
   deleteClient(client: Client) {
-    deleteFunction(this.clientService, client.id, this.clients)
-      .subscribe((items: Array<Client>) => this.clients = items);
+    if (confirm("Are you sure you want to delete " + client.name + " ?"))
+      deleteFunction(this.clientService, client.id, this.clients)
+        .subscribe((items: Array<Client>) => this.clients = items);
     /*this.clientService.delete(client.id)
       .subscribe(_ => {
         this.clients = this.clients.filter(c => c.id !== client.id)
