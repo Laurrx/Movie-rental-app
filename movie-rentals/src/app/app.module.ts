@@ -14,6 +14,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { MoviesListComponent } from './movies/movies-list/movies-list.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { MovieNewComponent } from './movies/movie-new/movie-new.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {MyCustomSearchPipe} from "./movies/shared/my-custom-search.pipe";
 
 @NgModule({
   declarations: [
@@ -26,13 +28,12 @@ import { MovieNewComponent } from './movies/movie-new/movie-new.component';
     MoviesListComponent,
     MovieDetailComponent,
     MovieNewComponent,
+    MyCustomSearchPipe
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
     AppRoutingModule,
     FormsModule
   ],

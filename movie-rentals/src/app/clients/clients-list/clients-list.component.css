@@ -1,4 +1,19 @@
-td,table,th{
-  border:3px solid red;
+td, table, th {
+  border: 3px solid red;
   border-collapse: collapse;
+  text-align: center;
+}
+
+.searchInput {
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+
+  padding: 16px;
+  position: relative;
 }
