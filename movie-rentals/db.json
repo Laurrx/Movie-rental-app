@@ -4,5 +4,32 @@
       "id": 1,
       "name": "john"
     }
+  ],
+  
+  "movies": [
+    {
+      "id": 1,
+      "title": "Avengers: End Game",
+      "description": "This movie is available to rent",
+      "genre": "Science Fiction"
+    },
+    {
+      "id": 2,
+      "title": "Bruce Almighty",
+      "description": "This movie is available to rent",
+      "genre": "Comedy"
+    },
+    {
+      "id": 3,
+      "title": "Scary Movie",
+      "description": "This movie is available to rent",
+      "genre": "Come"
+    },
+    {
+      "title": "40 Year Old Virgin",
+      "description": "This movie can be rented",
+      "genre": "Horror",
+      "id": 4
+    }
   ]
 }
