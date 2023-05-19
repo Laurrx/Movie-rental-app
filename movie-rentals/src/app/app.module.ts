@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from "@angular/common/http";
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientsListComponent } from './clients/clients-list/clients-list.component';
-import {InMemoryDataService} from "./shared/in-memory-data.service";
 import { ClientNewComponent } from './clients/client-new/client-new.component';
 import { ClientEditComponent } from './clients/client-edit/client-edit.component';
 import {FormsModule} from "@angular/forms";
@@ -16,6 +14,11 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
 import { MovieNewComponent } from './movies/movie-new/movie-new.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {MyCustomSearchPipe} from "./movies/shared/my-custom-search.pipe";
+import { RentalComponent } from './rental/rental.component';
+import { RentalListComponent } from './rental/rental-list/rental-list.component';
+import { ApiService } from './shared/api.service';
+import { RentMovieComponent } from './rental/rent-movie/rent-movie.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {MyCustomSearchPipe} from "./movies/shared/my-custom-search.pipe";
     MoviesListComponent,
     MovieDetailComponent,
     MovieNewComponent,
-    MyCustomSearchPipe
+    MyCustomSearchPipe,
+    RentalComponent,
+    RentalListComponent,
+    RentMovieComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import {MyCustomSearchPipe} from "./movies/shared/my-custom-search.pipe";
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

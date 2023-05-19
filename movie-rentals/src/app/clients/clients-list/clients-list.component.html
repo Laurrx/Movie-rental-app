@@ -5,15 +5,15 @@
 <div class="table-container">
   <table>
     <tr>
-      <th>#</th>
       <th>Id</th>
       <th>Name</th>
+      <th>Surname</th>
       <th>Actions</th>
     </tr>
-    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias;index as i">
-      <td>{{i + 1}}</td>
+    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias">
       <td>{{client.id}}</td>
       <td>{{client.name}}</td>
+      <td>{{client.surname}}</td>
       <td>
         <button (click)="editClient(client.id)">Edit</button>
         <button (click)="deleteClient(client)">Delete</button>
