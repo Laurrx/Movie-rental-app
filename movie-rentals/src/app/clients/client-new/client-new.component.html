@@ -2,6 +2,7 @@
 
 <div>
   <label>Name: <input #name /></label>
+  <label>Surname: <input #surname /></label>
 </div>
 
-<button (click)="saveClient(name.value)">Save</button>
+<button (click)="saveClient(name.value, surname.value)">Save</button>

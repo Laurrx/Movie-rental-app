@@ -15,8 +15,8 @@ export class ClientNewComponent implements OnInit{
   }
 
 
-  saveClient(name:string) {
-    const client: Client={name} as Client;
+  saveClient(name:string, surname: string) {
+    const client: Client={name, surname} as Client;
 
     this.clientService.save(client)
       .subscribe();
