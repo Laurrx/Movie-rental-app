@@ -4,9 +4,24 @@
       "id": 1,
       "name": "John",
       "surname": "Cravitz"
+    },
+    {
+      "id": 2,
+      "name": "Markos",
+      "surname": "Heinfield"
+    },
+    {
+      "id": 3,
+      "name": "George",
+      "surname": "Popescu"
+    },
+    {
+      "id": 4,
+      "name": "Vasile",
+      "surname": "Gheorghe"
     }
   ],
-  
+
   "movies": [
     {
       "id": 1,
