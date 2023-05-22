@@ -43,15 +43,17 @@ export class ClientsListComponent implements OnInit {
     if (confirm("Are you sure you want to delete " + client.name + " ?"))
       deleteFunction(this.clientService, client.id, this.clients)
         .subscribe((items: Array<Client>) => this.clients = items);
-    /*this.clientService.delete(client.id)
-      .subscribe(_ => {
-        this.clients = this.clients.filter(c => c.id !== client.id)
-      })*/
   }
 
   changed(event: any) {
 
     this.modelChanged.next(event);
+  }
+
+  selectedClient!: Client;
+
+  showClient(client: Client) {
+    this.selectedClient = client;
   }
 
 }

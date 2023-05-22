@@ -15,6 +15,7 @@
       <td>{{client.name}}</td>
       <td>{{client.surname}}</td>
       <td>
+        <button (click)="showClient(client)">Rented movies</button>
         <button (click)="editClient(client.id)">Edit</button>
         <button (click)="deleteClient(client)">Delete</button>
       </td>
@@ -23,3 +24,5 @@
 </div>
 
 <button (click)="addNewClient()">Add New Client</button>
+
+<app-client-rentals [client]="selectedClient"></app-client-rentals>

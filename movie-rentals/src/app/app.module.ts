@@ -18,6 +18,7 @@ import { RentalComponent } from './rental/rental.component';
 import { RentalListComponent } from './rental/rental-list/rental-list.component';
 import { ApiService } from './shared/api.service';
 import { RentMovieComponent } from './rental/rent-movie/rent-movie.component';
+import { ClientRentalsComponent } from './clients/client-rentals/client-rentals.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { RentMovieComponent } from './rental/rent-movie/rent-movie.component';
     MyCustomSearchPipe,
     RentalComponent,
     RentalListComponent,
-    RentMovieComponent
+    RentMovieComponent,
+    ClientRentalsComponent
   ],
   imports: [
     BrowserModule,
