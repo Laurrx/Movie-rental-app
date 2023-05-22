@@ -21,7 +21,6 @@
       "surname": "Gheorghe"
     }
   ],
-
   "movies": [
     {
       "id": 1,
@@ -83,6 +82,66 @@
       "dueDate": "25.05.2023",
       "clientsId": 3,
       "moviesId": 4
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "moviesId": 1,
+      "id": 6
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "moviesId": 1,
+      "id": 7
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "moviesId": 2,
+      "id": 8
+    },
+    {
+      "rentedDate": "2023-05-23",
+      "dueDate": "2023-05-24",
+      "clientsId": "",
+      "moviesId": 1,
+      "id": 9
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "clientsId": "",
+      "moviesId": 1,
+      "id": 10
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "clientsId": "",
+      "moviesId": 1,
+      "id": 11
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "clientsId": "",
+      "moviesId": 2,
+      "id": 12
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-23",
+      "clientsId": "1",
+      "moviesId": 1,
+      "id": 13
+    },
+    {
+      "rentedDate": "2023-05-22",
+      "dueDate": "2023-05-24",
+      "clientsId": 2,
+      "moviesId": 1,
+      "id": 14
     }
   ]
 }

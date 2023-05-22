@@ -1,6 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ClientService} from "../../clients/shared/client.service";
 import {DatePipe} from "@angular/common";
+import {Movie} from "../../movies/shared/movie.model";
+import {MovieService} from "../../movies/shared/movie.service";
+import {Rental} from "../shared/rental.model";
+import {RentalService} from "../shared/rental.service";
+import {Client} from "../../clients/shared/client.model";
 
 @Component({
   selector: 'app-rent-movie',
@@ -19,23 +24,33 @@ export class RentMovieComponent implements OnInit {
     this.changedDate = changedFormat;
     console.log(this.changedDate);
   }*/
-
-  clients: Array<any> = [];
-  @Input() movie: any;
+  selectedClient = '';
+  clients: Array<Client> = [];
+  @Input() movie: Movie = {} as Movie;
   @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
+  clientId = '';
 
-  constructor(private clientsService: ClientService) {
+  constructor(private clientsService: ClientService,
+              private movieService: MovieService,
+              private rentalService: RentalService) {
   }
 
   ngOnInit(): void {
     this.onClick = true;
     this.clientsService.getAll()
       .subscribe(clients => this.clients = clients)
-   // this.changeFormat(this.today)
+    // this.changeFormat(this.today)
   }
 
-  addNewRentedMovie() {
+  addNewRentedMovie(startDate: string, returnDate: string) {
+    const rentedMovie: Rental = {
+      rentedDate: startDate,
+      dueDate: returnDate,
+      clientsId:+this.clientId,
+      moviesId: this.movie.id
+    } as unknown as Rental;
+    this.rentalService.save(rentedMovie);
     this.onClick = false;
     this.newRentEvent.emit(this.onClick);
   }
@@ -45,4 +60,14 @@ export class RentMovieComponent implements OnInit {
     this.newRentEvent.emit(this.onClick);
   }
 
+  protected readonly onselect = onselect;
+
+  onSelected(value: string) {
+    this.selectedClient = value;
+    console.log(this.selectedClient)
+   return this.clients.filter(item => {
+      if(item.name.concat(" ", item.surname).toLowerCase() === this.selectedClient.toLowerCase())
+      this.clientId = item.id.toString();
+    })
+  }
 }
