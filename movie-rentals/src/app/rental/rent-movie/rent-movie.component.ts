@@ -14,13 +14,12 @@ export class RentMovieComponent implements OnInit {
   changedDate: string | null = "";
   pipe = new DatePipe('en-US');
 
-  changeFormat(today: any) {
+  /*changeFormat(today: any) {
     let changedFormat = this.pipe.transform(this.today, 'dd/MM/YYYY');
     this.changedDate = changedFormat;
     console.log(this.changedDate);
-  }
+  }*/
 
-  currentDate = Date.now();
   clients: Array<any> = [];
   @Input() movie: any;
   @Output() newRentEvent = new EventEmitter<any>();
@@ -33,7 +32,7 @@ export class RentMovieComponent implements OnInit {
     this.onClick = true;
     this.clientsService.getAll()
       .subscribe(clients => this.clients = clients)
-    this.changeFormat(this.today)
+   // this.changeFormat(this.today)
   }
 
   addNewRentedMovie() {
