@@ -6,16 +6,22 @@
       "surname": "Cravitz"
     },
     {
-      "name": "John",
-      "surname": "Wick",
-      "id": 2
+      "id": 2,
+      "name": "Markos",
+      "surname": "Heinfield"
     },
     {
-      "name": "John",
-      "surname": "Doe",
-      "id": 3
+      "id": 3,
+      "name": "George",
+      "surname": "Popescu"
+    },
+    {
+      "id": 4,
+      "name": "Vasile",
+      "surname": "Gheorghe"
     }
   ],
+
   "movies": [
     {
       "id": 1,

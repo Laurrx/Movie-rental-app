@@ -36,7 +36,7 @@
       <td>{{movie.description}}</td>
       <td>{{movie.genre}}</td>
       <td>
-        <button>Rent</button>
+        <button (click)="onSelectedMovie(movie)">Rent</button>
         <button (click)="editMovie(movie.id)">Edit</button>
         <button (click)="deleteMovie(movie)">Delete</button>
       </td>
@@ -44,5 +44,6 @@
   </table>
 </div>
 <button (click)="addNewMovie()">Add new movie</button>
-
-<app-rent-movie></app-rent-movie>
+<div *ngIf="isSelectedMovie">
+<app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
+</div>

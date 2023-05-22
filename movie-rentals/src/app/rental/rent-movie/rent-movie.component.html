@@ -1,1 +1,23 @@
-<p>rent-movie works!</p>
+<div>
+  <h2>{{movie.title}} - Rent Details</h2>
+  <ng-form class="form">
+    <div>
+      <label>Select Client: <select>
+        <option *ngFor="let client of clients">
+          {{client.name.concat(" ",client.surname)}}
+        </option>
+      </select>
+      </label>
+    </div>
+    <div>
+      <label>Rent Date: <input type="date"/> </label>
+    </div>
+    <div>
+      <label>Due Date: <input type="date"/> </label>
+    </div>
+    <div>
+    <button (click)="addNewRentedMovie()">Ok</button>
+    <button (click)="cancel()">Cancel</button>
+    </div>
+  </ng-form>
+</div>
