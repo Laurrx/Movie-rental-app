@@ -2,11 +2,13 @@
   <h2>{{movie.title}} - Rent Details</h2>
   <ng-form class="form">
     <div>
-      <label>Select Client: <select>
-        <option *ngFor="let client of clients" #name>
-          {{client.name.concat(" ",client.surname)}}
-        </option>
-      </select>
+      <label>Select Client:
+        <select #selectedClient (change)="onSelected(selectedClient.value)">
+          <option>Select Client</option>
+          <option  *ngFor="let client of clients">
+            {{client.name.concat(" ", client.surname)}}
+          </option>
+        </select>
       </label>
     </div>
     <div>
@@ -16,8 +18,8 @@
       <label>Due Date: <input #returnDate type="date"/> </label>
     </div>
     <div>
-    <button (click)="addNewRentedMovie(movie.title,name.value,startDate.value,returnDate.value)">Ok</button>
-    <button (click)="cancel()">Cancel</button>
+      <button (click)="addNewRentedMovie(startDate.value,returnDate.value)">Ok</button>
+      <button (click)="cancel()">Cancel</button>
     </div>
   </ng-form>
 </div>

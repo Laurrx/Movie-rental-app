@@ -1,7 +1,7 @@
 export interface Rental {
     id: number,
-    rentedDate: Date,
-    dueDate: Date,
+    rentedDate: string,
+    dueDate: string,
     clientsId: number,
     moviesId: number
 }

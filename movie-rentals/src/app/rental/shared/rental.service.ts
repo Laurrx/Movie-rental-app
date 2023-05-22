@@ -20,4 +20,10 @@ export class RentalService{
       map(arr => arr.find(r => r.id === id))
     )
   }
+
+  save(rentedMovie : Rental){
+    this.httpClient.post(this.rentalsUrl,rentedMovie)
+      .subscribe(()=>console.log(rentedMovie));
+  }
+
 }
