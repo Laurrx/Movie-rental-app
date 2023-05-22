@@ -1,4 +1,4 @@
-table,td,th{
+/* table,td,th{
   border-collapse: collapse;
   border: 3px dashed blue;
   padding-left: 10px;
@@ -31,4 +31,37 @@ table{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+} */
+
+* {
+  font-family: Verdana, Helvetica, sans-serif;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: coral;
+}
+
+button {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
 }

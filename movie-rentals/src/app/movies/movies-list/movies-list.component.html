@@ -11,7 +11,6 @@
   </div>
   <table [ngClass]="{'is-loading':isLoading}">
     <tr>
-      <th>#</th>
       <th>Id</th>
       <th>Title</th>
       <th>Description</th>
@@ -31,13 +30,13 @@
         </td>
       </tr>
     </ng-container>
-    <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias;index as i">
-      <td>{{i + 1}}</td>
+    <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
       <td>{{movie.id}}</td>
       <td>{{movie.title}}</td>
       <td>{{movie.description}}</td>
       <td>{{movie.genre}}</td>
       <td>
+        <button (click)="onSelectedMovie(movie)">Rent</button>
         <button (click)="editMovie(movie.id)">Edit</button>
         <button (click)="deleteMovie(movie)">Delete</button>
       </td>
@@ -45,3 +44,6 @@
   </table>
 </div>
 <button (click)="addNewMovie()">Add new movie</button>
+<div *ngIf="isSelectedMovie">
+<app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
+</div>

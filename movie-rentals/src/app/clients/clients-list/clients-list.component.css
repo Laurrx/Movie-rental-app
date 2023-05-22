@@ -1,4 +1,4 @@
-td, table, th {
+/* td, table, th {
   border: 3px solid red;
   border-collapse: collapse;
   text-align: center;
@@ -16,4 +16,37 @@ table {
 
   padding: 16px;
   position: relative;
+} */
+
+* {
+  font-family: Verdana, Helvetica, sans-serif;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: coral;
+}
+
+button {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+button:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
 }
