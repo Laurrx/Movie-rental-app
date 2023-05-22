@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
 import {debounceTime, Subject} from "rxjs";
 import {deleteFunction} from "../../shared/utilities";
+import {RentMovieComponent} from "../../rental/rent-movie/rent-movie.component";
 
 @Component({
   selector: 'app-movies-list',
@@ -17,6 +18,11 @@ export class MoviesListComponent implements OnInit {
   modelChanged = new Subject<string>();
   moviesSearchCriterias = ['title', 'description', 'genre'];
   isLoading = true;
+  selectedMovie?: any;
+  isSelectedMovie = false;
+
+  @ViewChild(RentMovieComponent)
+  rentMovieComponent!: RentMovieComponent;
 
   constructor(private movieServices: MovieService,
               private router: Router) {
@@ -56,5 +62,15 @@ export class MoviesListComponent implements OnInit {
   changed(event: any) {
 
     this.modelChanged.next(event);
+  }
+
+  onSelectedMovie(movie: any) {
+    this.selectedMovie = movie;
+    this.isSelectedMovie = true;
+
+  }
+
+  newRent($event: any) {
+    this.isSelectedMovie = $event;
   }
 }
