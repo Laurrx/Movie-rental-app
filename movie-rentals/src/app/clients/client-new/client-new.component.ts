@@ -23,22 +23,16 @@ export class ClientNewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  saveClient(name: string, surname: string) {
-    const client: Client = {name, surname} as Client;
-
-    this.clientService.save(client)
-      .subscribe();
-
-    this.location.back();
-  }
-
-
   onSubmit() {
     const client: Client =
       {
         name: this.form.controls.name.value,
         surname: this.form.controls.surname.value
       } as Client
+    this.clientService.save(client)
+      .subscribe();
+
+    this.location.back();
   }
+
 }

@@ -3,13 +3,13 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="name">Name:<br>
-      <input formControlName="name" id="name">
+      <input formControlName="name" id="name" placeholder="Enter name">
     </label><br>
     <p style="color: red" *ngIf="!form.controls.name.valid && form.controls.name.touched">
       Name required!
     </p>
     <label for="surname">Surname:<br>
-      <input formControlName="surname" id="surname">
+      <input formControlName="surname" id="surname" placeholder="Enter Surname">
     </label><br>
     <button [disabled]="!form.valid" type="submit">Save</button>
   </form>
