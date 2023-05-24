@@ -1,53 +1,53 @@
 <h2>Movies List</h2>
 <div *ngIf="!addRentMovie">
-<label class="searchInput">Search Movies:
-  <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
-         id="searchTerm"/>
-</label>
-<div class="table-container">
-  <div *ngIf="isLoading" class="spinner-container">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
+  <label class="searchInput">Search Movies:
+    <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
+           id="searchTerm"/>
+  </label>
+  <div class="table-container">
+    <div *ngIf="isLoading" class="spinner-container">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
-  </div>
-  <table [ngClass]="{'is-loading':isLoading}">
-    <tr>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Genre</th>
-      <th>Actions</th>
-    </tr>
-    <ng-container *ngIf="isLoading">
-      <tr *ngFor="let row of [0,1]">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+    <table [ngClass]="{'is-loading':isLoading}">
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Actions</th>
+      </tr>
+      <ng-container *ngIf="isLoading">
+        <tr *ngFor="let row of [0,1]">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </ng-container>
+      <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
+        <td>{{movie.id}}</td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.description}}</td>
+        <td>{{movie.genre}}</td>
         <td>
-          <button>Edit</button>
-          <button>Delete</button>
+          <button (click)="onSelectedMovie(movie)">Rent</button>
+          <button (click)="editMovie(movie.id)">Edit</button>
+          <button (click)="deleteMovie(movie)">Delete</button>
         </td>
       </tr>
-    </ng-container>
-    <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
-      <td>{{movie.id}}</td>
-      <td>{{movie.title}}</td>
-      <td>{{movie.description}}</td>
-      <td>{{movie.genre}}</td>
-      <td>
-        <button (click)="onSelectedMovie(movie)">Rent</button>
-        <button (click)="editMovie(movie.id)">Edit</button>
-        <button (click)="deleteMovie(movie)">Delete</button>
-      </td>
-    </tr>
-  </table>
-</div>
-<button (click)="addNewMovie()">Add new movie</button>
-<div *ngIf="isSelectedMovie">
-<app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
-</div>
+    </table>
+  </div>
+  <button (click)="addNewMovie()">Add new movie</button>
+  <div *ngIf="isSelectedMovie">
+    <app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
+  </div>
 </div>
 <div class="confirmation-message" *ngIf="addRentMovie">
   <h2>Movie Rented</h2>
