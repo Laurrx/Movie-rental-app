@@ -24,11 +24,6 @@
       "name": "Barbu",
       "surname": "Ionut",
       "id": 5
-    },
-    {
-      "name": "barbu",
-      "surname": "Ionut",
-      "id": 6
     }
   ],
   "movies": [
@@ -64,48 +59,6 @@
     }
   ],
   "rentals": [
-    {
-      "id": 1,
-      "rentedDate": "19.05.2023",
-      "dueDate": "25.05.2023",
-      "clientsId": 1,
-      "moviesId": 1
-    },
-    {
-      "id": 2,
-      "rentedDate": "19.05.2023",
-      "dueDate": "25.05.2023",
-      "clientsId": 1,
-      "moviesId": 2
-    },
-    {
-      "id": 3,
-      "rentedDate": "19.05.2023",
-      "dueDate": "25.05.2023",
-      "clientsId": 1,
-      "moviesId": 3
-    },
-    {
-      "id": 4,
-      "rentedDate": "19.05.2023",
-      "dueDate": "25.05.2023",
-      "clientsId": 2,
-      "moviesId": 3
-    },
-    {
-      "id": 5,
-      "rentedDate": "19.05.2023",
-      "dueDate": "25.05.2023",
-      "clientsId": 3,
-      "moviesId": 4
-    },
-    {
-      "rentedDate": "2023-05-22",
-      "dueDate": "2023-05-24",
-      "clientsId": 2,
-      "moviesId": 1,
-      "id": 14
-    },
     {
       "rentedDate": "2023-05-23",
       "dueDate": "2023-05-24",
@@ -240,6 +193,33 @@
       "movieTitle": "Avengers: End Game",
       "clientFullname": "Vasile Gheorghe",
       "id": 29
+    },
+    {
+      "rentedDate": "2023-05-24",
+      "dueDate": "2023-05-25",
+      "clientsId": 2,
+      "moviesId": 2,
+      "movieTitle": "Bruce Almighty",
+      "clientFullname": "barbu Ionut",
+      "id": 30
+    },
+    {
+      "rentedDate": "2023-05-24",
+      "dueDate": "2023-05-25",
+      "clientsId": 4,
+      "moviesId": 2,
+      "movieTitle": "Bruce Almighty",
+      "clientFullname": "Vasile Gheorghe",
+      "id": 31
+    },
+    {
+      "rentedDate": "2023-05-24",
+      "dueDate": "2023-05-25",
+      "clientsId": 2,
+      "moviesId": 5,
+      "movieTitle": "Batman",
+      "clientFullname": "Markos Heinfield",
+      "id": 32
     }
   ]
 }
