@@ -7,7 +7,7 @@ import {ClientsComponent} from './clients/clients.component';
 import {ClientsListComponent} from './clients/clients-list/clients-list.component';
 import {ClientNewComponent} from './clients/client-new/client-new.component';
 import {ClientEditComponent} from './clients/client-edit/client-edit.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MoviesComponent} from './movies/movies.component';
 import {MoviesListComponent} from './movies/movies-list/movies-list.component';
 import {MovieDetailComponent} from './movies/movie-detail/movie-detail.component';
@@ -44,6 +44,7 @@ import { ClientRentalsComponent } from './clients/client-rentals/client-rentals.
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

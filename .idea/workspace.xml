@@ -7,15 +7,13 @@
     <list default="true" id="0ddcba6e-892e-4427-b545-a2d0f7b659d9" name="Changes" comment="gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie-rentals/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/movies/movies-list/movies-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/movies/movies-list/movies-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/movies/movies-list/movies-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/movies/movies-list/movies-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/movies/movies-list/movies-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/movies/movies-list/movies-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/rental/rent-movie/rent-movie.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/rental/rent-movie/rent-movie.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/rental/rent-movie/rent-movie.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/rental/rent-movie/rent-movie.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/rental/rental-list/rental-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/rental/rental-list/rental-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/rental/rental-list/rental-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/rental/rental-list/rental-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/rental/shared/rental.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/rental/shared/rental.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/rental/shared/rental.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/rental/shared/rental.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/clients/client-new/client-new.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/clients/client-new/client-new.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/clients/client-new/client-new.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/clients/client-new/client-new.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/clients/client-new/client-new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/clients/client-new/client-new.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/movies/movie-new/movie-new.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/movies/movie-new/movie-new.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/movies/movie-new/movie-new.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/movies/movie-new/movie-new.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/movie-rentals/src/app/movies/movie-new/movie-new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/movie-rentals/src/app/movies/movie-new/movie-new.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

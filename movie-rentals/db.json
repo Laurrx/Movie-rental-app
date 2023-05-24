@@ -45,6 +45,12 @@
       "description": "This movie can be rented",
       "genre": "Horror",
       "id": 4
+    },
+    {
+      "title": "Batman",
+      "description": "Movie with a superhero dressed in black.",
+      "genre": "Action",
+      "id": 5
     }
   ],
   "rentals": [
