@@ -67,7 +67,6 @@ export class RentMovieComponent implements OnInit {
 
   onSelected(value: string) {
     this.selectedClient = value;
-    let found = false;
     this.clients.filter(item => {
       if (item.name.concat(" ", item.surname).toLowerCase() === this.selectedClient.toLowerCase()) {
         this.clientId = item.id.toString();
