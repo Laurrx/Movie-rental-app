@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
@@ -20,6 +20,7 @@ export class MoviesListComponent implements OnInit {
   isLoading = true;
   selectedMovie?: any;
   isSelectedMovie = false;
+  addRentMovie=false;
 
   @ViewChild(RentMovieComponent)
   rentMovieComponent!: RentMovieComponent;
@@ -67,10 +68,15 @@ export class MoviesListComponent implements OnInit {
   onSelectedMovie(movie: any) {
     this.selectedMovie = movie;
     this.isSelectedMovie = true;
-
+    this.addRentMovie = false;
   }
 
   newRent($event: any) {
     this.isSelectedMovie = $event;
+      this.addRentMovie=true;
+  }
+
+  closeMessage() {
+    this.addRentMovie=false;
   }
 }

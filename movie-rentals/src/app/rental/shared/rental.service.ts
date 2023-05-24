@@ -8,11 +8,15 @@ import { Rental } from './rental.model';
 })
 export class RentalService{
   public rentalsUrl = "http://localhost:3000/rentals";
-
   constructor(private httpClient: HttpClient) {}
 
   getRentals(): Observable<Rental[]> {
     return this.httpClient.get<Rental[]>(this.rentalsUrl);
+  }
+
+  getRentalClients(clientId:number): Observable<Rental[]>{
+    const url = `${this.rentalsUrl}?clientsId=${clientId}&_expand=movies`;
+    return this.httpClient.get<Rental[]>(url);
   }
 
   get(id: number): Observable<Rental | undefined> {

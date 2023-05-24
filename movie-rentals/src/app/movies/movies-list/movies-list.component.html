@@ -1,4 +1,5 @@
 <h2>Movies List</h2>
+<div *ngIf="!addRentMovie">
 <label class="searchInput">Search Movies:
   <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
          id="searchTerm"/>
@@ -46,4 +47,9 @@
 <button (click)="addNewMovie()">Add new movie</button>
 <div *ngIf="isSelectedMovie">
 <app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
+</div>
+</div>
+<div class="confirmation-message" *ngIf="addRentMovie">
+  <h2>Movie Rented</h2>
+  <button (click)="closeMessage()">Ok</button>
 </div>

@@ -26,6 +26,7 @@ export class RentMovieComponent implements OnInit {
   }*/
   selectedClient = '';
   clients: Array<Client> = [];
+  client:Client = {} as Client;
   @Input() movie: Movie = {} as Movie;
   @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
@@ -48,7 +49,9 @@ export class RentMovieComponent implements OnInit {
       rentedDate: startDate,
       dueDate: returnDate,
       clientsId:+this.clientId,
-      moviesId: this.movie.id
+      moviesId: this.movie.id,
+      movieTitle: this.movie.title,
+      clientFullname: this.client.name.concat(" ",this.client.surname),
     } as unknown as Rental;
     this.rentalService.save(rentedMovie);
     this.onClick = false;
@@ -68,6 +71,7 @@ export class RentMovieComponent implements OnInit {
    return this.clients.filter(item => {
       if(item.name.concat(" ", item.surname).toLowerCase() === this.selectedClient.toLowerCase())
       this.clientId = item.id.toString();
+      this.client = {id:item.id,name:item.name,surname:item.surname};
     })
   }
 }

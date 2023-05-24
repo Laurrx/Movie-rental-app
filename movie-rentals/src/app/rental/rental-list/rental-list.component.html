@@ -9,10 +9,10 @@
         <th>Due Date</th>
         <th>Actions</th>
     </tr>
-    <tr *ngFor="let rental of rentals">
+    <tr *ngFor="let rental of rentalClients">
         <td>{{rental.id}}</td>
-        <td>rental.movieTitle</td>
-        <td>rental.clientFullname</td>
+        <td>{{rental.movieTitle}}</td>
+        <td>{{rental.clientFullname}}</td>
         <td>{{rental.rentedDate}}</td>
         <td>{{rental.dueDate}}</td>
         <td><button>Return</button></td>
