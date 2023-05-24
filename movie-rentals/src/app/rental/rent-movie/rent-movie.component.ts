@@ -67,11 +67,11 @@ export class RentMovieComponent implements OnInit {
 
   onSelected(value: string) {
     this.selectedClient = value;
-    this.clients.filter(item => {
+   /* this.clients.filter(item => {
       if (item.name.concat(" ", item.surname).toLowerCase() === this.selectedClient.toLowerCase()) {
         this.clientId = item.id.toString();
         this.client = {name: item.name, surname: item.surname} as Client;
       }
-    })
+    })*/
   }
 }
