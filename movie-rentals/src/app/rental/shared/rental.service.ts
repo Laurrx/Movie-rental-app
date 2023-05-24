@@ -25,9 +25,8 @@ export class RentalService{
     )
   }
 
-  save(rentedMovie : Rental){
-    this.httpClient.post(this.rentalsUrl,rentedMovie)
-      .subscribe(()=>console.log(rentedMovie));
+  save(rentedMovie : Rental) :Observable<Rental>{
+    return this.httpClient.post<Rental>(this.rentalsUrl,rentedMovie);
   }
 
 }

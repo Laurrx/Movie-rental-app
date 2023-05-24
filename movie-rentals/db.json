@@ -220,6 +220,14 @@
       "movieTitle": "Batman",
       "clientFullname": "Markos Heinfield",
       "id": 32
+    },
+    {
+      "rentedDate": "2023-05-24",
+      "dueDate": "2023-05-25",
+      "clientsId": "1",
+      "moviesId": 3,
+      "movieTitle": "Scary Movie",
+      "id": 33
     }
   ]
 }
