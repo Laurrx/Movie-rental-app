@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ClientService} from "../../clients/shared/client.service";
-import {DatePipe} from "@angular/common";
 import {Movie} from "../../movies/shared/movie.model";
 import {MovieService} from "../../movies/shared/movie.service";
 import {Rental} from "../shared/rental.model";

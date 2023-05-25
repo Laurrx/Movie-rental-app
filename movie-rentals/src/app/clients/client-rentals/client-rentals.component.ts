@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {Client} from '../shared/client.model';
 import {Rental} from "../../rental/shared/rental.model";
 import {RentalService} from "../../rental/shared/rental.service";
