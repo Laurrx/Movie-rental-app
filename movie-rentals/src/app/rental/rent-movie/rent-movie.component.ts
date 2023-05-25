@@ -46,16 +46,13 @@ export class RentMovieComponent implements OnInit {
 
   addNewRentedMovie(startDate: string, returnDate: string) {
     const rentedMovie: Rental = {
-      movieTitle: this.movie.title,
       rentedDate: startDate,
       dueDate: returnDate,
       clientsId: +this.selectedClient,
       moviesId: this.movie.id,
-      //ToDo:fix clientFullname
-      //clientFullname: this.client.name.concat(" ", this.client.surname),
-    } as unknown as Rental;
+    } as Rental;
     this.rentalService.save(rentedMovie)
-      .subscribe(rental => console.log(rental));
+      .subscribe();
     this.onClick = false;
     this.newRentEvent.emit(this.onClick);
   }
@@ -70,11 +67,5 @@ export class RentMovieComponent implements OnInit {
   onSelected(value: string) {
     this.selectedClient = value;
     console.log(this.selectedClient)
-    /* this.clients.filter(item => {
-       if (item.name.concat(" ", item.surname).toLowerCase() === this.selectedClient.toLowerCase()) {
-         this.clientId = item.id.toString();
-         this.client = {name: item.name, surname: item.surname} as Client;
-       }
-     })*/
   }
 }

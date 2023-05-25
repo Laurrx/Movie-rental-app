@@ -1,17 +1,21 @@
 <h2>Add new client</h2>
 
 <div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <label for="name">Name:<br>
+  <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name*:<br>
       <input formControlName="name" id="name" placeholder="Enter name">
     </label><br>
-    <p style="color: red" *ngIf="!form.controls.name.valid && form.controls.name.touched">
+    <p style="color: red"
+       *ngIf="newClientForm.controls.name.hasError('required') && newClientForm.controls.name.touched">
       Name required!
+    </p>
+    <p style="color: red" *ngIf="newClientForm.controls.name.hasError('minlength')">
+      Minim length is 3 characters!
     </p>
     <label for="surname">Surname:<br>
       <input formControlName="surname" id="surname" placeholder="Enter Surname">
     </label><br>
-    <button [disabled]="!form.valid" type="submit">Save</button>
+    <button [disabled]="!newClientForm.valid" type="submit">Save</button>
   </form>
 </div>
 
