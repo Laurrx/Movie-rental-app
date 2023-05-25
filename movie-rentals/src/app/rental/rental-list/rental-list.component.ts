@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {forkJoin} from 'rxjs';
 import {Rental} from '../shared/rental.model';
 import {Router} from '@angular/router';
 import {RentalService} from '../shared/rental.service';
@@ -14,10 +14,9 @@ import {Movie} from "../../movies/shared/movie.model";
   styleUrls: ['./rental-list.component.css']
 })
 export class RentalListComponent implements OnInit {
-  rentals!: Rental[];
+  rentals: Array<Rental> = [];
   clients: Array<Client> = [];
   movies!: Movie[];
-  rentalClients!: Rental[];
   client: Client = {} as Client;
 
   constructor(private rentalService: RentalService,
@@ -27,22 +26,31 @@ export class RentalListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rentalService.getRentals()
-      .subscribe((data: any) => {
-        this.rentals = data;
-        /*return this.rentals.forEach(item => {
-          this.client = {id: item.clientsId, name: item.clientFullname,} as Client;
-          console.log(this.client)
-        })*/
 
-      });
+    const rentalsSubscriber = this.rentalService.getRentals()
+    const clientsSubscriber = this.clientsService.getAll()
+    const moviesSubscriber = this.movieService.getMovies()
 
-    /*this.rentalService.getRentalClients(this.client.id)
-      .subscribe(rental => {
-        this.rentalClients = rental;
-        console.log(this.rentalClients);
-      })*/
+    forkJoin([rentalsSubscriber, clientsSubscriber, moviesSubscriber])
+      .subscribe(response => {
+        [this.rentals, this.clients, this.movies] = response;
+        console.log(this.rentals, this.clients, this.movies)
+        this.rentals.forEach(rental => {
+          const movie = this.movies.filter(movie => movie.id === rental.moviesId);
+          if (movie.length) {
+            rental.movieTitle = movie[0].title;
+          }
+        })
 
+        this.rentals.forEach(rental => {
+          const client = this.clients.filter(client => client.id === rental.clientsId);
+          if (client.length) {
+            rental.clientFullname = client[0].name + " " + client[0].surname;
+          }
+
+        })
+        console.log(this.rentals)
+      })
   }
 
 

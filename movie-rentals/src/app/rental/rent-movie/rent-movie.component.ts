@@ -49,7 +49,7 @@ export class RentMovieComponent implements OnInit {
       movieTitle: this.movie.title,
       rentedDate: startDate,
       dueDate: returnDate,
-      clientsId: this.selectedClient,
+      clientsId: +this.selectedClient,
       moviesId: this.movie.id,
       //ToDo:fix clientFullname
       //clientFullname: this.client.name.concat(" ", this.client.surname),
