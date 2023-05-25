@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
 import {Movie} from "../shared/movie.model";
 import {Router} from "@angular/router";
