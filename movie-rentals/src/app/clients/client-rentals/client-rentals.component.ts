@@ -3,8 +3,7 @@ import {Client} from '../shared/client.model';
 import {Rental} from "../../rental/shared/rental.model";
 import {RentalService} from "../../rental/shared/rental.service";
 import {MovieService} from "../../movies/shared/movie.service";
-import {ClientService} from "../shared/client.service";
-import {forkJoin, map} from "rxjs";
+import {forkJoin} from "rxjs";
 import {Movie} from "../../movies/shared/movie.model";
 
 @Component({
