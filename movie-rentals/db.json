@@ -79,6 +79,13 @@
       "clientsId": 3,
       "moviesId": 1,
       "id": 17
+    },
+    {
+      "rentedDate": "2023-05-25",
+      "dueDate": "2023-05-26",
+      "clientsId": 1,
+      "moviesId": 2,
+      "id": 18
     }
   ]
 }

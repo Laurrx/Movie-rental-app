@@ -14,23 +14,12 @@ import {Client} from "../../clients/shared/client.model";
 })
 export class RentMovieComponent implements OnInit {
 
-
-  today = new Date();
-  changedDate: string | null = "";
-  pipe = new DatePipe('en-US');
-
-  /*changeFormat(today: any) {
-    let changedFormat = this.pipe.transform(this.today, 'dd/MM/YYYY');
-    this.changedDate = changedFormat;
-    console.log(this.changedDate);
-  }*/
   selectedClient = '';
   clients: Array<Client> = [];
   client: Client = {} as Client;
   @Input() movie: Movie = {} as Movie;
   @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
-  clientId = '';
 
   constructor(private clientsService: ClientService,
               private movieService: MovieService,
@@ -41,7 +30,6 @@ export class RentMovieComponent implements OnInit {
     this.onClick = true;
     this.clientsService.getAll()
       .subscribe(clients => this.clients = clients)
-    // this.changeFormat(this.today)
   }
 
   addNewRentedMovie(startDate: string, returnDate: string) {

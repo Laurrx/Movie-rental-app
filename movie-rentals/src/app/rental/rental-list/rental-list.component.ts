@@ -34,7 +34,6 @@ export class RentalListComponent implements OnInit {
     forkJoin([rentalsSubscriber, clientsSubscriber, moviesSubscriber])
       .subscribe(response => {
         [this.rentals, this.clients, this.movies] = response;
-        console.log(this.rentals, this.clients, this.movies)
         this.rentals.forEach(rental => {
           const movie = this.movies.filter(movie => movie.id === rental.moviesId);
           if (movie.length) {
