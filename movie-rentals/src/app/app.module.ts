@@ -20,7 +20,6 @@ import { ApiService } from './shared/api.service';
 import { RentMovieComponent } from './rental/rent-movie/rent-movie.component';
 import { ClientRentalsComponent } from './clients/client-rentals/client-rentals.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {FontawesomeObject} from "@fortawesome/fontawesome-svg-core";
 
 
 @NgModule({
