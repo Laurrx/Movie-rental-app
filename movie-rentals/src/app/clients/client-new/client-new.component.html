@@ -2,9 +2,14 @@
 
 <div>
   <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name*:<br>
-      <input formControlName="name" id="name" placeholder="Enter name">
-    </label><br>
+    <div class="field">
+      <label class="label" for="name">Name*</label>
+      <div class="control has-icons-right">
+        <input class="input is-success" value="bulma" formControlName="name"
+               id="name" placeholder="Enter name">
+          <fa-icon class="icon is-small is-right fas fa-check" [icon]="faCofee"></fa-icon>
+      </div>
+    </div>
     <p style="color: red"
        *ngIf="newClientForm.controls.name.hasError('required') && newClientForm.controls.name.touched">
       Name required!
@@ -15,7 +20,9 @@
     <label for="surname">Surname:<br>
       <input formControlName="surname" id="surname" placeholder="Enter Surname">
     </label><br>
-    <button [disabled]="!newClientForm.valid" type="submit">Save</button>
+    <div class="control">
+      <button class="button is-link" [disabled]="!newClientForm.valid" type="submit">Save</button>
+    </div>
   </form>
 </div>
 
