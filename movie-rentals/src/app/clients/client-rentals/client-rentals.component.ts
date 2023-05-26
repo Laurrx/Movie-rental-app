@@ -17,7 +17,7 @@ export class ClientRentalsComponent implements OnInit {
   movies!: Movie[];
   clients!: Client[];
   rentedMovies: any = [];
-  noMovie=false;
+  noMovie = false;
 
   constructor(private rentalService: RentalService,
               private movieService: MovieService) {
@@ -34,12 +34,12 @@ export class ClientRentalsComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.noMovie=false;
+    this.noMovie = false;
     if (changes['client'].currentValue) {
       this.rentedMovies = this.rentals.filter(rental =>
-      rental.clientsId === changes['client'].currentValue.id)
-      .map(rental => {
-        let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
+        rental.clientsId === changes['client'].currentValue.id)
+        .map(rental => {
+          let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
           return {name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate,}
 
         })
