@@ -46,9 +46,7 @@ export class RentalListComponent implements OnInit {
           if (client.length) {
             rental.clientFullname = client[0].name + " " + client[0].surname;
           }
-
         })
-        console.log(this.rentals)
       })
   }
 
