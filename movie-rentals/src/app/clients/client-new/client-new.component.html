@@ -1,30 +1,37 @@
 <h2>Add new client</h2>
 
-<div>
-  <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
-    <div class="field">
-      <label class="label" for="name">Name*</label>
-      <div class="control has-icons-right">
-        <input class="input is-success" value="bulma" formControlName="name"
-               id="name" placeholder="Enter name">
-          <fa-icon class="icon is-small is-right fas fa-check" [icon]="faCofee"></fa-icon>
-      </div>
+<form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label class="label" for="name">Name*</label>
+    <div class="control has-icons-right">
+      <input class="input" value="bulma" formControlName="name"
+             id="name" placeholder="Enter name">
+      <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
     </div>
-    <p style="color: red"
-       *ngIf="newClientForm.controls.name.hasError('required') && newClientForm.controls.name.touched">
-      Name required!
-    </p>
-    <p style="color: red" *ngIf="newClientForm.controls.name.hasError('minlength')">
+    <p *ngIf="newClientForm.controls.name.hasError('required') && newClientForm.controls.name.touched"
+       class="help is-danger">Name required</p>
+    <p class="help is-danger" *ngIf="newClientForm.controls.name.hasError('minlength')">
       Minim length is 3 characters!
     </p>
-    <label for="surname">Surname:<br>
-      <input formControlName="surname" id="surname" placeholder="Enter Surname">
-    </label><br>
-    <div class="control">
-      <button class="button is-link" [disabled]="!newClientForm.valid" type="submit">Save</button>
-    </div>
-  </form>
-</div>
+  </div>
+
+  <div class="field">
+    <label class="label" for="surname">Surname:
+      <div class="control has-icons-right">
+        <input class="input" formControlName="surname" id="surname"
+               value="bulma" placeholder="Enter Surname">
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+    </label>
+  </div>
+  <div class="control">
+    <button class="button is-link" [disabled]="!newClientForm.valid" type="submit">Save</button>
+  </div>
+</form>
 
 
 
