@@ -1,0 +1,11 @@
+div,h2{
+  text-align: center;
+}
+
+label{
+  margin: 10px;
+}
+
+button:disabled{
+  cursor: not-allowed;
+}

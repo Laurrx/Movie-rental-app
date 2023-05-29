@@ -1,8 +1,30 @@
 <h2>Add new client</h2>
 
 <div>
-  <label>Name: <input #name /></label>
-  <label>Surname: <input #surname /></label>
+  <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label" for="name">Name*</label>
+      <div class="control has-icons-right">
+        <input class="input is-success" value="bulma" formControlName="name"
+               id="name" placeholder="Enter name">
+          <fa-icon class="icon is-small is-right fas fa-check" [icon]="faCofee"></fa-icon>
+      </div>
+    </div>
+    <p style="color: red"
+       *ngIf="newClientForm.controls.name.hasError('required') && newClientForm.controls.name.touched">
+      Name required!
+    </p>
+    <p style="color: red" *ngIf="newClientForm.controls.name.hasError('minlength')">
+      Minim length is 3 characters!
+    </p>
+    <label for="surname">Surname:<br>
+      <input formControlName="surname" id="surname" placeholder="Enter Surname">
+    </label><br>
+    <div class="control">
+      <button class="button is-link" [disabled]="!newClientForm.valid" type="submit">Save</button>
+    </div>
+  </form>
 </div>
 
-<button (click)="saveClient(name.value, surname.value)">Save</button>
+
+

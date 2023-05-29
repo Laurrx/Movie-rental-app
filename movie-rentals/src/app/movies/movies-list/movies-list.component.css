@@ -65,3 +65,8 @@ button:hover {
   color: #039be5;
   background-color: #CFD8DC;
 }
+
+.confirmation-message{
+  text-align: center;
+  color: red;
+}

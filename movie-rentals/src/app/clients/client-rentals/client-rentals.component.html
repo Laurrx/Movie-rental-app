@@ -1,10 +1,11 @@
 <div *ngIf="client">
-    <h2>{{client.name}} {{client.surname}}: Rented movies</h2>
-    
-    <ul>
-        <li>Movie 1</li>
-        <li>Movie 2</li>
-        <li>Movie 3</li>
-    </ul>
+  <h2>{{client.name}} {{client.surname}}: Rented movies</h2>
+
+  <ul *ngFor="let movie of rentedMovies">
+    <p *ngIf="noMovie">No rented movies.</p>
+    <li>{{movie.name}}--{{movie.rentedDate}}--{{movie.dueDate}}</li>
+
+  </ul>
+
 </div>
 

@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ClientService} from "../../clients/shared/client.service";
-import {DatePipe} from "@angular/common";
 import {Movie} from "../../movies/shared/movie.model";
 import {MovieService} from "../../movies/shared/movie.service";
 import {Rental} from "../shared/rental.model";
@@ -14,22 +13,12 @@ import {Client} from "../../clients/shared/client.model";
 })
 export class RentMovieComponent implements OnInit {
 
-
-  today = new Date();
-  changedDate: string | null = "";
-  pipe = new DatePipe('en-US');
-
-  /*changeFormat(today: any) {
-    let changedFormat = this.pipe.transform(this.today, 'dd/MM/YYYY');
-    this.changedDate = changedFormat;
-    console.log(this.changedDate);
-  }*/
   selectedClient = '';
   clients: Array<Client> = [];
+  client: Client = {} as Client;
   @Input() movie: Movie = {} as Movie;
   @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
-  clientId = '';
 
   constructor(private clientsService: ClientService,
               private movieService: MovieService,
@@ -40,17 +29,17 @@ export class RentMovieComponent implements OnInit {
     this.onClick = true;
     this.clientsService.getAll()
       .subscribe(clients => this.clients = clients)
-    // this.changeFormat(this.today)
   }
 
   addNewRentedMovie(startDate: string, returnDate: string) {
     const rentedMovie: Rental = {
       rentedDate: startDate,
       dueDate: returnDate,
-      clientsId:+this.clientId,
-      moviesId: this.movie.id
-    } as unknown as Rental;
-    this.rentalService.save(rentedMovie);
+      clientsId: +this.selectedClient,
+      moviesId: this.movie.id,
+    } as Rental;
+    this.rentalService.save(rentedMovie)
+      .subscribe();
     this.onClick = false;
     this.newRentEvent.emit(this.onClick);
   }
@@ -65,9 +54,5 @@ export class RentMovieComponent implements OnInit {
   onSelected(value: string) {
     this.selectedClient = value;
     console.log(this.selectedClient)
-   return this.clients.filter(item => {
-      if(item.name.concat(" ", item.surname).toLowerCase() === this.selectedClient.toLowerCase())
-      this.clientId = item.id.toString();
-    })
   }
 }

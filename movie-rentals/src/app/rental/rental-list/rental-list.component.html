@@ -11,8 +11,8 @@
     </tr>
     <tr *ngFor="let rental of rentals">
         <td>{{rental.id}}</td>
-        <td>rental.movieTitle</td>
-        <td>rental.clientFullname</td>
+        <td>{{rental.movieTitle}}</td>
+        <td>{{rental.clientFullname}}</td>
         <td>{{rental.rentedDate}}</td>
         <td>{{rental.dueDate}}</td>
         <td><button>Return</button></td>

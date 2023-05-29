@@ -28,4 +28,4 @@
 
 <button (click)="addNewClient()">Add New Client</button>
 
-<app-client-rentals [client]="selectedClient"></app-client-rentals>
+<app-client-rentals [hidden]="!selectedClient" [client]="selectedClient"></app-client-rentals>

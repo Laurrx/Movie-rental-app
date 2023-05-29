@@ -1,7 +1,9 @@
 export interface Rental {
-    id: number,
-    rentedDate: string,
-    dueDate: string,
-    clientsId: number,
-    moviesId: number
+  clientFullname: string;
+  movieTitle: string;
+  id: number,
+  rentedDate: string,
+  dueDate: string,
+  clientsId: number,
+  moviesId: number,
 }
