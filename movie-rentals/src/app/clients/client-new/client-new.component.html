@@ -2,19 +2,27 @@
 
 <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
   <div class="field">
-    <label class="label" for="name">Name*</label>
+    <label class="label" for="name">
+      Name*
+    </label>
     <div class="control has-icons-right">
-      <input class="input" value="bulma" formControlName="name"
+      <input [ngClass]="{'is-success': !newClientForm.controls.name.hasError('required'),
+      'is-danger': newClientForm.controls.name.hasError('required')
+       && newClientForm.controls.name.touched || newClientForm.controls.name.hasError('minlength')}" class="input is-normal is-rounded" formControlName="name"
              id="name" placeholder="Enter name">
-      <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
+      <span  class="icon is-small is-right">
+          <i *ngIf="!newClientForm.controls.name.hasError('required')
+          && !newClientForm.controls.name.hasError('minlength')"
+             class="fas fa-check"></i>
         </span>
+      <p *ngIf="newClientForm.controls.name.hasError('required')
+          && newClientForm.controls.name.touched" class="help is-danger">
+        Name required
+      </p>
+      <p class="help is-danger" *ngIf="newClientForm.controls.name.hasError('minlength')">
+        Minim length is 3 characters!
+      </p>
     </div>
-    <p *ngIf="newClientForm.controls.name.hasError('required') && newClientForm.controls.name.touched"
-       class="help is-danger">Name required</p>
-    <p class="help is-danger" *ngIf="newClientForm.controls.name.hasError('minlength')">
-      Minim length is 3 characters!
-    </p>
   </div>
 
   <div class="field">

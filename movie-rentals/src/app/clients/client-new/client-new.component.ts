@@ -38,4 +38,5 @@ export class ClientNewComponent implements OnInit {
     this.router.navigateByUrl('clients');
   }
 
+  protected readonly Validators = Validators;
 }
