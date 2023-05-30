@@ -11,7 +11,7 @@
        && newClientForm.controls.name.touched || newClientForm.controls.name.hasError('minlength')}" class="input is-normal is-rounded" formControlName="name"
              id="name" placeholder="Enter name">
       <span  class="icon is-small is-right">
-          <i *ngIf="!newClientForm.controls.name.hasError('required')
+          <i style="color: green" *ngIf="!newClientForm.controls.name.hasError('required')
           && !newClientForm.controls.name.hasError('minlength')"
              class="fas fa-check"></i>
         </span>
