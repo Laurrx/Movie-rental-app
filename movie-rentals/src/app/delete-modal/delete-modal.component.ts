@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {DIALOG_DATA, DialogRef} from "@angular/cdk/dialog";
 
 

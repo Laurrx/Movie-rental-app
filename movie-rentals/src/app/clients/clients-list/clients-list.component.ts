@@ -4,7 +4,7 @@ import {ClientService} from "../shared/client.service";
 import {Router} from "@angular/router";
 import {debounceTime, Subject} from "rxjs";
 import {deleteFunction} from "../../shared/utilities";
-import {Dialog, DialogRef, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog';
+import {Dialog} from '@angular/cdk/dialog';
 import {DeleteModalComponent} from "../../delete-modal/delete-modal.component";
 
 @Component({
@@ -39,7 +39,7 @@ export class ClientsListComponent implements OnInit {
     this.router.navigate(['clients/new'])
   }
 
-  editClient(id: number, client: any) {
+  editClient(id: number) {
     this.router.navigate([`/client/edit/${id}`]);
   }
 
