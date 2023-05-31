@@ -13,7 +13,7 @@ import {deleteFunction} from "../../shared/utilities";
 export class ClientsListComponent implements OnInit {
   clients: Array<Client> = [];
   searchTerm = '';
-  clientsSearchCriterias = ['name'];
+  clientsSearchCriterias = ['name','surname'];
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
 
