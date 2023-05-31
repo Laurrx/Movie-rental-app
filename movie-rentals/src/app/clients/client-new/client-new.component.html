@@ -1,6 +1,6 @@
 <h2>Add new client</h2>
-<div class="field">
 <form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
+  <div class="field is-flex-direction-column is-justify-content-center">
     <label class="label" for="name">
       Name*
     </label>
@@ -8,8 +8,9 @@
       <input [ngClass]="{'is-success': !newClientForm.controls.name.hasError('required'),
       'is-danger': newClientForm.controls.name.hasError('required')
        && newClientForm.controls.name.touched || newClientForm.controls.name.hasError('minlength')}"
-             class="input is-normal is-rounded" formControlName="name"
+             class="input is-rounded " formControlName="name"
              id="name" placeholder="Enter name">
+
       <span class="icon is-small is-right">
           <i style="color: green" *ngIf="!newClientForm.controls.name.hasError('required')
           && !newClientForm.controls.name.hasError('minlength')"
@@ -20,7 +21,9 @@
                 && newClientForm.controls.name.touched || newClientForm.controls.name.hasError('minlength')"
              class="fa-sharp fa-solid fa-xmark fa-bounce">
           </i>
+
         </span>
+    </div>
       <p *ngIf="newClientForm.controls.name.hasError('required')
           && newClientForm.controls.name.touched" class="help is-danger">
         Name required
@@ -28,24 +31,45 @@
       <p class="help is-danger" *ngIf="newClientForm.controls.name.hasError('minlength')">
         Minim length is 3 characters!
       </p>
-    </div>
 
-
+  </div>
   <div class="field">
-    <label class="label" for="surname">Surname:
-      <div class="control has-icons-right">
-        <input class="input" formControlName="surname" id="surname"
-               value="bulma" placeholder="Enter Surname">
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </div>
+    <label class="label" for="surname">Surname*
     </label>
+      <div class="control has-icons-right">
+        <input [ngClass]="{'is-success': !newClientForm.controls.surname.hasError('required'),
+                            'is-danger': newClientForm.controls.surname.hasError('required')
+                             && newClientForm.controls.surname.touched
+                             || newClientForm.controls.surname.hasError('minlength')}"
+               class="input is-normal is-rounded" formControlName="surname"
+               id="surname" placeholder="Enter surname">
+        <span class="icon is-small is-right">
+          <i style="color: green" *ngIf="!newClientForm.controls.surname.hasError('required')
+                                  && !newClientForm.controls.surname.hasError('minlength')"
+             class="fas fa-check">
+          </i>
+        </span>
+        <span class="icon is-small is-right">
+          <i style="color: red" *ngIf="newClientForm.controls.surname.hasError('required')
+                                && newClientForm.controls.surname.touched
+                                || newClientForm.controls.surname.hasError('minlength')"
+             class="fa-sharp fa-solid fa-xmark fa-bounce">
+          </i>
+        </span>
+        <p *ngIf="newClientForm.controls.surname.hasError('required')
+          && newClientForm.controls.surname.touched" class="help is-danger">
+          Surname required
+        </p>
+        <p class="help is-danger" *ngIf="newClientForm.controls.surname.hasError('minlength')">
+          Minim length is 3 characters!
+        </p>
+      </div>
+
   </div>
   <div class="control">
     <button class="button is-link" [disabled]="!newClientForm.valid" type="submit">Save</button>
   </div>
 </form>
-</div>
+
 
 
