@@ -28,12 +28,14 @@ export class ClientEditComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.isLoading = true;
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.clientService.get(+id!)
       .subscribe(client => {
         this.client = client!
         this.editClientForm.controls.name.setValue(this.client.name)
         this.editClientForm.controls.surname.setValue(this.client.surname)
+        this.isLoading = false;
       });
   }
 

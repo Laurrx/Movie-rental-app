@@ -49,10 +49,8 @@ export class RentMovieComponent implements OnInit {
     this.newRentEvent.emit(this.onClick);
   }
 
-  protected readonly onselect = onselect;
 
   onSelected(value: string) {
     this.selectedClient = value;
-    console.log(this.selectedClient)
   }
 }

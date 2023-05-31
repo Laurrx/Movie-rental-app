@@ -19,6 +19,7 @@ export class ClientsListComponent implements OnInit {
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   selectedClient!: Client;
+  isLoading=false;
 
   constructor(private clientService: ClientService,
               private router: Router,
@@ -26,8 +27,11 @@ export class ClientsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.clientService.getAll()
-      .subscribe(clients => this.clients = clients);
+      .subscribe(clients => {this.clients = clients
+      this.isLoading=false;
+      });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
       this.debouncedSearchTerm = this.searchTerm;

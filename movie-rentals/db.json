@@ -4,6 +4,16 @@
       "name": "Barbu",
       "surname": "Ionut",
       "id": 1
+    },
+    {
+      "name": "Bocman",
+      "surname": "Bianca",
+      "id": 2
+    },
+    {
+      "name": "Zuckenberk",
+      "surname": "Mark",
+      "id": 3
     }
   ],
   "movies": [
@@ -32,5 +42,20 @@
       "id": 4
     }
   ],
-  "rentals": []
+  "rentals": [
+    {
+      "rentedDate": "2023-05-31",
+      "dueDate": "2023-06-01",
+      "clientsId": 1,
+      "moviesId": 1,
+      "id": 1
+    },
+    {
+      "rentedDate": "2023-06-01",
+      "dueDate": "2023-06-02",
+      "clientsId": 2,
+      "moviesId": 4,
+      "id": 2
+    }
+  ]
 }
