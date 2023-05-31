@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
-import {ActivatedRoute} from "@angular/router";
-import {Location} from "@angular/common";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-client-edit',
@@ -13,9 +13,13 @@ export class ClientEditComponent implements OnInit {
 
   client: Client = {} as Client;
 
+
+
+
   constructor(private clientService: ClientService,
               private activatedRoute: ActivatedRoute,
-              private location: Location) {
+              private router: Router,
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -24,8 +28,20 @@ export class ClientEditComponent implements OnInit {
       .subscribe(client => this.client = client!);
   }
 
-  updateClient() {
+  editClientForm = this.fb.group({
+    name: [this.client.name, [Validators.required, Validators.minLength(3)]],
+    surname: [this.client.surname, [Validators.required, Validators.minLength(3)]]
+  })
+
+
+  onSubmit() {
     this.clientService.update(this.client)
-      .subscribe(_ => this.location.back())
+      .subscribe(_ => this.router.navigateByUrl('clients'))
   }
+
+  cancel() {
+
+  }
+
+
 }

@@ -1,6 +1,20 @@
-<h2>{{client.name}} details</h2>
-
-<label>Name: <input [(ngModel)]="client.name"/> </label>
-<label>Name: <input [(ngModel)]="client.surname"/> </label>
-
-<button (click)="updateClient()">Update</button>
+<h2 style="text-align: center" class="title m-6">{{client.name}} details</h2>
+<form  style="max-width: 300px" class="container is-flex is-flex-direction-column is-align-items-center"
+[formGroup]="editClientForm" (ngSubmit)="onSubmit()">
+<label class="label">
+  Name*
+</label>
+<input class="input is-rounded" formControlName="name" value="{{editClientForm.controls.name}}"/>
+<label class="label">
+  Surname*
+</label>
+<input class="input is-rounded" formControlName="surname" value="{{editClientForm.controls.surname}}"/>
+<div class="field is-grouped mt-4">
+  <p class="control">
+<button class="button is-responsive is-link" type="submit">Update</button>
+  </p>
+  <p class="control">
+  <button class="button is-responsive" (click)="cancel()">Cancel</button>
+  </p>
+</div>
+</form>

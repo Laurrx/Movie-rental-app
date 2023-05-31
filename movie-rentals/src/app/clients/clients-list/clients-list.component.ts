@@ -35,7 +35,7 @@ export class ClientsListComponent implements OnInit {
     this.router.navigate(['clients/new'])
   }
 
-  editClient(id: number) {
+  editClient(id: number,client:any) {
     this.router.navigate([`/client/edit/${id}`]);
   }
 

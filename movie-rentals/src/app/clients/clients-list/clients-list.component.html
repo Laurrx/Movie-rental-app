@@ -1,10 +1,7 @@
-<h2>Clients</h2>
-<div>
-  <label class="searchInput">Search clients: <input class="searchInput" (ngModelChange)="changed($event)"
+<h2 style="text-align: center" class="title mt-4 mb-6">Clients</h2>
+<input placeholder="Search Client" class="input mb-4" (ngModelChange)="changed($event)"
                                                     [(ngModel)]="searchTerm"/>
-  </label>
 
-</div>
 <table class="table is-striped is-hoverable is-fullwidth">
   <thead>
   <tr>
@@ -30,7 +27,7 @@
       </button>
         </p>
         <p class="control">
-      <button class="button is-outlined is-success" (click)="editClient(client.id)">
+      <button class="button is-outlined is-success" (click)="editClient(client.id,client)">
         <span>Edit</span>
         <span class="icon is-small">
         <i class="fa-regular fa-pen-to-square"></i>
@@ -51,6 +48,6 @@
   </tbody>
 </table>
 
-<button (click)="addNewClient()">Add New Client</button>
+<button class="button mb-4 is-rounded" (click)="addNewClient()">Add New Client</button>
 
 <app-client-rentals [hidden]="!selectedClient" [client]="selectedClient"></app-client-rentals>

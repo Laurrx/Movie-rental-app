@@ -3,7 +3,6 @@ import {ClientService} from "../shared/client.service";
 import {Client} from "../shared/client.model";
 import {FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {faCoffee} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-client-new',
@@ -11,8 +10,6 @@ import {faCoffee} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./client-new.component.css']
 })
 export class ClientNewComponent implements OnInit {
-
-  faCofee = faCoffee
   newClientForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     surname: ['', [Validators.required, Validators.minLength(3)]]
