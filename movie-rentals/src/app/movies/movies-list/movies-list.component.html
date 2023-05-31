@@ -1,4 +1,4 @@
-<h2>Movies List</h2>
+<h2 class="title is-1">Movies List</h2>
 <div *ngIf="!addRentMovie">
   <label class="searchInput">Search Movies:
     <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
@@ -37,14 +37,14 @@
         <td>{{movie.description}}</td>
         <td>{{movie.genre}}</td>
         <td>
-          <button (click)="onSelectedMovie(movie)">Rent</button>
-          <button (click)="editMovie(movie.id)">Edit</button>
-          <button (click)="deleteMovie(movie)">Delete</button>
+          <button class="button is-success is-outlined" (click)="onSelectedMovie(movie)">Rent</button>
+          <button class="button is-info is-outlined" (click)="editMovie(movie.id)">Edit</button>
+          <button class="button is-danger is-outlined" (click)="deleteMovie(movie)">Delete</button>
         </td>
       </tr>
     </table>
   </div>
-  <button (click)="addNewMovie()">Add new movie</button>
+  <button class="button is-success" (click)="addNewMovie()">Add new movie</button>
   <div *ngIf="isSelectedMovie">
     <app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
   </div>
