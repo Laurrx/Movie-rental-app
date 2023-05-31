@@ -1,34 +1,9 @@
 {
   "clients": [
     {
-      "id": 1,
-      "name": "John",
-      "surname": "George"
-    },
-    {
-      "id": 2,
-      "name": "Markos",
-      "surname": "Heinfield"
-    },
-    {
-      "id": 4,
-      "name": "Vasile",
-      "surname": "Gheorghe"
-    },
-    {
       "name": "Barbu",
       "surname": "Ionut",
-      "id": 5
-    },
-    {
-      "name": "Bocman",
-      "surname": "Bianca",
-      "id": 6
-    },
-    {
-      "name": "asd",
-      "surname": "asd",
-      "id": 7
+      "id": 1
     }
   ],
   "movies": [
@@ -57,27 +32,5 @@
       "id": 4
     }
   ],
-  "rentals": [
-    {
-      "rentedDate": "2023-05-23",
-      "dueDate": "2023-05-24",
-      "clientsId": 1,
-      "moviesId": 1,
-      "id": 15
-    },
-    {
-      "rentedDate": "2023-05-23",
-      "dueDate": "2023-05-24",
-      "clientsId": 2,
-      "moviesId": 3,
-      "id": 16
-    },
-    {
-      "rentedDate": "2023-05-25",
-      "dueDate": "2023-05-26",
-      "clientsId": 1,
-      "moviesId": 2,
-      "id": 18
-    }
-  ]
+  "rentals": []
 }

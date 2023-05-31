@@ -11,10 +11,10 @@
 <input id="surname" class="input is-rounded" name="surname" formControlName="surname" value="{{client.surname}}"/>
 <div class="field is-grouped mt-4">
   <p class="control">
-<button class="button is-responsive is-link" type="submit">Update</button>
+<button [disabled]="isLoading" class="button is-responsive is-link" type="submit">Update</button>
   </p>
   <p class="control">
-  <button class="button is-responsive" (click)="cancel()">Cancel</button>
+  <button  class="button is-responsive" (click)="cancel()">Cancel</button>
   </p>
 </div>
 </form>

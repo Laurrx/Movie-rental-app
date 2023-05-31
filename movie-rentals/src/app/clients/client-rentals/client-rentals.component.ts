@@ -17,7 +17,6 @@ export class ClientRentalsComponent implements OnInit {
   movies!: Movie[];
   clients!: Client[];
   rentedMovies: any = [];
-  noMovie = false;
 
   constructor(private rentalService: RentalService,
               private movieService: MovieService) {

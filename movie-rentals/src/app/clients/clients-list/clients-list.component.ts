@@ -4,6 +4,8 @@ import {ClientService} from "../shared/client.service";
 import {Router} from "@angular/router";
 import {debounceTime, Subject} from "rxjs";
 import {deleteFunction} from "../../shared/utilities";
+import {Dialog, DialogRef, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog';
+import {DeleteModalComponent} from "../../delete-modal/delete-modal.component";
 
 @Component({
   selector: 'app-clients-list',
@@ -13,12 +15,14 @@ import {deleteFunction} from "../../shared/utilities";
 export class ClientsListComponent implements OnInit {
   clients: Array<Client> = [];
   searchTerm = '';
-  clientsSearchCriterias = ['name','surname'];
+  clientsSearchCriterias = ['name', 'surname'];
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
+  selectedClient!: Client;
 
   constructor(private clientService: ClientService,
-              private router: Router) {
+              private router: Router,
+              private dialog: Dialog) {
   }
 
   ngOnInit(): void {
@@ -35,22 +39,29 @@ export class ClientsListComponent implements OnInit {
     this.router.navigate(['clients/new'])
   }
 
-  editClient(id: number,client:any) {
+  editClient(id: number, client: any) {
     this.router.navigate([`/client/edit/${id}`]);
   }
 
   deleteClient(client: Client) {
-    if (confirm("Are you sure you want to delete " + client.name + " ?"))
-      deleteFunction(this.clientService, client.id, this.clients)
-        .subscribe((items: Array<Client>) => this.clients = items);
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      width: '500px', data: client
+     })
+    dialogRef.closed
+      .subscribe(response => {
+        if(response){
+          deleteFunction(this.clientService, client.id, this.clients)
+            .subscribe((items: Array<Client>) => this.clients = items);
+        }
+      })
+
+
   }
 
   changed(event: any) {
-
     this.modelChanged.next(event);
   }
 
-  selectedClient!: Client;
 
   showClient(client: Client) {
     this.selectedClient = client;

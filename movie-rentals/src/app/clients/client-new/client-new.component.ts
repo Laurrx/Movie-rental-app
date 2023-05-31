@@ -21,7 +21,6 @@ export class ClientNewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.newClientForm);
   }
 
   onSubmit() {

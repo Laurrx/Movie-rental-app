@@ -1,8 +1,8 @@
 <h2 style="text-align: center" class="title mt-4 mb-6">Clients</h2>
-<input placeholder="Search Client" class="input mb-4" (ngModelChange)="changed($event)"
-                                                    [(ngModel)]="searchTerm"/>
+<input placeholder="Search Client" class="input is-responsive mb-4" (ngModelChange)="changed($event)"
+       [(ngModel)]="searchTerm"/>
 
-<table class="table is-striped is-hoverable is-fullwidth">
+<table class="table is-striped is-hoverable is-fullwidth is-responsive">
   <thead>
   <tr>
     <th>#</th>
@@ -13,34 +13,34 @@
   </thead>
   <tbody>
   <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias;index as i">
-    <td>{{i+1}}</td>
+    <td>{{i + 1}}</td>
     <td>{{client.name}}</td>
     <td>{{client.surname}}</td>
     <td>
       <div class="field is-grouped">
-        <p class="control">
-      <button class="button is-outlined is-warning" (click)="showClient(client)">
-        <span>Rented movies</span>
-        <span class="icon is-small">
+        <p class="control mobile">
+          <button class=" button is-outlined is-warning is-responsive" (click)="showClient(client)">
+            <span>Rented movies</span>
+            <span class="icon is-small">
           <i class="fa-solid fa-film"></i>
         </span>
-      </button>
+          </button>
         </p>
-        <p class="control">
-      <button class="button is-outlined is-success" (click)="editClient(client.id,client)">
-        <span>Edit</span>
-        <span class="icon is-small">
+        <p class="control mobile">
+          <button class=" button is-outlined is-success is-responsive" (click)="editClient(client.id,client)">
+            <span>Edit</span>
+            <span class="icon is-small">
         <i class="fa-regular fa-pen-to-square"></i>
           </span>
-      </button>
+          </button>
         </p>
-        <p class="control">
-      <button class="button is-danger is-outlined" (click)="deleteClient(client)">
-        <span>Delete</span>
-        <span class="icon is-small">
+        <p class="control mobile">
+          <button class=" button is-danger is-outlined is-responsive" (click)="deleteClient(client)">
+            <span>Delete</span>
+            <span class="icon is-small">
       <i class="fas fa-times"></i>
     </span>
-      </button>
+          </button>
         </p>
       </div>
     </td>

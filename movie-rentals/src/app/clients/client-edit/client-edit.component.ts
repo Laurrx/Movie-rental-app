@@ -12,9 +12,13 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class ClientEditComponent implements OnInit {
 
   client: Client = {} as Client;
-  name:string='';
+  name: string = '';
+  isLoading = false;
 
-
+  editClientForm = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    surname: ['', [Validators.required, Validators.minLength(3)]]
+  })
 
   constructor(private clientService: ClientService,
               private activatedRoute: ActivatedRoute,
@@ -22,32 +26,32 @@ export class ClientEditComponent implements OnInit {
               private fb: FormBuilder) {
   }
 
+
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.clientService.get(+id!)
-      .subscribe(client => {this.client = client!
-      this.editClientForm.controls.name.setValue(this.client.name)
-      console.log(this.editClientForm.controls.name)});
+      .subscribe(client => {
+        this.client = client!
+        this.editClientForm.controls.name.setValue(this.client.name)
+        this.editClientForm.controls.surname.setValue(this.client.surname)
+      });
   }
 
 
-  editClientForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    surname: ['', [Validators.required, Validators.minLength(3)]]
-  })
-  newName: any;
-
   onSubmit() {
-    this.client.name!=this.editClientForm.controls.name.value;
-    this.clientService.update(this.client)
-      .subscribe(_ => {this.router.navigateByUrl('clients')
-      console.log(this.client.name)})
+    if (this.isLoading) {
+      return;
+    }
+    this.isLoading = true;
+    //in cazul in care este
+    this.clientService.update({...this.client, ...this.editClientForm.value})
+      .subscribe(_ => {
+        this.router.navigateByUrl('clients')
+        this.isLoading = false;
+      })
   }
 
   cancel() {
-
+    this.router.navigateByUrl('clients')
   }
-
-
-
 }
