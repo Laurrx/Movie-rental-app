@@ -1,5 +1,5 @@
 <div>
-  <h2>{{movie.title}} - Rent Details</h2>
+  <h2 class="title is-3">{{movie.title}} - Rent Details</h2>
   <ng-form class="form">
     <div>
       <label>Select Client:
@@ -18,8 +18,8 @@
       <label>Due Date: <input #returnDate type="date"/> </label>
     </div>
     <div>
-      <button (click)="addNewRentedMovie(startDate.value,returnDate.value)">Ok</button>
-      <button (click)="cancel()">Cancel</button>
+      <button class="button is-success" (click)="addNewRentedMovie(startDate.value,returnDate.value)">Ok</button>
+      <button class="button is-danger" (click)="cancel()">Cancel</button>
     </div>
 
   </ng-form>
