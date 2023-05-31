@@ -5,26 +5,51 @@
   </label>
 
 </div>
-<div class="table-container">
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias">
-      <td>{{client.id}}</td>
-      <td>{{client.name}}</td>
-      <td>{{client.surname}}</td>
-      <td>
-        <button (click)="showClient(client)">Rented movies</button>
-        <button (click)="editClient(client.id)">Edit</button>
-        <button (click)="deleteClient(client)">Delete</button>
-      </td>
-    </tr>
-  </table>
-</div>
+<table class="table is-striped is-hoverable is-fullwidth">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias;index as i">
+    <td>{{i+1}}</td>
+    <td>{{client.name}}</td>
+    <td>{{client.surname}}</td>
+    <td>
+      <div class="field is-grouped">
+        <p class="control">
+      <button class="button is-outlined is-warning" (click)="showClient(client)">
+        <span>Rented movies</span>
+        <span class="icon is-small">
+          <i class="fa-solid fa-film"></i>
+        </span>
+      </button>
+        </p>
+        <p class="control">
+      <button class="button is-outlined is-success" (click)="editClient(client.id)">
+        <span>Edit</span>
+        <span class="icon is-small">
+        <i class="fa-regular fa-pen-to-square"></i>
+          </span>
+      </button>
+        </p>
+        <p class="control">
+      <button class="button is-danger is-outlined">
+        <span>Delete</span>
+        <span class="icon is-small">
+      <i class="fas fa-times"></i>
+    </span>
+      </button>
+        </p>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
 <button (click)="addNewClient()">Add New Client</button>
 

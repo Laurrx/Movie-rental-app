@@ -17,6 +17,7 @@ export class ClientNewComponent implements OnInit {
     name: ['', [Validators.required, Validators.minLength(3)]],
     surname: ['', [Validators.required, Validators.minLength(3)]]
   })
+
   constructor(private clientService: ClientService,
               private router: Router,
               private fb: FormBuilder) {
@@ -34,9 +35,13 @@ export class ClientNewComponent implements OnInit {
       } as Client
     this.clientService.save(client)
       .subscribe();
-
     this.router.navigateByUrl('clients');
   }
 
   protected readonly Validators = Validators;
+
+  cancel() {
+    this.router.navigateByUrl('clients');
+  }
+
 }

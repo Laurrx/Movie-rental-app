@@ -1,29 +1,29 @@
-<h2>Add new client</h2>
-<form [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
-  <div class="field is-flex-direction-column is-justify-content-center">
-    <label class="label" for="name">
-      Name*
-    </label>
-    <div class="control is-normal has-icons-right">
-      <input [ngClass]="{'is-success': !newClientForm.controls.name.hasError('required'),
+<h2 class="title mt-6">Add new client</h2>
+<form style="max-width: 500px" class="container mt-6 is-flex-direction-column is-align-content-space-between" [formGroup]="newClientForm" (ngSubmit)="onSubmit()">
+
+    <div class="field">
+      <label class="label" for="name">
+        Name*
+      </label>
+      <div class="control is-normal has-icons-right">
+        <input [ngClass]="{'is-success': !newClientForm.controls.name.hasError('required'),
       'is-danger': newClientForm.controls.name.hasError('required')
        && newClientForm.controls.name.touched || newClientForm.controls.name.hasError('minlength')}"
-             class="input is-rounded " formControlName="name"
-             id="name" placeholder="Enter name">
+               class="input is-rounded" formControlName="name"
+               id="name" placeholder="Enter name">
 
-      <span class="icon is-small is-right">
+        <span class="icon is-small is-right">
           <i style="color: green" *ngIf="!newClientForm.controls.name.hasError('required')
           && !newClientForm.controls.name.hasError('minlength')"
              class="fas fa-check"></i>
         </span>
-      <span class="icon is-small is-right">
+        <span class="icon is-small is-right">
           <i style="color: red" *ngIf="newClientForm.controls.name.hasError('required')
                 && newClientForm.controls.name.touched || newClientForm.controls.name.hasError('minlength')"
              class="fa-sharp fa-solid fa-xmark fa-bounce">
           </i>
-
         </span>
-    </div>
+      </div>
       <p *ngIf="newClientForm.controls.name.hasError('required')
           && newClientForm.controls.name.touched" class="help is-danger">
         Name required
@@ -31,11 +31,10 @@
       <p class="help is-danger" *ngIf="newClientForm.controls.name.hasError('minlength')">
         Minim length is 3 characters!
       </p>
-
-  </div>
-  <div class="field">
-    <label class="label" for="surname">Surname*
-    </label>
+    </div>
+    <div class="field">
+      <label class="label" for="surname">Surname*
+      </label>
       <div class="control has-icons-right">
         <input [ngClass]="{'is-success': !newClientForm.controls.surname.hasError('required'),
                             'is-danger': newClientForm.controls.surname.hasError('required')
@@ -64,10 +63,19 @@
           Minim length is 3 characters!
         </p>
       </div>
-
-  </div>
-  <div class="control">
-    <button class="button is-link" [disabled]="!newClientForm.valid" type="submit">Save</button>
+    </div>
+  <div class="field is-grouped mt-2 is-justify-content-center">
+    <p class="control">
+      <button class="button is-link is-medium is-rounded is-responsive"
+              [disabled]="!newClientForm.valid" type="submit">
+        Save
+      </button>
+    </p>
+    <p class="control">
+      <button class="button is-link is-rounded is-medium is-responsive" (click)="cancel()">
+        Cancel
+      </button>
+    </p>
   </div>
 </form>
 
