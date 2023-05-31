@@ -1,4 +1,4 @@
-<h1>CURRENT RENTALS</h1>
+<h1>Current Rentals</h1>
 
 <table>
     <tr>
@@ -9,12 +9,12 @@
         <th>Due Date</th>
         <th>Actions</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Avengers</td>
-        <td>John</td>
-        <td>19-05-2023</td>
-        <td>25-05-2023</td>
+    <tr *ngFor="let rental of rentals">
+        <td>{{rental.id}}</td>
+        <td>{{rental.movieTitle}}</td>
+        <td>{{rental.clientFullname}}</td>
+        <td>{{rental.rentedDate}}</td>
+        <td>{{rental.dueDate}}</td>
         <td><button>Return</button></td>
     </tr>
 </table>

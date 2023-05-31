@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "John",
-      "surname": "Cravitz"
+      "surname": "George"
     },
     {
       "id": 2,
@@ -19,9 +19,13 @@
       "id": 4,
       "name": "Vasile",
       "surname": "Gheorghe"
+    },
+    {
+      "name": "Barbu",
+      "surname": "Ionut",
+      "id": 5
     }
   ],
-
   "movies": [
     {
       "id": 1,
@@ -39,13 +43,49 @@
       "id": 3,
       "title": "Scary Movie",
       "description": "This movie is available to rent",
-      "genre": "Come"
+      "genre": "Comedy"
     },
     {
       "title": "40 Year Old Virgin",
       "description": "This movie can be rented",
       "genre": "Horror",
       "id": 4
+    },
+    {
+      "title": "Batman",
+      "description": "Movie with a superhero dressed in black.",
+      "genre": "Action",
+      "id": 5
+    }
+  ],
+  "rentals": [
+    {
+      "rentedDate": "2023-05-23",
+      "dueDate": "2023-05-24",
+      "clientsId": 1,
+      "moviesId": 1,
+      "id": 15
+    },
+    {
+      "rentedDate": "2023-05-23",
+      "dueDate": "2023-05-24",
+      "clientsId": 2,
+      "moviesId": 3,
+      "id": 16
+    },
+    {
+      "rentedDate": "2023-05-24",
+      "dueDate": "2023-05-25",
+      "clientsId": 3,
+      "moviesId": 1,
+      "id": 17
+    },
+    {
+      "rentedDate": "2023-05-25",
+      "dueDate": "2023-05-26",
+      "clientsId": 1,
+      "moviesId": 2,
+      "id": 18
     }
   ]
 }

@@ -9,23 +9,23 @@ import {Location} from "@angular/common";
   templateUrl: './client-edit.component.html',
   styleUrls: ['./client-edit.component.css']
 })
-export class ClientEditComponent implements OnInit{
+export class ClientEditComponent implements OnInit {
 
-client:Client={} as Client;
+  client: Client = {} as Client;
 
-  constructor(private clientService:ClientService,
+  constructor(private clientService: ClientService,
               private activatedRoute: ActivatedRoute,
               private location: Location) {
   }
 
   ngOnInit(): void {
-    const id= this.activatedRoute.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.clientService.get(+id!)
-      .subscribe(client=>this.client= client!);
+      .subscribe(client => this.client = client!);
   }
 
   updateClient() {
     this.clientService.update(this.client)
-      .subscribe(_=>this.location.back())
+      .subscribe(_ => this.location.back())
   }
 }

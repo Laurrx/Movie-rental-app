@@ -1,7 +1,24 @@
 <h2>Add a new movie</h2>
 
-<label>Title: <input #title/></label><br>
-<label>Description: <textarea #description></textarea></label><br>
-<label>Genre: <input #genre/></label><br>
+<div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="title">Title:<br>
+      <input id="title" formControlName="title" placeholder="Enter movie title">
+    </label><br>
+    <p *ngIf="!form.controls.title.valid && form.controls.title.touched" style="color: red;font-weight: bold">
+      Title required!
+    </p>
+    <label for="description">Description:<br>
+      <textarea id="description" formControlName="description" placeholder="Write movie description, maximum 200 characters">
 
-<button (click)="saveMovie(title.value,description.value,genre.value)">Save</button>
+      </textarea>
+    </label><br>
+    <p *ngIf="!form.controls.description.valid" style="font-weight: bold;color: red">
+      Maximum characters limit reached!
+    </p>
+    <label for="genre">Genre:<br>
+      <input id="genre" formControlName="genre" placeholder="Enter movie genre">
+    </label><br>
+    <button type="submit">Save</button>
+  </form>
+</div>

@@ -1,5 +1,5 @@
-export interface Client{
-  id:number;
-name:string;
-surname:string;
+export interface Client {
+  id: number;
+  name: string;
+  surname: string;
 }
