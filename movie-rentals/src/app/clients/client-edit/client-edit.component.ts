@@ -39,7 +39,6 @@ export class ClientEditComponent implements OnInit {
       });
   }
 
-
   onSubmit() {
     if (this.isLoading) {
       return;

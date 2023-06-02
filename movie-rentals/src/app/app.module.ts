@@ -23,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {DialogModule} from "@angular/cdk/dialog";
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     RentalListComponent,
     RentMovieComponent,
     ClientRentalsComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
