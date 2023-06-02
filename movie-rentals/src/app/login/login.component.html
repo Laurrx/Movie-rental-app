@@ -1,0 +1,48 @@
+<form style="max-width: 500px" class="container mt-6 is-flex-direction-column is-align-content-space-between"
+      [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label class="label" for="email">
+      Name*
+    </label>
+    <div class="control is-normal has-icons-right">
+      <input
+             class="input is-rounded" formControlName="email"
+             id="emailAdress" placeholder="Enter email adress">
+
+      <span class="icon is-small is-right">
+          <i
+             class="fas fa-check"></i>
+        </span>
+      <span class="icon is-small is-right">
+          <i
+             class="fa-sharp fa-solid fa-xmark fa-bounce">
+          </i>
+        </span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label" for="password">Password*
+    </label>
+    <div class="control has-icons-right">
+      <input
+             class="input is-normal is-rounded" formControlName="password"
+             id="password" placeholder="Enter password">
+      <span class="icon is-small is-right">
+          <i
+             class="fas fa-check">
+          </i>
+        </span>
+      <span class="icon is-small is-right">
+          <i
+             class="fa-sharp fa-solid fa-xmark fa-bounce">
+          </i>
+        </span>
+    </div>
+  </div>
+    <p class="control">
+      <button class="button is-link is-medium is-rounded is-responsive"
+              [disabled]="!loginForm.valid" type="submit">
+        Save
+      </button>
+    </p>
+</form>
