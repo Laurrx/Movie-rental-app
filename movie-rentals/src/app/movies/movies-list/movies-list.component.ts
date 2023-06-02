@@ -17,7 +17,7 @@ export class MoviesListComponent implements OnInit {
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   moviesSearchCriterias = ['title', 'description', 'genre'];
-  isLoading = true;
+  isLoading =false;
   selectedMovie?: any;
   isSelectedMovie = false;
   addRentMovie = false;
@@ -30,10 +30,11 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.movieServices.getMovies()
       .subscribe(movies => {
         this.movies = movies
-        this.isLoading = false;
+        this.isLoading=false;
       });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {

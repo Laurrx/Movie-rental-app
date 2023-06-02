@@ -1,39 +1,19 @@
 {
   "clients": [
     {
-      "id": 1,
-      "name": "John",
-      "surname": "George"
-    },
-    {
-      "id": 2,
-      "name": "Markos",
-      "surname": "Heinfield"
-    },
-    {
-      "id": 3,
-      "name": "George",
-      "surname": "Popescu"
-    },
-    {
-      "id": 4,
-      "name": "Vasile",
-      "surname": "Gheorghe"
-    },
-    {
       "name": "Barbu",
       "surname": "Ionut",
-      "id": 5
+      "id": 1
     },
     {
       "name": "Bocman",
       "surname": "Bianca",
-      "id": 6
+      "id": 2
     },
     {
-      "name": "asd",
-      "surname": "asd",
-      "id": 7
+      "name": "Zuckenberk",
+      "surname": "Mark",
+      "id": 3
     }
   ],
   "movies": [
@@ -60,49 +40,22 @@
       "description": "This movie can be rented",
       "genre": "Horror",
       "id": 4
-    },
-    {
-      "title": "Batman",
-      "description": "Movie with a superhero dressed in black.",
-      "genre": "Action",
-      "id": 5
     }
   ],
   "rentals": [
     {
-      "rentedDate": "2023-05-23",
-      "dueDate": "2023-05-24",
-      "clientsId": 1,
-      "moviesId": 1,
-      "id": 15
-    },
-    {
-      "rentedDate": "2023-05-23",
-      "dueDate": "2023-05-24",
-      "clientsId": 2,
-      "moviesId": 3,
-      "id": 16
-    },
-    {
-      "rentedDate": "2023-05-24",
-      "dueDate": "2023-05-25",
-      "clientsId": 3,
-      "moviesId": 1,
-      "id": 17
-    },
-    {
-      "rentedDate": "2023-05-25",
-      "dueDate": "2023-05-26",
-      "clientsId": 1,
-      "moviesId": 2,
-      "id": 18
-    },
-    {
       "rentedDate": "2023-05-31",
       "dueDate": "2023-06-01",
-      "clientsId": 5,
-      "moviesId": 5,
-      "id": 19
+      "clientsId": 1,
+      "moviesId": 1,
+      "id": 1
+    },
+    {
+      "rentedDate": "2023-06-01",
+      "dueDate": "2023-06-02",
+      "clientsId": 2,
+      "moviesId": 4,
+      "id": 2
     }
   ]
 }

@@ -52,4 +52,15 @@ table {
 /*}*/
 
 
+@media only screen and (max-width: 480px) {
+  .field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mobile:not(:first-child) {
+    margin-top: 16px;
+  }
+}
 

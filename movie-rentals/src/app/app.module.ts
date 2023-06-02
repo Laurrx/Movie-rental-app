@@ -20,6 +20,9 @@ import { ApiService } from './shared/api.service';
 import { RentMovieComponent } from './rental/rent-movie/rent-movie.component';
 import { ClientRentalsComponent } from './clients/client-rentals/client-rentals.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {DialogModule} from "@angular/cdk/dialog";
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -37,7 +40,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RentalComponent,
     RentalListComponent,
     RentMovieComponent,
-    ClientRentalsComponent
+    ClientRentalsComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-
+    DialogModule,
+    BrowserAnimationsModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

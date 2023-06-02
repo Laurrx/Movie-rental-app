@@ -1,10 +1,9 @@
 <div *ngIf="client">
   <h2>{{client.name}} {{client.surname}}: Rented movies</h2>
-
+  <p *ngIf="rentedMovies==''">No movies rented</p>
   <ul *ngFor="let movie of rentedMovies">
     <li>{{movie.name}}--{{movie.rentedDate}}--{{movie.dueDate}}</li>
-
-  </ul>
+   </ul>
 
 </div>
 
