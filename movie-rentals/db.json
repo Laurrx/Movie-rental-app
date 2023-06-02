@@ -1,7 +1,7 @@
 {
   "clients": [
     {
-      "name": "George",
+      "name": "Barbu",
       "surname": "Ionut",
       "id": 1,
       "email": "ionut.b.alex@gmail.com",
@@ -61,9 +61,10 @@
       "id": 2
     }
   ],
-
-  "credentials": [{
-    "email": "ionut.b.alex@gmail.com",
-    "password": "12345678"
-  }]
+  "credentials": [
+    {
+      "email": "ionut.b.alex@gmail.com",
+      "password": "12345678"
+    }
+  ]
 }
