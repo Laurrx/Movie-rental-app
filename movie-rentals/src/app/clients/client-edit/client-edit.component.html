@@ -1,20 +1,25 @@
 <h2 style="text-align: center" class="title m-6">{{client.name}} details</h2>
 <form  style="max-width: 300px" class="container is-flex is-flex-direction-column is-align-items-center"
 [formGroup]="editClientForm" (ngSubmit)="onSubmit()">
-<label class="label">
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+<label for="name" class="label">
   Name*
 </label>
-<input class="input is-rounded" formControlName="name" value="{{editClientForm.controls.name}}"/>
-<label class="label">
+<input id="name" class="input is-rounded" formControlName="name"/>
+<label for="surname" class="label">
   Surname*
 </label>
-<input class="input is-rounded" formControlName="surname" value="{{editClientForm.controls.surname}}"/>
+<input id="surname" class="input is-rounded" name="surname" formControlName="surname" value="{{client.surname}}"/>
 <div class="field is-grouped mt-4">
   <p class="control">
-<button class="button is-responsive is-link" type="submit">Update</button>
+<button [disabled]="isLoading" class="button is-responsive is-link" type="submit">Update</button>
   </p>
   <p class="control">
-  <button class="button is-responsive" (click)="cancel()">Cancel</button>
+  <button  class="button is-responsive" (click)="cancel()">Cancel</button>
   </p>
 </div>
 </form>
