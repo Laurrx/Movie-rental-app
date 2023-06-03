@@ -5,6 +5,7 @@ import {MovieService} from "../../movies/shared/movie.service";
 import {Rental} from "../shared/rental.model";
 import {RentalService} from "../shared/rental.service";
 import {Client} from "../../clients/shared/client.model";
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-rent-movie',
@@ -12,36 +13,28 @@ import {Client} from "../../clients/shared/client.model";
   styleUrls: ['./rent-movie.component.css']
 })
 export class RentMovieComponent implements OnInit {
-
-  selectedClient = '';
   clients: Array<Client> = [];
   client: Client = {} as Client;
   @Input() movie: Movie = {} as Movie;
   @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
 
+  rentMovieForm = this.fb.group({
+    clientsId: [0, [Validators.min(1)]],
+    rentedDate: ['', [Validators.required]],
+    dueDate: ['', [Validators.required]]
+  });
+
   constructor(private clientsService: ClientService,
               private movieService: MovieService,
-              private rentalService: RentalService) {
+              private rentalService: RentalService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.onClick = true;
     this.clientsService.getAll()
       .subscribe(clients => this.clients = clients)
-  }
-
-  addNewRentedMovie(startDate: string, returnDate: string) {
-    const rentedMovie: Rental = {
-      rentedDate: startDate,
-      dueDate: returnDate,
-      clientsId: +this.selectedClient,
-      moviesId: this.movie.id,
-    } as Rental;
-    this.rentalService.save(rentedMovie)
-      .subscribe();
-    this.onClick = false;
-    this.newRentEvent.emit(this.onClick);
   }
 
   cancel() {
@@ -51,6 +44,20 @@ export class RentMovieComponent implements OnInit {
 
 
   onSelected(value: string) {
-    this.selectedClient = value;
+    this.rentMovieForm.controls.clientsId.setValue(+value)
+    console.log(this.rentMovieForm.controls.clientsId.value)
+  }
+
+  onSubmit() {
+    const rentedMovie: Rental = {
+          rentedDate: this.rentMovieForm.controls.rentedDate.value,
+          dueDate: this.rentMovieForm.controls.dueDate.value,
+          clientsId: this.rentMovieForm.controls.clientsId.value,
+          moviesId: this.movie.id,
+        } as Rental;
+    this.rentalService.save(rentedMovie)
+      .subscribe();
+    this.newRentEvent.emit(false);
+    console.log(this.rentMovieForm.controls);
   }
 }

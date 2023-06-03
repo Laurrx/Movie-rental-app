@@ -3,13 +3,13 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="title">Title:<br>
-      <input class="input" type="text" id="title" formControlName="title" placeholder="Enter movie title">
+      <input class="input is-rounded" type="text" id="title" formControlName="title" placeholder="Enter movie title">
     </label><br>
     <p *ngIf="!form.controls.title.valid && form.controls.title.touched" style="color: red;font-weight: bold">
       Title required!
     </p>
     <label for="description">Description:<br>
-      <textarea class="textarea" id="description" formControlName="description" placeholder="Write movie description, maximum 200 characters">
+      <textarea class="textarea is-rounded" id="description" formControlName="description" placeholder="Write movie description, maximum 200 characters">
 
       </textarea>
     </label><br>
@@ -17,8 +17,8 @@
       Maximum characters limit reached!
     </p>
     <label for="genre">Genre:<br>
-      <input class="input" id="genre" formControlName="genre" placeholder="Enter movie genre">
+      <input class="input is-rounded" id="genre" formControlName="genre" placeholder="Enter movie genre">
     </label><br>
-    <button class="button is-success" type="submit">Save</button>
+    <button [disabled]="!form.valid" class="button is-success is-rounded" type="submit">Save</button>
   </form>
 </div>

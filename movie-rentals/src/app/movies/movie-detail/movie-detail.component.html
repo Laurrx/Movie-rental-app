@@ -1,7 +1,18 @@
-<h2>{{movie.title}} details</h2>
+<h2 class="title is-3">Edit movie details</h2>
 
-<label>Title: <input [(ngModel)]="movie.title"/> </label><br/>
-<label>Description: <textarea [(ngModel)]="movie.description"></textarea></label><br/>
-<label>Genre: <input [(ngModel)]="movie.genre"/> </label><br/>
+<div class="card">
+    <div class="content">
+        <label>Title</label>
+        <input class="input is-rounded" [(ngModel)]="movie.title"/><br>
+        <label>Description</label>
+        <textarea class="textarea" [(ngModel)]="movie.description"></textarea><br>
+        <label>Genre</label>
+        <input class="input is-rounded" [(ngModel)]="movie.genre"/> 
+    </div>
+    <button class="button is-success" (click)="updateMovie()">Update</button>
+</div>
 
-<button (click)="updateMovie()">Update</button>
+
+
+
+

@@ -1,26 +1,26 @@
 <div>
   <h2 class="title is-3">{{movie.title}} - Rent Details</h2>
-  <ng-form class="form">
+  <form class="form" [formGroup]="rentMovieForm" (ngSubmit)="onSubmit()">
     <div>
-      <label>Select Client:
+      <label for="clientsId">Select Client:
         <select #selectedClient (change)="onSelected(selectedClient.value)" >
           <option>Select Client</option>
-          <option  *ngFor="let client of clients" [value]="client.id">
+          <option id="clientsId" *ngFor="let client of clients" [value]="client.id">
             {{client.name.concat(" ", client.surname) }}
           </option>
         </select>
       </label>
     </div>
     <div>
-      <label>Rent Date: <input #startDate type="date"/> </label>
+      <label for="rentedDate">Rent Date: <input formControlName="rentedDate" id="rentedDate" type="date"/> </label>
     </div>
     <div>
-      <label>Due Date: <input #returnDate type="date"/> </label>
+      <label for="dueDate">Due Date: <input formControlName="dueDate" id="dueDate" type="date"/> </label>
     </div>
     <div>
-      <button class="button is-success" (click)="addNewRentedMovie(startDate.value,returnDate.value)">Ok</button>
+      <button [disabled]="!rentMovieForm.valid" class="button is-success" type="submit">Ok</button>
       <button class="button is-danger" (click)="cancel()">Cancel</button>
     </div>
 
-  </ng-form>
+  </form>
 </div>

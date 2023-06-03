@@ -11,25 +11,17 @@ th, td {
   padding: 10px;
   border-bottom: 2px solid black;
   text-align: center;
+  vertical-align: middle;
 }
 
 tr:hover {
   background-color: coral;
 }
 
-/* button {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+button {
+  margin: 5px;
 }
 
-button:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-} */
 
 .confirmation-message{
   text-align: center;
@@ -48,4 +40,8 @@ button:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+}
+
+.searchInput {
+  width: 30%;
 }

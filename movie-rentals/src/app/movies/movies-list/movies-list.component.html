@@ -1,16 +1,9 @@
 <h2 class="title is-1">Movies List</h2>
-<div *ngIf="!addRentMovie">
-  <label class="searchInput">Search Movies:
-    <input class="searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
-           id="searchTerm"/>
-  </label>
+<div>
+    <input class="input is-rounded searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
+           id="searchTerm" placeholder="Search for a movie"/>
   <div class="table-container">
-    <div *ngIf="isLoading" class="spinner-container">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
-    <table [ngClass]="{'is-loading':isLoading}">
+    <table>
       <tr>
         <th>Id</th>
         <th>Title</th>
@@ -18,28 +11,15 @@
         <th>Genre</th>
         <th>Actions</th>
       </tr>
-      <ng-container *ngIf="isLoading">
-        <tr *ngFor="let row of [0,1]">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <button class="button is-success is-outlined" >Rent</button>
-            <button class="button is-info is-outlined">Edit</button>
-            <button class="button is-danger is-outlined">Delete</button>
-          </td>
-        </tr>
-      </ng-container>
       <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
         <td>{{movie.id}}</td>
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>{{movie.genre}}</td>
         <td>
-          <button class="button is-success is-outlined" (click)="onSelectedMovie(movie)">Rent</button>
-          <button class="button is-info is-outlined" (click)="editMovie(movie.id)">Edit</button>
-          <button class="button is-danger is-outlined" (click)="deleteMovie(movie)">Delete</button>
+          <button class="button is-success is-outlined is-rounded" (click)="onSelectedMovie(movie)">Rent</button>
+          <button class="button is-info is-outlined is-rounded" (click)="editMovie(movie.id)">Edit</button>
+          <button class="button is-danger is-outlined is-rounded" (click)="deleteMovie(movie)">Delete</button>
         </td>
       </tr>
     </table>
@@ -48,8 +28,4 @@
   <div *ngIf="isSelectedMovie">
     <app-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-rent-movie>
   </div>
-</div>
-<div class="confirmation-message" *ngIf="addRentMovie">
-  <h2>Movie Rented</h2>
-  <button (click)="closeMessage()">Ok</button>
 </div>

@@ -5,17 +5,19 @@
 <table class="table is-striped is-hoverable is-fullwidth is-responsive">
   <thead>
   <tr>
-    <th>#</th>
+    <th>Id</th>
     <th>Name</th>
     <th>Surname</th>
+    <th>Access type</th>
     <th>Actions</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias;index as i">
-    <td>{{i + 1}}</td>
+  <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias">
+    <td>{{client.id}}</td>
     <td>{{client.name}}</td>
     <td>{{client.surname}}</td>
+    <td>{{client.accessType}}</td>
     <td>
       <div class="field is-grouped">
         <p class="control mobile">
