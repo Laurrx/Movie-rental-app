@@ -34,6 +34,43 @@
       "name": "asd",
       "surname": "asd",
       "id": 7
+    },
+    {
+      "name": "Laur",
+      "surname": "Birsan",
+      "id": 8
+    },
+    {
+      "name": "Laur",
+      "surname": "Alex",
+      "email": "123@mail.com",
+      "password": "pass",
+      "accessType": "",
+      "id": 9
+    },
+    {
+      "name": "asdada",
+      "surname": "dasdad",
+      "email": "adsada",
+      "password": "asdadsa",
+      "accessType": "",
+      "id": 10
+    },
+    {
+      "name": "123121",
+      "surname": "123131",
+      "email": "1231231",
+      "password": "1231321",
+      "accessType": "client",
+      "id": 11
+    },
+    {
+      "name": "Laur",
+      "surname": "admin",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "accessType": "admin",
+      "id": 12
     }
   ],
   "movies": [
@@ -66,6 +103,12 @@
       "description": "Movie with a superhero dressed in black.",
       "genre": "Action",
       "id": 5
+    },
+    {
+      "title": "Split",
+      "description": "A psycopath with multiple personalities takes a girl hostage.",
+      "genre": "Thriller",
+      "id": 6
     }
   ],
   "rentals": [
@@ -103,6 +146,69 @@
       "clientsId": 5,
       "moviesId": 5,
       "id": 19
+    },
+    {
+      "rentedDate": "2023-06-14",
+      "dueDate": "2023-06-14",
+      "clientsId": 2,
+      "moviesId": 4,
+      "id": 22
+    },
+    {
+      "rentedDate": "2023-06-14",
+      "dueDate": "2023-07-01",
+      "clientsId": 6,
+      "moviesId": 4,
+      "id": 23
+    },
+    {
+      "rentedDate": "2023-06-14",
+      "dueDate": "2023-07-01",
+      "clientsId": 6,
+      "moviesId": 4,
+      "id": 24
+    },
+    {
+      "rentedDate": "2023-06-15",
+      "dueDate": "2023-06-21",
+      "clientsId": 3,
+      "moviesId": 2,
+      "id": 25
+    },
+    {
+      "rentedDate": "2023-06-14",
+      "dueDate": "2023-06-25",
+      "clientsId": 2,
+      "moviesId": 3,
+      "id": 26
+    },
+    {
+      "rentedDate": "2023-06-14",
+      "dueDate": "2023-06-20",
+      "clientsId": 3,
+      "moviesId": 3,
+      "id": 27
+    },
+    {
+      "rentedDate": "2023-06-06",
+      "dueDate": "2023-07-09",
+      "clientsId": 3,
+      "moviesId": 3,
+      "id": 28
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-14",
+      "clientsId": 3,
+      "moviesId": 4,
+      "id": 29
+    },
+    {
+      "rentedDate": "2023-06-06",
+      "dueDate": "2023-06-21",
+      "clientsId": 6,
+      "moviesId": 3,
+      "id": 30
     }
   ]
 }

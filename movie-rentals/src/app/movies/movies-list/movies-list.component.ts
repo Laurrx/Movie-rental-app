@@ -20,7 +20,6 @@ export class MoviesListComponent implements OnInit {
   isLoading = true;
   selectedMovie?: any;
   isSelectedMovie = false;
-  addRentMovie = false;
 
   @ViewChild(RentMovieComponent)
   rentMovieComponent!: RentMovieComponent;
@@ -68,15 +67,10 @@ export class MoviesListComponent implements OnInit {
   onSelectedMovie(movie: any) {
     this.selectedMovie = movie;
     this.isSelectedMovie = true;
-    this.addRentMovie = false;
   }
 
   newRent($event: any) {
     this.isSelectedMovie = $event;
-    this.addRentMovie = true;
   }
 
-  closeMessage() {
-    this.addRentMovie = false;
-  }
 }
