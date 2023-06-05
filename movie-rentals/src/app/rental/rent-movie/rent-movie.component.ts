@@ -54,6 +54,7 @@ export class RentMovieComponent implements OnInit {
           dueDate: this.rentMovieForm.controls.dueDate.value,
           clientsId: this.rentMovieForm.controls.clientsId.value,
           moviesId: this.movie.id,
+          status: "active"
         } as Rental;
     this.rentalService.save(rentedMovie)
       .subscribe();
