@@ -16,7 +16,7 @@
         <td>{{rental.rentedDate}}</td>
         <td>{{rental.dueDate}}</td>
         <td>
-            <button class="button is-info is-rounded is-light is-outlined">
+            <button class="button is-info is-rounded is-light is-outlined" (click)="onReturn(rental)">
                 Return
             </button>
         </td>

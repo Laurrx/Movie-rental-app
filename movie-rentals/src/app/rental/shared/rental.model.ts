@@ -6,4 +6,5 @@ export interface Rental {
   dueDate: string,
   clientsId: number,
   moviesId: number,
+  status: string
 }

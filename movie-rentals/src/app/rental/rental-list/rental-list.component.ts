@@ -7,6 +7,7 @@ import {ClientService} from "../../clients/shared/client.service";
 import {MovieService} from "../../movies/shared/movie.service";
 import {Client} from "../../clients/shared/client.model";
 import {Movie} from "../../movies/shared/movie.model";
+import { deleteFunction } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-rental-list',
@@ -50,6 +51,11 @@ export class RentalListComponent implements OnInit {
       })
   }
 
+  onReturn(rental: Rental) {
+    // deleteFunction(this.rentalService, rental.id, this.rentals)
+    //   .subscribe((items: Array<Rental>) => {this.rentals = items});
+    
+  }
 
 }
 
