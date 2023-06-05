@@ -21,6 +21,7 @@ export class RentMovieComponent implements OnInit {
   minDate='';
   today = new Date();
   selectedDate = new Date();
+  dueDate=new Date();
 
   rentMovieForm = this.fb.group({
     clientsId: [0, [Validators.min(1)]],
@@ -67,7 +68,9 @@ export class RentMovieComponent implements OnInit {
     console.log(this.rentMovieForm.controls);
   }
 
-  selectDate(date:any) {
-    this.selectedDate=date;
+  selectDate(rentedDate:any) {
+    this.selectedDate=rentedDate;
+    this.rentMovieForm.controls.dueDate.setValue('');
   }
+
 }

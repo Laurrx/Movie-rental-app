@@ -12,10 +12,10 @@
       </label>
     </div>
     <div>
-      <label for="rentedDate">Rent Date: <input formControlName="rentedDate" id="rentedDate" #date type="date" (change)="selectDate(date.value)" min="{{minDate}}"/> </label>
+      <label for="rentedDate">Rent Date: <input formControlName="rentedDate" id="rentedDate" #rentedDate type="date" (change)="selectDate(rentedDate.value)" min="{{minDate}}"/> </label>
     </div>
     <div>
-      <label for="dueDate">Due Date: <input formControlName="dueDate" id="dueDate" type="date" min="{{selectedDate}}"/> </label>
+      <label for="dueDate">Due Date: <input formControlName="dueDate" id="dueDate" #dueDate type="date" min="{{selectedDate}}"/> </label>
     </div>
     <div>
       <button [disabled]="!rentMovieForm.valid" class="button is-success" type="submit">Ok</button>
