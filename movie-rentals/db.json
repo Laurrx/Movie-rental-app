@@ -11,38 +11,9 @@
       "id": 2
     },
     {
-      "name": "asd",
-      "surname": "asd",
-      "id": 7
-    },
-    {
       "name": "Laur",
       "surname": "Birsan",
       "id": 8
-    },
-    {
-      "name": "Laur",
-      "surname": "Alex",
-      "email": "123@mail.com",
-      "password": "pass",
-      "accessType": "",
-      "id": 9
-    },
-    {
-      "name": "asdada",
-      "surname": "dasdad",
-      "email": "adsada",
-      "password": "asdadsa",
-      "accessType": "",
-      "id": 10
-    },
-    {
-      "name": "123121",
-      "surname": "123131",
-      "email": "1231231",
-      "password": "1231321",
-      "accessType": "client",
-      "id": 11
     },
     {
       "name": "Laur",
@@ -51,6 +22,14 @@
       "password": "admin",
       "accessType": "admin",
       "id": 12
+    },
+    {
+      "name": "John",
+      "surname": "Wick",
+      "email": "pencil@kill.com",
+      "password": "dog",
+      "accessType": "client",
+      "id": 13
     }
   ],
   "movies": [
@@ -93,74 +72,36 @@
   ],
   "rentals": [
     {
-      "rentedDate": "2023-05-31",
-      "dueDate": "2023-06-01",
-      "clientsId": 5,
-      "moviesId": 5,
-      "id": 19
-    },
-    {
       "rentedDate": "2023-06-14",
       "dueDate": "2023-06-14",
       "clientsId": 2,
       "moviesId": 4,
+      "status": "active",
       "id": 22
     },
     {
-      "rentedDate": "2023-06-14",
-      "dueDate": "2023-07-01",
-      "clientsId": 6,
-      "moviesId": 4,
-      "id": 23
-    },
-    {
-      "rentedDate": "2023-06-14",
-      "dueDate": "2023-07-01",
-      "clientsId": 6,
-      "moviesId": 4,
-      "id": 24
-    },
-    {
-      "rentedDate": "2023-06-15",
-      "dueDate": "2023-06-21",
-      "clientsId": 3,
-      "moviesId": 2,
-      "id": 25
-    },
-    {
-      "rentedDate": "2023-06-14",
-      "dueDate": "2023-06-25",
-      "clientsId": 2,
-      "moviesId": 3,
-      "id": 26
-    },
-    {
-      "rentedDate": "2023-06-14",
-      "dueDate": "2023-06-20",
-      "clientsId": 3,
-      "moviesId": 3,
-      "id": 27
+      "rentedDate": "2023-06-22",
+      "dueDate": "2023-06-29",
+      "clientsId": 13,
+      "moviesId": 1,
+      "status": "active",
+      "id": 31
     },
     {
       "rentedDate": "2023-06-06",
-      "dueDate": "2023-07-09",
-      "clientsId": 3,
+      "dueDate": "2023-06-12",
+      "clientsId": 8,
       "moviesId": 3,
-      "id": 28
+      "status": "returned",
+      "id": 32
     },
     {
-      "rentedDate": "2023-06-09",
-      "dueDate": "2023-06-14",
-      "clientsId": 3,
-      "moviesId": 4,
-      "id": 29
-    },
-    {
-      "rentedDate": "2023-06-06",
-      "dueDate": "2023-06-21",
-      "clientsId": 6,
-      "moviesId": 3,
-      "id": 30
+      "rentedDate": "2023-06-05",
+      "dueDate": "2023-06-12",
+      "clientsId": 1,
+      "moviesId": 5,
+      "status": "returned",
+      "id": 33
     }
   ]
 }

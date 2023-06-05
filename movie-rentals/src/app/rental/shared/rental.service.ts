@@ -29,4 +29,12 @@ export class RentalService{
     return this.httpClient.post<Rental>(this.rentalsUrl,rentedMovie);
   }
 
+  delete(id: number) {
+    const url = `${this.rentalsUrl}/${id}`;
+    return this.httpClient.delete(url);
+  }
+
+  updateStatus(id: number) {
+    
+  }
 }
