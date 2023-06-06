@@ -18,6 +18,9 @@ export class RentMovieComponent implements OnInit {
   @Input() movie: Movie = {} as Movie;
   @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
+  minDate='';
+  today = new Date();
+  selectedDate = new Date();
 
   rentMovieForm = this.fb.group({
     clientsId: [0, [Validators.min(1)]],
@@ -35,7 +38,9 @@ export class RentMovieComponent implements OnInit {
     this.onClick = true;
     this.clientsService.getAll()
       .subscribe(clients => this.clients = clients)
+    this.minDate=this.today.toISOString().split('T')[0];
   }
+
 
   cancel() {
     this.onClick = false;
@@ -61,4 +66,10 @@ export class RentMovieComponent implements OnInit {
     this.newRentEvent.emit(false);
     console.log(this.rentMovieForm.controls);
   }
+
+  selectDate(rentedDate:any) {
+    this.selectedDate=rentedDate;
+    this.rentMovieForm.controls.dueDate.setValue('');
+  }
+
 }

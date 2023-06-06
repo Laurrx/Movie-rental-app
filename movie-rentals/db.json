@@ -105,6 +105,22 @@
       "moviesId": 5,
       "status": "returned",
       "id": 33
+    },
+    {
+      "rentedDate": "2023-06-07",
+      "dueDate": "2023-06-09",
+      "clientsId": 1,
+      "moviesId": 1,
+      "status": "active",
+      "id": 34
+    },
+    {
+      "rentedDate": "2023-06-08",
+      "dueDate": "2023-06-22",
+      "clientsId": 1,
+      "moviesId": 2,
+      "status": "active",
+      "id": 35
     }
   ],
   "credentials": [

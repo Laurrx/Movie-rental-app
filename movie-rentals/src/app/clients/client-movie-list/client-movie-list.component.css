@@ -1,20 +1,11 @@
-input{
-  text-align: center;
-}
-
-.spinner-container{
-  position: absolute;
-  margin-top: 40px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  z-index: 1000;
-}
-
 * {
   font-family: Verdana, Helvetica, sans-serif;
 }
 
+table {
+  width: 100%;
+  margin-top: 20px;
+}
 
 th, td {
   padding: 10px;

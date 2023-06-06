@@ -1,0 +1,28 @@
+<h2 class="title is-1" style="text-align: center;margin-top:100px;border-top: 5px solid black">Movies List</h2>
+<div>
+  <input class="input is-rounded searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
+         id="searchTerm" placeholder="Search for a movie"/>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
+        <td>{{movie.id}}</td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.description}}</td>
+        <td>{{movie.genre}}</td>
+        <td>
+          <button class="button is-success is-outlined is-rounded" (click)="onSelectedMovie(movie)">Rent</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="isSelectedMovie">
+    <app-client-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-client-rent-movie>
+  </div>
+</div>
