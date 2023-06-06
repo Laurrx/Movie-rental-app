@@ -23,26 +23,33 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {DialogModule} from "@angular/cdk/dialog";
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { LoginComponent } from './login/login.component';
+import { ClientMovieListComponent } from './clients/client-movie-list/client-movie-list.component';
+import { ClientRentMovieComponent } from './clients/client-rent-movie/client-rent-movie.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ClientsComponent,
-    ClientsListComponent,
-    ClientNewComponent,
-    ClientEditComponent,
-    MoviesComponent,
-    MoviesListComponent,
-    MovieDetailComponent,
-    MovieNewComponent,
-    MyCustomSearchPipe,
-    RentalComponent,
-    RentalListComponent,
-    RentMovieComponent,
-    ClientRentalsComponent,
-    DeleteModalComponent
-  ],
+    declarations: [
+        AppComponent,
+        ClientsComponent,
+        ClientsListComponent,
+        ClientNewComponent,
+        ClientEditComponent,
+        MoviesComponent,
+        MoviesListComponent,
+        MovieDetailComponent,
+        MovieNewComponent,
+        MyCustomSearchPipe,
+        RentalComponent,
+        RentalListComponent,
+        RentMovieComponent,
+        ClientRentalsComponent,
+        DeleteModalComponent,
+        LoginComponent,
+        ClientMovieListComponent,
+        ClientMovieListComponent,
+        ClientRentMovieComponent
+    ],
   imports: [
     BrowserModule,
     Ng2SearchPipeModule,

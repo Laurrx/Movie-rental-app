@@ -13,7 +13,7 @@ export class ClientNewComponent implements OnInit {
   newClientForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     surname: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.minLength(3),Validators.email]],
     password: ['', [Validators.required, Validators.minLength(3)]],
     accessType: ['', [Validators.required]]
   })

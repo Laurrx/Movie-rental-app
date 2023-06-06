@@ -3,7 +3,10 @@
     {
       "name": "Barbu",
       "surname": "Ionut",
-      "id": 1
+      "id": 1,
+      "email": "ionut.b.alex@gmail.com",
+      "password": "12345678",
+      "admin": true
     },
     {
       "name": "Bocman",
