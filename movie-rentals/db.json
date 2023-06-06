@@ -33,6 +33,14 @@
       "password": "dog",
       "accessType": "client",
       "id": 13
+    },
+    {
+      "name": "George",
+      "surname": "Vasilica",
+      "email": "test@test.com",
+      "password": "asdgf",
+      "accessType": "client",
+      "id": 14
     }
   ],
   "movies": [
@@ -121,6 +129,22 @@
       "moviesId": 2,
       "status": "active",
       "id": 35
+    },
+    {
+      "rentedDate": "2023-06-22",
+      "dueDate": "2023-06-26",
+      "clientsId": 1,
+      "moviesId": 4,
+      "status": "active",
+      "id": 36
+    },
+    {
+      "rentedDate": "2023-06-07",
+      "dueDate": "2023-06-11",
+      "clientsId": 1,
+      "moviesId": 3,
+      "status": "active",
+      "id": 37
     }
   ],
   "credentials": [
@@ -130,3 +154,4 @@
     }
   ]
 }
+
