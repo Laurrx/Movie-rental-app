@@ -167,7 +167,7 @@
       "dueDate": "2023-07-07",
       "clientsId": 1,
       "moviesId": 1,
-      "status": "active",
+      "status": "returned",
       "id": 40
     },
     {
@@ -175,7 +175,7 @@
       "dueDate": "2023-06-07",
       "clientsId": 1,
       "moviesId": 1,
-      "status": "active",
+      "status": "returned",
       "id": 41
     },
     {
@@ -183,8 +183,32 @@
       "dueDate": "2023-06-07",
       "clientsId": 1,
       "moviesId": 1,
-      "status": "active",
+      "status": "returned",
       "id": 42
+    },
+    {
+      "rentedDate": "2023-06-06",
+      "dueDate": "2023-06-07",
+      "clientsId": 1,
+      "moviesId": 1,
+      "status": "returned",
+      "id": 43
+    },
+    {
+      "rentedDate": "2023-06-06",
+      "dueDate": "2023-06-07",
+      "clientsId": 1,
+      "moviesId": 2,
+      "status": "active",
+      "id": 44
+    },
+    {
+      "rentedDate": "2023-06-14",
+      "dueDate": "2023-06-22",
+      "clientsId": 1,
+      "moviesId": 3,
+      "status": "active",
+      "id": 45
     }
   ],
   "credentials": [

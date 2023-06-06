@@ -64,7 +64,6 @@ export class RentMovieComponent implements OnInit {
     this.rentalService.save(rentedMovie)
       .subscribe();
     this.newRentEvent.emit(false);
-    console.log(this.rentMovieForm.controls);
   }
 
   selectDate(rentedDate:any) {

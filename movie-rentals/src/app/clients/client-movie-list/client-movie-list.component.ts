@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {debounceTime, Subject} from "rxjs";
 import {Movie} from "../../movies/shared/movie.model";
 import {MovieService} from "../../movies/shared/movie.service";
@@ -17,6 +17,7 @@ export class ClientMovieListComponent implements OnInit {
   isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
+  @Output() newRentEvent = new EventEmitter<any>();
 
   constructor(private movieServices: MovieService) {
   }
@@ -48,6 +49,7 @@ export class ClientMovieListComponent implements OnInit {
 
   newRent($event: any) {
     this.isSelectedMovie = $event;
+    this.newRentEvent.emit(false);
   }
 
 }

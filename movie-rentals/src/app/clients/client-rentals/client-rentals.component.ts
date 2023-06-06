@@ -34,7 +34,6 @@ export class ClientRentalsComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['rented'].currentValue)
     if (changes['client'].currentValue) {
       this.rentedMovies = this.rentals.filter(rental =>
         rental.clientsId === changes['client'].currentValue.id)

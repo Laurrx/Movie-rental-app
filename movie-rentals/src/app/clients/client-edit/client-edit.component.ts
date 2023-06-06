@@ -92,4 +92,11 @@ export class ClientEditComponent implements OnInit {
         this.ngOnInit();
       });
   }
+
+  newRent(event:any){
+    if(event===false){
+      this.ngOnInit()
+    }
+  }
+
 }
