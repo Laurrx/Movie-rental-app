@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,7 +8,6 @@ import {MovieService} from "../../movies/shared/movie.service";
 import {forkJoin} from "rxjs";
 import {Rental} from "../../rental/shared/rental.model";
 import {Movie} from "../../movies/shared/movie.model";
-import {ClientRentMovieComponent} from "../client-rent-movie/client-rent-movie.component";
 
 @Component({
   selector: 'app-client-edit',
