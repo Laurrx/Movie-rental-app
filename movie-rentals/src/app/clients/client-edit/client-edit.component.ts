@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -63,10 +63,6 @@ export class ClientEditComponent implements OnInit {
 
         this.isLoading = false;
       });
-  }
-
-  ngOnChange(changes:SimpleChanges){
-    console.log(changes['isRented'].currentValue)
   }
 
   onSubmit() {
