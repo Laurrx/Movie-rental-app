@@ -1,0 +1,18 @@
+<div>
+  <h2 class="title is-3">{{movie.title}} - Rent Details</h2>
+  <form class="form" [formGroup]="rentMovieForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="rentedDate">Rent Date: <input formControlName="rentedDate" id="rentedDate" #rentedDate type="date"
+                                                (change)="selectDate(rentedDate.value)" min="{{minDate}}"/> </label>
+    </div>
+    <div>
+      <label for="dueDate">Due Date: <input formControlName="dueDate" id="dueDate" type="date" min="{{selectedDate}}"/>
+      </label>
+    </div>
+    <div>
+      <button [disabled]="!rentMovieForm.valid" class="button is-success" type="submit">Ok</button>
+      <button class="button is-danger" (click)="cancel()">Cancel</button>
+    </div>
+
+  </form>
+</div>
