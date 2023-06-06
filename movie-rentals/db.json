@@ -119,7 +119,7 @@
       "dueDate": "2023-06-19",
       "clientsId": 13,
       "moviesId": 6,
-      "status": "active",
+      "status": "returned",
       "id": 34
     },
     {
@@ -199,7 +199,7 @@
       "dueDate": "2023-06-07",
       "clientsId": 1,
       "moviesId": 2,
-      "status": "active",
+      "status": "returned",
       "id": 44
     },
     {
