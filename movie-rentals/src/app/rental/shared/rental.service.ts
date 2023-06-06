@@ -34,7 +34,13 @@ export class RentalService{
     return this.httpClient.delete(url);
   }
 
-  updateStatus(id: number) {
-    
+  // update(rental: Rental):Observable<Rental> {
+  //   const url =`${this.rentalsUrl}/${rental.id}`;
+  //   return this.httpClient.put<Rental>(url,rental);
+  // }
+
+  updateStatus(id: number, status: string): Observable<any> {
+    const url =`${this.rentalsUrl}/${id}`;
+    return this.httpClient.patch(url, {"status": status});
   }
 }
