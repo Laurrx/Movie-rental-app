@@ -15,6 +15,7 @@ import { deleteFunction } from 'src/app/shared/utilities';
   styleUrls: ['./rental-list.component.css']
 })
 export class RentalListComponent implements OnInit {
+  rental: Rental = {} as Rental;
   rentals: Array<Rental> = [];
   clients: Array<Client> = [];
   movies!: Movie[];
@@ -51,11 +52,13 @@ export class RentalListComponent implements OnInit {
       })
   }
 
-  onReturn(rental: Rental) {
+  onStatusChanged(id: number, status: string) {
     // deleteFunction(this.rentalService, rental.id, this.rentals)
     //   .subscribe((items: Array<Rental>) => {this.rentals = items});
-    
-  }
-
+    this.rentalService.updateStatus(id, status)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
+    }
 }
 

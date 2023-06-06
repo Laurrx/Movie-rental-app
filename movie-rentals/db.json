@@ -95,7 +95,7 @@
       "dueDate": "2023-06-12",
       "clientsId": 8,
       "moviesId": 3,
-      "status": "returned",
+      "status": "active",
       "id": 32
     },
     {
@@ -103,30 +103,32 @@
       "dueDate": "2023-06-12",
       "clientsId": 1,
       "moviesId": 5,
-      "status": "returned",
+      "status": "active",
       "id": 33
     },
     {
       "rentedDate": "2023-06-07",
-      "dueDate": "2023-06-09",
-      "clientsId": 1,
-      "moviesId": 1,
+      "dueDate": "2023-06-19",
+      "clientsId": 13,
+      "moviesId": 6,
       "status": "active",
       "id": 34
     },
     {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-22",
+      "rentedDate": "2023-06-05",
+      "dueDate": "2023-05-29",
       "clientsId": 1,
-      "moviesId": 2,
+      "moviesId": 5,
       "status": "active",
       "id": 35
-    }
-  ],
-  "credentials": [
+    },
     {
-      "email": "ionut.b.alex@gmail.com",
-      "password": "12345678"
+      "rentedDate": "2023-06-06",
+      "dueDate": "2023-06-05",
+      "clientsId": 2,
+      "moviesId": 6,
+      "status": "active",
+      "id": 36
     }
   ]
 }

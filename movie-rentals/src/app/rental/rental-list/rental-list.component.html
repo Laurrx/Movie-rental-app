@@ -10,13 +10,13 @@
         <th>Actions</th>
     </tr>
     <tr *ngFor="let rental of rentals">
-        <td>{{rental.id}}</td>
-        <td>{{rental.movieTitle}}</td>
-        <td>{{rental.clientFullname}}</td>
-        <td>{{rental.rentedDate}}</td>
-        <td>{{rental.dueDate}}</td>
-        <td>
-            <button class="button is-info is-rounded is-light is-outlined" (click)="onReturn(rental)">
+        <td *ngIf="rental.status === 'active'">{{rental.id}}</td>
+        <td *ngIf="rental.status === 'active'">{{rental.movieTitle}}</td>
+        <td *ngIf="rental.status === 'active'">{{rental.clientFullname}}</td>
+        <td *ngIf="rental.status === 'active'">{{rental.rentedDate}}</td>
+        <td *ngIf="rental.status === 'active'">{{rental.dueDate}}</td>
+        <td *ngIf="rental.status === 'active'">
+            <button class="button is-info is-rounded is-light is-outlined" (click)="onStatusChanged(rental.id, 'returned')">
                 Return
             </button>
         </td>
