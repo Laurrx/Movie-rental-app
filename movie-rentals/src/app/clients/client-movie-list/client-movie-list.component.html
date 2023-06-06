@@ -12,7 +12,7 @@
         <th>Actions</th>
       </tr>
       <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
-        <td>{{movie.id}}</td>
+        <td >{{movie.id}}</td>
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>{{movie.genre}}</td>

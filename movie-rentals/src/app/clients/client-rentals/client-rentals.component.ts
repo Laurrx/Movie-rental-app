@@ -13,6 +13,7 @@ import {Movie} from "../../movies/shared/movie.model";
 })
 export class ClientRentalsComponent implements OnInit {
   @Input() client?: Client;
+  @Input() rented:any;
   rentals!: Rental[];
   movies!: Movie[];
   clients!: Client[];
@@ -33,6 +34,7 @@ export class ClientRentalsComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes['rented'].currentValue)
     if (changes['client'].currentValue) {
       this.rentedMovies = this.rentals.filter(rental =>
         rental.clientsId === changes['client'].currentValue.id)

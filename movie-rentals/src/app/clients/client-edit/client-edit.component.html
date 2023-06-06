@@ -40,7 +40,7 @@
         <td>{{movie.rentedDate}}</td>
         <td>{{movie.dueDate}}</td>
         <td>
-          <button class="button is-success is-outlined is-rounded">Return</button>
+          <button class="button is-success is-outlined is-rounded" (click)="onStatusUpdate(movie.id,'returned')">Return</button>
         </td>
       </tr>
     </table>

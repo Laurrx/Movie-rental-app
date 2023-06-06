@@ -7,7 +7,6 @@ import {ClientService} from "../../clients/shared/client.service";
 import {MovieService} from "../../movies/shared/movie.service";
 import {Client} from "../../clients/shared/client.model";
 import {Movie} from "../../movies/shared/movie.model";
-import { deleteFunction } from 'src/app/shared/utilities';
 
 @Component({
   selector: 'app-rental-list',

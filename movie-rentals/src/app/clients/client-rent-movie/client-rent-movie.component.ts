@@ -22,6 +22,7 @@ export class ClientRentMovieComponent {
   minDate = '';
   today = new Date();
   selectedDate = new Date();
+  isRented = false;
 
   rentMovieForm = this.fb.group({
     rentedDate: ['', [Validators.required]],
@@ -36,6 +37,7 @@ export class ClientRentMovieComponent {
   }
 
   ngOnInit(): void {
+    this.isRented = false;
     this.onClick = true;
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.clientsService.get(+id!)
@@ -55,6 +57,7 @@ export class ClientRentMovieComponent {
 
 
   onSubmit() {
+    this.isRented=true;
     const rentedMovie: Rental = {
       rentedDate: this.rentMovieForm.controls.rentedDate.value,
       dueDate: this.rentMovieForm.controls.dueDate.value,
@@ -65,7 +68,6 @@ export class ClientRentMovieComponent {
     this.rentalService.save(rentedMovie)
       .subscribe();
     this.newRentEvent.emit(false);
-    console.log(this.rentMovieForm.controls);
   }
 
   selectDate(rentedDate: any) {

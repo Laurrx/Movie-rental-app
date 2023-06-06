@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,6 +8,7 @@ import {MovieService} from "../../movies/shared/movie.service";
 import {forkJoin} from "rxjs";
 import {Rental} from "../../rental/shared/rental.model";
 import {Movie} from "../../movies/shared/movie.model";
+import {ClientRentMovieComponent} from "../client-rent-movie/client-rent-movie.component";
 
 @Component({
   selector: 'app-client-edit',
@@ -17,11 +18,12 @@ import {Movie} from "../../movies/shared/movie.model";
 export class ClientEditComponent implements OnInit {
 
   client: Client = {} as Client;
-  rentals!:Rental[];
-  movies!:Movie[];
-  rentedMovies:any=[];
+  rentals!: Rental[];
+  movies!: Movie[];
+  rentedMovies: any = [];
   name: string = '';
   isLoading = false;
+  @Input() isRented:any;
 
   editClientForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -32,8 +34,8 @@ export class ClientEditComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
-              private rentalService:RentalService,
-              private movieService:MovieService) {
+              private rentalService: RentalService,
+              private movieService: MovieService) {
   }
 
 
@@ -53,10 +55,10 @@ export class ClientEditComponent implements OnInit {
         this.editClientForm.controls.surname.setValue(this.client.surname)
 
         this.rentedMovies = this.rentals.filter(rental =>
-          rental.clientsId === this.client.id)
+          rental.clientsId === this.client.id && rental.status === 'active')
           .map(rental => {
             let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
-            return {name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate,}
+            return {id: rental.id, name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate,}
 
           })
 
@@ -64,12 +66,15 @@ export class ClientEditComponent implements OnInit {
       });
   }
 
+  ngOnChange(changes:SimpleChanges){
+    console.log(changes['isRented'].currentValue)
+  }
+
   onSubmit() {
     if (this.isLoading) {
       return;
     }
     this.isLoading = true;
-    //in cazul in care este
     this.clientService.update({...this.client, ...this.editClientForm.value})
       .subscribe(_ => {
         this.router.navigateByUrl('clients')
@@ -79,5 +84,12 @@ export class ClientEditComponent implements OnInit {
 
   cancel() {
     this.router.navigateByUrl('clients')
+  }
+
+  onStatusUpdate(id: number, status: string) {
+    this.rentalService.updateStatus(id, status)
+      .subscribe(() => {
+        this.ngOnInit();
+      });
   }
 }
