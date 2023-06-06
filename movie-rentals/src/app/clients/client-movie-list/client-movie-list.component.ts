@@ -1,6 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {debounceTime, Subject} from "rxjs";
-import {RentMovieComponent} from "../../rental/rent-movie/rent-movie.component";
 import {Movie} from "../../movies/shared/movie.model";
 import {MovieService} from "../../movies/shared/movie.service";
 
