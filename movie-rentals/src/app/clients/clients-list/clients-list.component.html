@@ -2,17 +2,8 @@
 <input style="max-width: 300px" placeholder="Search Client" type="text" class="input m-4 is-normal" (ngModelChange)="changed($event)"
        [(ngModel)]="searchTerm"/>
 <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
-  <option value="default">
-    Select Filter
-  </option>
-  <option value="name">
-    Name
-  </option>
-  <option value="surname">
-    Surname
-  </option>
-  <option value="accessType">
-    Access Type
+  <option *ngFor="let value of value" value="{{value.value}}">
+    {{value.display}}
   </option>
 </select>
 

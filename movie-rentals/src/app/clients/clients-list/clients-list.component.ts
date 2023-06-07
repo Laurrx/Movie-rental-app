@@ -20,6 +20,16 @@ export class ClientsListComponent implements OnInit {
   modelChanged = new Subject<string>();
   selectedClient!: Client;
   isLoading = false;
+  value=[{
+    display:'Select Filter',
+    value:'default'
+  },{
+    display:'Client',
+    value:'client'
+  },{
+    display:'Admin',
+    value:'admin'
+  }]
 
   constructor(private clientService: ClientService,
               private router: Router,
@@ -63,6 +73,8 @@ export class ClientsListComponent implements OnInit {
 
   }
 
+  itChanged=false;
+
   changed(event: any) {
     this.modelChanged.next(event);
   }
@@ -73,11 +85,10 @@ export class ClientsListComponent implements OnInit {
   }
 
   onSelectedFilter(filter: any) {
-    console.log(filter)
-    if (filter === "default") {
-      this.clientsSearchCriterias = ['name', 'surname', 'accessType']
+    if (filter == 'default') {
+      this.debouncedSearchTerm='';
     } else {
-      this.clientsSearchCriterias = [filter];
+      this.debouncedSearchTerm=filter;
     }
   }
 
