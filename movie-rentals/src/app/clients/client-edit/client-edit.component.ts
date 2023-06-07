@@ -45,7 +45,11 @@ export class ClientEditComponent implements OnInit {
     forkJoin([rentalsSubscriber, moviesSubscriber])
       .subscribe(response => {
         [this.rentals, this.movies] = response;
-      })
+        this.filterMovies();
+      });
+  }
+    
+  filterMovies() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.clientService.get(+id!)
       .subscribe(client => {
@@ -57,7 +61,7 @@ export class ClientEditComponent implements OnInit {
           rental.clientsId === this.client.id && rental.status === 'active')
           .map(rental => {
             let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
-            return {id: rental.id, name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate,}
+            return {id: rental.id, name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate}
 
           })
 
