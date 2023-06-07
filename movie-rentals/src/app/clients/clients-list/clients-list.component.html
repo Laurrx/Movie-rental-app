@@ -1,6 +1,20 @@
 <h2 style="text-align: center" class="title mt-4 mb-6">Clients</h2>
 <input style="max-width: 300px" placeholder="Search Client" type="text" class="input m-4 is-normal" (ngModelChange)="changed($event)"
        [(ngModel)]="searchTerm"/>
+<select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
+  <option value="default">
+    Select Filter
+  </option>
+  <option value="name">
+    Name
+  </option>
+  <option value="surname">
+    Surname
+  </option>
+  <option value="accessType">
+    Access Type
+  </option>
+</select>
 
 <table class="table is-striped is-hoverable is-fullwidth is-responsive">
   <thead>

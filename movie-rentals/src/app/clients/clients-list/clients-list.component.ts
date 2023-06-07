@@ -15,11 +15,11 @@ import {DeleteModalComponent} from "../../delete-modal/delete-modal.component";
 export class ClientsListComponent implements OnInit {
   clients: Array<Client> = [];
   searchTerm = '';
-  clientsSearchCriterias = ['name', 'surname'];
+  clientsSearchCriterias = ['name', 'surname', 'accessType'];
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   selectedClient!: Client;
-  isLoading=false;
+  isLoading = false;
 
   constructor(private clientService: ClientService,
               private router: Router,
@@ -27,10 +27,11 @@ export class ClientsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading=true;
+    this.isLoading = true;
     this.clientService.getAll()
-      .subscribe(clients => {this.clients = clients
-      this.isLoading=false;
+      .subscribe(clients => {
+        this.clients = clients
+        this.isLoading = false;
       });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
@@ -50,10 +51,10 @@ export class ClientsListComponent implements OnInit {
   deleteClient(client: Client) {
     const dialogRef = this.dialog.open(DeleteModalComponent, {
       width: '500px', data: client
-     })
+    })
     dialogRef.closed
       .subscribe(response => {
-        if(response){
+        if (response) {
           deleteFunction(this.clientService, client.id, this.clients)
             .subscribe((items: Array<Client>) => this.clients = items);
         }
@@ -69,6 +70,15 @@ export class ClientsListComponent implements OnInit {
 
   showClient(client: Client) {
     this.selectedClient = client;
+  }
+
+  onSelectedFilter(filter: any) {
+    console.log(filter)
+    if (filter === "default") {
+      this.clientsSearchCriterias = ['name', 'surname', 'accessType']
+    } else {
+      this.clientsSearchCriterias = [filter];
+    }
   }
 
 }
