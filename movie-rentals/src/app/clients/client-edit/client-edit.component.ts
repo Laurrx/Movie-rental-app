@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {RentalService} from "../../rental/shared/rental.service";
 import {MovieService} from "../../movies/shared/movie.service";
-import {forkJoin} from "rxjs";
+import {combineLatest} from "rxjs";
 import {Rental} from "../../rental/shared/rental.model";
 import {Movie} from "../../movies/shared/movie.model";
 
@@ -22,7 +22,7 @@ export class ClientEditComponent implements OnInit {
   rentedMovies: any = [];
   name: string = '';
   isLoading = false;
-  @Input() isRented:any;
+  getInfoSubscriber : any;
 
   editClientForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,33 +40,31 @@ export class ClientEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    const rentalsSubscriber = this.rentalService.getRentals();
+    const id = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
+
+    // this.rentalService.getRentals()
+    //   .subscribe()
+
     const moviesSubscriber = this.movieService.getMovies();
-    forkJoin([rentalsSubscriber, moviesSubscriber])
-      .subscribe(response => {
+    this.getInfoSubscriber = combineLatest([ this.rentalService.rentals$, moviesSubscriber])
+      .subscribe((response:any)=> {
         [this.rentals, this.movies] = response;
-        this.filterMovies();
-      });
-  }
-    
-  filterMovies() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+        this.rentedMovies = this.rentals.filter(rental =>
+          rental.clientsId === id && rental.status === 'active')
+          .map(rental => {
+            let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
+            return {id: rental.id, name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate,}
+          })
+      })
+
     this.clientService.get(+id!)
       .subscribe(client => {
         this.client = client!
         this.editClientForm.controls.name.setValue(this.client.name)
         this.editClientForm.controls.surname.setValue(this.client.surname)
-
-        this.rentedMovies = this.rentals.filter(rental =>
-          rental.clientsId === this.client.id && rental.status === 'active')
-          .map(rental => {
-            let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
-            return {id: rental.id, name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate}
-
-          })
-
         this.isLoading = false;
       });
+    this.rentalService.setInitialRentals();
   }
 
   onSubmit() {
@@ -87,15 +85,10 @@ export class ClientEditComponent implements OnInit {
 
   onStatusUpdate(id: number, status: string) {
     this.rentalService.updateStatus(id, status)
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+      .subscribe();
   }
 
-  newRent(event:any){
-    if(event===false){
-      this.ngOnInit()
-    }
-  }
-
+  ngOnDestroy() {
+    this.getInfoSubscriber.unsubscribe();
+}
 }

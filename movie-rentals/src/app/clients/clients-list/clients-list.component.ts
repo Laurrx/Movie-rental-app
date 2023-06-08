@@ -19,7 +19,19 @@ export class ClientsListComponent implements OnInit {
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   selectedClient!: Client;
-  isLoading=false;
+  isLoading = false;
+  filter = '';
+  filterType = 'accessType';
+  value = [{
+    display: 'Select Filter',
+    value: 'default'
+  }, {
+    display: 'Client',
+    value: 'client'
+  }, {
+    display: 'Admin',
+    value: 'admin'
+  }]
 
   constructor(private clientService: ClientService,
               private router: Router,
@@ -27,10 +39,11 @@ export class ClientsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading=true;
+    this.isLoading = true;
     this.clientService.getAll()
-      .subscribe(clients => {this.clients = clients
-      this.isLoading=false;
+      .subscribe(clients => {
+        this.clients = clients
+        this.isLoading = false;
       });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
@@ -50,10 +63,10 @@ export class ClientsListComponent implements OnInit {
   deleteClient(client: Client) {
     const dialogRef = this.dialog.open(DeleteModalComponent, {
       width: '500px', data: client
-     })
+    })
     dialogRef.closed
       .subscribe(response => {
-        if(response){
+        if (response) {
           deleteFunction(this.clientService, client.id, this.clients)
             .subscribe((items: Array<Client>) => this.clients = items);
         }
@@ -62,6 +75,8 @@ export class ClientsListComponent implements OnInit {
 
   }
 
+  itChanged = false;
+
   changed(event: any) {
     this.modelChanged.next(event);
   }
@@ -69,6 +84,10 @@ export class ClientsListComponent implements OnInit {
 
   showClient(client: Client) {
     this.selectedClient = client;
+  }
+
+  onSelectedFilter(filter: any) {
+    this.filter = (filter === 'default') ? '' : filter;
   }
 
 }

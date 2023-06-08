@@ -16,10 +16,34 @@ export class MoviesListComponent implements OnInit {
   searchTerm = '';
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
-  moviesSearchCriterias = ['title', 'description', 'genre'];
-  isLoading =false;
+  moviesSearchCriterias = ['title', 'description'];
+  isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
+  filterType = 'genre'
+  filter = '';
+  value = [
+    {
+      value: 'Science Fiction',
+      display: 'Science Fiction'
+    },
+    {
+      value: 'comedy',
+      display: 'Comedy'
+    },
+    {
+      value: 'action',
+      display: 'Action'
+    },
+    {
+      value: 'horror',
+      display: 'Horror'
+    },
+    {
+      value: 'thriller',
+      display: 'Thriller'
+    }
+  ]
 
   @ViewChild(RentMovieComponent)
   rentMovieComponent!: RentMovieComponent;
@@ -29,11 +53,11 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading=true;
+    this.isLoading = true;
     this.movieServices.getMovies()
       .subscribe(movies => {
         this.movies = movies
-        this.isLoading=false;
+        this.isLoading = false;
       });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
@@ -74,4 +98,7 @@ export class MoviesListComponent implements OnInit {
     this.isSelectedMovie = $event;
   }
 
+  onSelectedFilter(filter: string) {
+    this.filter = (filter === 'default') ? '' : filter;
+  }
 }
