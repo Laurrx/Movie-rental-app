@@ -1,60 +1,68 @@
 <h2 style="text-align: center" class="title mt-4 mb-6">Clients</h2>
-<input style="max-width: 300px" placeholder="Search Client" type="text" class="input m-4 is-normal" (ngModelChange)="changed($event)"
-       [(ngModel)]="searchTerm"/>
-<select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
-  <option *ngFor="let value of value" value="{{value.value}}">
-    {{value.display}}
-  </option>
-</select>
-
-<table class="table is-striped is-hoverable is-fullwidth is-responsive">
-  <thead>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Access type</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias">
-    <td>{{client.id}}</td>
-    <td>{{client.name}}</td>
-    <td>{{client.surname}}</td>
-    <td>{{client.accessType}}</td>
-    <td>
-      <div class="field is-grouped">
-        <p class="control mobile">
-          <button class=" button is-outlined is-warning is-responsive" (click)="showClient(client)">
-            <span>Rented movies</span>
-            <span class="icon is-small">
+<div>
+  <input placeholder="Search Client" type="text" class="input is-rounded searchInput" (ngModelChange)="changed($event)"
+         [(ngModel)]="searchTerm"/>
+  <div style="display: inline-block;" class="control has-icons-left">
+    <div class="select is-rounded">
+      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
+        <option *ngFor="let value of value" value="{{value.value}}">
+          {{value.display}}
+        </option>
+      </select>
+    </div>
+    <div class="icon is-small is-left">
+      <i style="font-weight: bold;color: blue" class="fa-regular fa-user"></i>
+    </div>
+  </div>
+  <table class="table is-striped is-hoverable is-fullwidth is-responsive">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Access type</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias:filter:filterType">
+      <td>{{client.id}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.surname}}</td>
+      <td>{{client.accessType}}</td>
+      <td>
+        <div class="field is-grouped">
+          <p class="control mobile">
+            <button class=" button is-outlined is-warning is-responsive" (click)="showClient(client)">
+              <span>Rented movies</span>
+              <span class="icon is-small">
           <i class="fa-solid fa-film"></i>
         </span>
-          </button>
-        </p>
-        <p class="control mobile">
-          <button class=" button is-outlined is-success is-responsive" (click)="editClient(client.id)">
-            <span>Edit</span>
-            <span class="icon is-small">
+            </button>
+          </p>
+          <p class="control mobile">
+            <button class=" button is-outlined is-success is-responsive" (click)="editClient(client.id)">
+              <span>Edit</span>
+              <span class="icon is-small">
         <i class="fa-regular fa-pen-to-square"></i>
           </span>
-          </button>
-        </p>
-        <p class="control mobile">
-          <button class=" button is-danger is-outlined is-responsive" (click)="deleteClient(client)">
-            <span>Delete</span>
-            <span class="icon is-small">
+            </button>
+          </p>
+          <p class="control mobile">
+            <button class=" button is-danger is-outlined is-responsive" (click)="deleteClient(client)">
+              <span>Delete</span>
+              <span class="icon is-small">
       <i class="fas fa-times"></i>
     </span>
-          </button>
-        </p>
-      </div>
-    </td>
-  </tr>
-  </tbody>
-</table>
+            </button>
+          </p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-<button class="button mb-4 is-rounded" (click)="addNewClient()">Add New Client</button>
+  <button class="button mb-4 is-rounded" (click)="addNewClient()">Add New Client</button>
 
-<app-client-rentals [hidden]="!selectedClient" [client]="selectedClient"></app-client-rentals>
+  <app-client-rentals [hidden]="!selectedClient" [client]="selectedClient"></app-client-rentals>
+</div>

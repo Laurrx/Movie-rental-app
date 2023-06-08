@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {forkJoin} from 'rxjs';
+import {forkJoin, combineLatest, mergeMap} from 'rxjs';
 import {Rental} from '../shared/rental.model';
 import {Router} from '@angular/router';
 import {RentalService} from '../shared/rental.service';
@@ -19,6 +19,7 @@ export class RentalListComponent implements OnInit {
   clients: Array<Client> = [];
   movies!: Movie[];
   client: Client = {} as Client;
+  getInfoSubscriber : any;
 
   constructor(private rentalService: RentalService,
               private router: Router,
@@ -28,12 +29,13 @@ export class RentalListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const rentalsSubscriber = this.rentalService.getRentals()
+     //this.rentalService.getRentals().subscribe()
     const clientsSubscriber = this.clientsService.getAll()
     const moviesSubscriber = this.movieService.getMovies()
 
-    forkJoin([rentalsSubscriber, clientsSubscriber, moviesSubscriber])
+    this.getInfoSubscriber=combineLatest([this.rentalService.rentals$, clientsSubscriber, moviesSubscriber])
       .subscribe(response => {
+        console.log(response);
         [this.rentals, this.clients, this.movies] = response;
         this.rentals.forEach(rental => {
           const movie = this.movies.filter(movie => movie.id === rental.moviesId);
@@ -49,15 +51,18 @@ export class RentalListComponent implements OnInit {
           }
         })
       })
+    this.rentalService.setInitialRentals();
   }
 
   onStatusChanged(id: number, status: string) {
     // deleteFunction(this.rentalService, rental.id, this.rentals)
     //   .subscribe((items: Array<Rental>) => {this.rentals = items});
     this.rentalService.updateStatus(id, status)
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+      .subscribe();
+    }
+
+    ngOnDestroy(){
+    this.getInfoSubscriber.unsubscribe();
     }
 }
 

@@ -11,9 +11,8 @@
     </div>
     <div>
       <button [disabled]="!rentMovieForm.valid" class="button is-success" type="submit">Ok</button>
-      <button class="button is-danger" (click)="cancel()">Cancel</button>
+      <button type="button" class="button is-danger" (click)="cancel()">Cancel</button>
     </div>
 
   </form>
 </div>
-<app-client-edit [hidden]="true" [isRented]="isRented"></app-client-edit>

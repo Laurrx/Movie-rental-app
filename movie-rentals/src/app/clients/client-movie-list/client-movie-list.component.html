@@ -3,6 +3,7 @@
   <input class="input is-rounded searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)" [(ngModel)]="searchTerm"
          id="searchTerm" placeholder="Search for a movie"/>
   <div class="table-container">
+
     <table>
       <tr>
         <th>Id</th>
@@ -11,7 +12,7 @@
         <th>Genre</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias">
+      <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:'':''">
         <td >{{movie.id}}</td>
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
@@ -23,6 +24,6 @@
     </table>
   </div>
   <div *ngIf="isSelectedMovie">
-    <app-client-rent-movie [movie]="selectedMovie" (newRentEvent)="newRent($event)"></app-client-rent-movie>
+    <app-client-rent-movie [movie]="selectedMovie"></app-client-rent-movie>
   </div>
 </div>

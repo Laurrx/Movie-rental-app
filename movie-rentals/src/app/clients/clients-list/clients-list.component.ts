@@ -15,20 +15,22 @@ import {DeleteModalComponent} from "../../delete-modal/delete-modal.component";
 export class ClientsListComponent implements OnInit {
   clients: Array<Client> = [];
   searchTerm = '';
-  clientsSearchCriterias = ['name', 'surname', 'accessType'];
+  clientsSearchCriterias = ['name', 'surname'];
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   selectedClient!: Client;
   isLoading = false;
-  value=[{
-    display:'Select Filter',
-    value:'default'
-  },{
-    display:'Client',
-    value:'client'
-  },{
-    display:'Admin',
-    value:'admin'
+  filter = '';
+  filterType = 'accessType';
+  value = [{
+    display: 'Select Filter',
+    value: 'default'
+  }, {
+    display: 'Client',
+    value: 'client'
+  }, {
+    display: 'Admin',
+    value: 'admin'
   }]
 
   constructor(private clientService: ClientService,
@@ -73,7 +75,7 @@ export class ClientsListComponent implements OnInit {
 
   }
 
-  itChanged=false;
+  itChanged = false;
 
   changed(event: any) {
     this.modelChanged.next(event);
@@ -85,11 +87,7 @@ export class ClientsListComponent implements OnInit {
   }
 
   onSelectedFilter(filter: any) {
-    if (filter == 'default') {
-      this.debouncedSearchTerm='';
-    } else {
-      this.debouncedSearchTerm=filter;
-    }
+    this.filter = (filter === 'default') ? '' : filter;
   }
 
 }

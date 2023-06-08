@@ -17,7 +17,8 @@ export class ClientMovieListComponent implements OnInit {
   isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
-  @Output() newRentEvent = new EventEmitter<any>();
+
+
 
   constructor(private movieServices: MovieService) {
   }
@@ -38,18 +39,12 @@ export class ClientMovieListComponent implements OnInit {
 
 
   changed(event: any) {
-
     this.modelChanged.next(event);
   }
 
   onSelectedMovie(movie: any) {
     this.selectedMovie = movie;
     this.isSelectedMovie = true;
-  }
-
-  newRent($event: any) {
-    this.isSelectedMovie = $event;
-    this.newRentEvent.emit(false);
   }
 
 }

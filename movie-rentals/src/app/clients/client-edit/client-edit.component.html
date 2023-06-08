@@ -19,10 +19,10 @@
                 'is-danger': editClientForm.controls.name.hasError('required')
                  && editClientForm.controls.name.touched || editClientForm.controls.name.hasError('minlength')}"/>
           <span class="icon is-small is-right">
-          <i style="color: green" *ngIf="!editClientForm.controls.name.hasError('required')
+            <i style="color: green" *ngIf="!editClientForm.controls.name.hasError('required')
               && !editClientForm.controls.name.hasError('minlength')"
              class="fas fa-check"></i>
-        </span>
+          </span>
           <span class="icon is-small is-right">
           <i style="color: red" *ngIf="editClientForm.controls.name.hasError('required')
                 && editClientForm.controls.name.touched || editClientForm.controls.name.hasError('minlength')"
@@ -86,5 +86,5 @@
     </table>
   </div>
 </div>
-<app-client-movie-list (newRentEvent)="newRent($event)"></app-client-movie-list>
+<app-client-movie-list></app-client-movie-list>
 
