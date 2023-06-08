@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {debounceTime, Subject} from "rxjs";
 import {Movie} from "../../movies/shared/movie.model";
 import {MovieService} from "../../movies/shared/movie.service";

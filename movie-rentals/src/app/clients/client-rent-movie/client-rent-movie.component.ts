@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component,Input} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {Movie} from "../../movies/shared/movie.model";
 import {FormBuilder, Validators} from "@angular/forms";

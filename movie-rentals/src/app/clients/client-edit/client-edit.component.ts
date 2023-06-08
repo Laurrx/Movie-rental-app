@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {ClientService} from "../shared/client.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, Validators} from "@angular/forms";
 import {RentalService} from "../../rental/shared/rental.service";
 import {MovieService} from "../../movies/shared/movie.service";
-import {combineLatest, forkJoin} from "rxjs";
+import {combineLatest} from "rxjs";
 import {Rental} from "../../rental/shared/rental.model";
 import {Movie} from "../../movies/shared/movie.model";
 

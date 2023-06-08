@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {forkJoin, combineLatest, mergeMap} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {Rental} from '../shared/rental.model';
 import {Router} from '@angular/router';
 import {RentalService} from '../shared/rental.service';
