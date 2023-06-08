@@ -20,14 +20,16 @@ export class MovieNewComponent {
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
     description: ['', [Validators.maxLength(200)]],
-    genre: ['', [Validators.required, Validators.minLength(4)]]
+    genre: ['', [Validators.required, Validators.minLength(4)]],
+    releaseYear: [0, [Validators.required, Validators.minLength(4)]]
   })
 
   onSubmit() {
     const movie: Movie = {
       title: this.form.controls.title.value,
       description: this.form.controls.description.value,
-      genre: this.form.controls.genre.value
+      genre: this.form.controls.genre.value,
+      releaseYear: this.form.controls.releaseYear.value
     } as Movie;
 
     this.movieService.save(movie)

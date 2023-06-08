@@ -19,6 +19,12 @@
     <label for="genre">Genre:<br>
       <input class="input is-rounded" id="genre" formControlName="genre" placeholder="Enter movie genre">
     </label><br>
+    <label for="releaseYear">Release Year:<br>
+      <input class="input is-rounded" id="releaseYear" formControlName="releaseYear" placeholder="Enter movie Release Year">
+    </label><br>
+    <p *ngIf="!form.controls.releaseYear.valid" style="color: red;font-weight: bold">
+      Release Year required! Release Year must be a number.
+    </p>
     <button [disabled]="!form.valid" class="button is-success is-rounded" type="submit">Save</button>
   </form>
 </div>

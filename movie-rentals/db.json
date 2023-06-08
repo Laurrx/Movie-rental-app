@@ -48,37 +48,50 @@
       "id": 1,
       "title": "Avengers: End Game",
       "description": "This movie is available to rent",
-      "genre": "Science Fiction"
+      "genre": "Science Fiction",
+      "releaseYear": 2019
     },
     {
       "id": 2,
       "title": "Bruce Almighty",
       "description": "This movie is available to rent",
-      "genre": "Comedy"
+      "genre": "Comedy",
+      "releaseYear": 2001
     },
     {
       "id": 3,
       "title": "Scary Movie",
       "description": "This movie is available to rent",
-      "genre": "Comedy"
+      "genre": "Comedy",
+      "releaseYear": 1995
     },
     {
       "title": "40 Year Old Virgin",
       "description": "This movie can be rented",
       "genre": "Horror",
-      "id": 4
+      "id": 4,
+      "releaseYear": 1998
     },
     {
       "title": "Batman",
       "description": "Movie with a superhero dressed in black.",
       "genre": "Action",
-      "id": 5
+      "id": 5,
+      "releaseYear": 2000
     },
     {
       "title": "Split",
       "description": "A psycopath with multiple personalities takes a girl hostage.",
       "genre": "Thriller",
-      "id": 6
+      "id": 6,
+      "releaseYear": 2017
+    },
+    {
+      "title": "The Purge",
+      "description": "Just a nice family-friendly movie to watch in a weekend.",
+      "genre": "Thriller",
+      "releaseYear": "2013",
+      "id": 7
     }
   ],
   "rentals": [
