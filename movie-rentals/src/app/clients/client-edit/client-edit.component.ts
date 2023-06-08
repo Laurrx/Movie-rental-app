@@ -54,17 +54,14 @@ export class ClientEditComponent implements OnInit {
           .map(rental => {
             let rentedMovie = this.movies.filter(movie => movie.id === rental.moviesId)
             return {id: rental.id, name: rentedMovie[0].title, rentedDate: rental.rentedDate, dueDate: rental.dueDate,}
-
           })
-
       })
+
     this.clientService.get(+id!)
       .subscribe(client => {
         this.client = client!
         this.editClientForm.controls.name.setValue(this.client.name)
         this.editClientForm.controls.surname.setValue(this.client.surname)
-
-
         this.isLoading = false;
       });
     this.rentalService.setInitialRentals();

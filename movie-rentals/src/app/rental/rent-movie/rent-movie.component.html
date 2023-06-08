@@ -6,7 +6,7 @@
         <select #selectedClient (change)="onSelected(selectedClient.value)" >
           <option>Select Client</option>
           <option id="clientsId" *ngFor="let client of clients" [value]="client.id">
-            {{client.name.concat(" ", client.surname) }}
+            {{client.id}} - {{client.name.concat(" ", client.surname) }}
           </option>
         </select>
       </label>

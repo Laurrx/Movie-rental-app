@@ -55,8 +55,6 @@ export class RentalListComponent implements OnInit {
   }
 
   onStatusChanged(id: number, status: string) {
-    // deleteFunction(this.rentalService, rental.id, this.rentals)
-    //   .subscribe((items: Array<Rental>) => {this.rentals = items});
     this.rentalService.updateStatus(id, status)
       .subscribe();
     }
