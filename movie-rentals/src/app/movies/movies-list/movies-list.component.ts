@@ -108,7 +108,6 @@ export class MoviesListComponent implements OnInit {
   empyArray(array:any){
     array.splice(0,1);
     return array;
-    console.log(array)
   }
 
 
