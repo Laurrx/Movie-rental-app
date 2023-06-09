@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component,Input} from '@angular/core';
 import {Client} from "../shared/client.model";
 import {Movie} from "../../movies/shared/movie.model";
 import {FormBuilder, Validators} from "@angular/forms";
@@ -17,9 +17,9 @@ export class ClientRentMovieComponent {
   clients: Array<Client> = [];
   client: Client = {} as Client;
   @Input() movie: Movie = {} as Movie;
-  @Output() newRentEvent = new EventEmitter<any>();
   onClick: any;
   minDate = '';
+  maxDate=new Date();
   today = new Date();
   selectedDate = new Date();
   isRented = false;
@@ -50,13 +50,11 @@ export class ClientRentMovieComponent {
   }
 
 
-  cancel() {
-    this.onClick = false;
-    this.newRentEvent.emit(this.onClick);
-  }
+
 
 
   onSubmit() {
+    console.log('orice2')
     this.isRented=true;
     const rentedMovie: Rental = {
       rentedDate: this.rentMovieForm.controls.rentedDate.value,
@@ -67,11 +65,14 @@ export class ClientRentMovieComponent {
     } as Rental;
     this.rentalService.save(rentedMovie)
       .subscribe();
-    this.newRentEvent.emit(false);
+
   }
 
   selectDate(rentedDate: any) {
     this.selectedDate = rentedDate;
     this.rentMovieForm.controls.dueDate.setValue('');
+  }
+
+  cancel() {
   }
 }

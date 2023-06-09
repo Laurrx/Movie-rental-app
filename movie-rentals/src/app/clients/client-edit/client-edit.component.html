@@ -1,8 +1,8 @@
 <div class="is-flex">
   <div class="is-flex-grow-1" style="border-right: 5px solid black">
     <h2 style="text-align: center" class="title m-6">{{client.name}} details</h2>
-    <form style="max-width: 300px"
-          class="container is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
+    <form class="container is-flex is-flex-direction-column
+      is-justify-content-center is-align-items-center"
           [formGroup]="editClientForm" (ngSubmit)="onSubmit()">
       <div *ngIf="isLoading" class="spinner-container">
         <div class="spinner-border" role="status">
@@ -19,10 +19,10 @@
                 'is-danger': editClientForm.controls.name.hasError('required')
                  && editClientForm.controls.name.touched || editClientForm.controls.name.hasError('minlength')}"/>
           <span class="icon is-small is-right">
-          <i style="color: green" *ngIf="!editClientForm.controls.name.hasError('required')
+            <i style="color: green" *ngIf="!editClientForm.controls.name.hasError('required')
               && !editClientForm.controls.name.hasError('minlength')"
              class="fas fa-check"></i>
-        </span>
+          </span>
           <span class="icon is-small is-right">
           <i style="color: red" *ngIf="editClientForm.controls.name.hasError('required')
                 && editClientForm.controls.name.touched || editClientForm.controls.name.hasError('minlength')"
@@ -35,7 +35,8 @@
         Surname*
       </label>
       <div class="control is-normal has-icons-right">
-        <input id="surname" class="input is-normal is-rounded" name="surname" formControlName="surname" value="{{client.surname}}"
+        <input id="surname" class="input is-normal is-rounded" name="surname" formControlName="surname"
+               value="{{client.surname}}"
                [ngClass]="{'is-success': !editClientForm.controls.surname.hasError('required'),
                 'is-danger': editClientForm.controls.surname.hasError('required')
                  && editClientForm.controls.surname.touched || editClientForm.controls.surname.hasError('minlength')}"/>
@@ -85,5 +86,5 @@
     </table>
   </div>
 </div>
-<app-client-movie-list (newRentEvent)="newRent($event)"></app-client-movie-list>
+<app-client-movie-list></app-client-movie-list>
 
