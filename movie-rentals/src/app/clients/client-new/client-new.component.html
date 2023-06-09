@@ -136,16 +136,16 @@
   </div>
 
   <div>
-    <label class="label">Access type</label>
+    <label class="label">Client type</label>
     <div>
-      <select [ngClass]="{'is-success': !newClientForm.controls.accessType.hasError('required'),
-                            'is-danger': newClientForm.controls.accessType.hasError('required')}"
-              formControlName="accessType" id="accessType">
-        <option value="client">Client</option>
-        <option value="admin">Admin</option>
+      <select [ngClass]="{'is-success': !newClientForm.controls.type.hasError('required'),
+                            'is-danger': newClientForm.controls.type.hasError('required')}"
+              formControlName="type" id="type">
+        <option value="standard">Standard</option>
+        <option value="premium">Premium</option>
       </select>
-      <p *ngIf="newClientForm.controls.accessType.hasError('required')
-          && newClientForm.controls.accessType.touched" class="help is-danger">
+      <p *ngIf="newClientForm.controls.type.hasError('required')
+          && newClientForm.controls.type.touched" class="help is-danger">
         Please select an access type!
       </p>
     </div>

@@ -2,10 +2,10 @@
   "clients": [
     {
       "name": "Laur",
-      "surname": "admin",
+      "surname": "Birsan",
       "email": "admin@admin.com",
       "password": "admin",
-      "accessType": "admin",
+      "type": "premium",
       "id": 12
     },
     {
@@ -13,7 +13,7 @@
       "surname": "Wick",
       "email": "pencil@kill.com",
       "password": "dog",
-      "accessType": "client",
+      "type": "standard",
       "id": 13
     },
     {
@@ -21,8 +21,16 @@
       "surname": "Vasilica",
       "email": "test@test.com",
       "password": "asdgf",
-      "accessType": "client",
+      "type": "premium",
       "id": 14
+    },
+    {
+      "name": "Ionut",
+      "surname": "Barbu",
+      "email": "123@321.com",
+      "password": "123455",
+      "type": "premium",
+      "id": 15
     }
   ],
   "movies": [
@@ -258,7 +266,7 @@
       "dueDate": "2023-06-15",
       "clientsId": 1,
       "moviesId": 1,
-      "status": "active",
+      "status": "returned",
       "id": 52
     },
     {
@@ -266,7 +274,7 @@
       "dueDate": "2023-06-22",
       "clientsId": 1,
       "moviesId": 5,
-      "status": "active",
+      "status": "returned",
       "id": 53
     },
     {
@@ -274,58 +282,56 @@
       "dueDate": "2023-06-28",
       "clientsId": 1,
       "moviesId": 2,
-      "status": "active",
+      "status": "returned",
       "id": 54
-    }
-  ],
-  "credentials": [
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 49
     },
     {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 50
-    },
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 51
-    },
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 52
-    },
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 53
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-17",
-      "clientsId": 12,
-      "moviesId": 1,
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 7,
       "status": "active",
-      "id": 54
+      "id": 55
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 7,
+      "status": "returned",
+      "id": 56
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 5,
+      "status": "active",
+      "id": 57
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 2,
+      "status": "active",
+      "id": 58
+    },
+    {
+      "rentedDate": "2023-06-13",
+      "dueDate": "2023-06-22",
+      "clientsId": 15,
+      "moviesId": 3,
+      "status": "active",
+      "id": 59
+    },
+    {
+      "rentedDate": "2023-06-13",
+      "dueDate": "2023-06-22",
+      "clientsId": 15,
+      "moviesId": 5,
+      "status": "active",
+      "id": 60
     }
   ],
   "credentials": []

@@ -21,16 +21,16 @@ export class ClientsListComponent implements OnInit {
   selectedClient!: Client;
   isLoading = false;
   filter = '';
-  filterType = 'accessType';
+  filterType = 'type';
   value = [{
     display: 'Select Filter',
     value: 'default'
   }, {
-    display: 'Client',
-    value: 'client'
+    display: 'Standard',
+    value: 'standard'
   }, {
-    display: 'Admin',
-    value: 'admin'
+    display: 'Premium',
+    value: 'premium'
   }]
 
   constructor(private clientService: ClientService,

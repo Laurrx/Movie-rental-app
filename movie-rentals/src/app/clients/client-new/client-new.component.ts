@@ -15,7 +15,7 @@ export class ClientNewComponent implements OnInit {
     surname: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.minLength(3),Validators.email]],
     password: ['', [Validators.required, Validators.minLength(3)]],
-    accessType: ['', [Validators.required]]
+    type: ['', [Validators.required]]
   })
 
   constructor(private clientService: ClientService,
@@ -33,7 +33,7 @@ export class ClientNewComponent implements OnInit {
         surname: this.newClientForm.controls.surname.value,
         email: this.newClientForm.controls.email.value,
         password: this.newClientForm.controls.password.value,
-        accessType: this.newClientForm.controls.accessType.value
+        type: this.newClientForm.controls.type.value
       } as Client
     this.clientService.save(client)
       .subscribe();
