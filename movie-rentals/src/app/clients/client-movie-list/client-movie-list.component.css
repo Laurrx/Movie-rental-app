@@ -21,3 +21,12 @@ tr:hover {
 button {
   margin: 5px;
 }
+
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+  width: 30%;
+}

@@ -2,10 +2,10 @@
   "clients": [
     {
       "name": "Laur",
-      "surname": "admin",
+      "surname": "Birsan",
       "email": "admin@admin.com",
       "password": "admin",
-      "accessType": "admin",
+      "type": "premium",
       "id": 12
     },
     {
@@ -13,7 +13,7 @@
       "surname": "Wick",
       "email": "pencil@kill.com",
       "password": "dog",
-      "accessType": "client",
+      "type": "standard",
       "id": 13
     },
     {
@@ -21,8 +21,16 @@
       "surname": "Vasilica",
       "email": "test@test.com",
       "password": "asdgf",
-      "accessType": "client",
+      "type": "premium",
       "id": 14
+    },
+    {
+      "name": "Ionut",
+      "surname": "Barbu",
+      "email": "123@321.com",
+      "password": "123455",
+      "type": "premium",
+      "id": 15
     }
   ],
   "movies": [
@@ -30,37 +38,50 @@
       "id": 1,
       "title": "Avengers: End Game",
       "description": "This movie is available to rent",
-      "genre": "Science Fiction"
+      "genre": "Science Fiction",
+      "releaseYear": 2019
     },
     {
       "id": 2,
       "title": "Bruce Almighty",
       "description": "This movie is available to rent",
-      "genre": "Comedy"
+      "genre": "Comedy",
+      "releaseYear": 2001
     },
     {
       "id": 3,
       "title": "Scary Movie",
       "description": "This movie is available to rent",
-      "genre": "Comedy"
+      "genre": "Comedy",
+      "releaseYear": 1995
     },
     {
       "title": "40 Year Old Virgin",
       "description": "This movie can be rented",
       "genre": "Horror",
-      "id": 4
+      "id": 4,
+      "releaseYear": 1998
     },
     {
       "title": "Batman",
       "description": "Movie with a superhero dressed in black.",
       "genre": "Action",
-      "id": 5
+      "id": 5,
+      "releaseYear": 2000
     },
     {
       "title": "Split",
       "description": "A psycopath with multiple personalities takes a girl hostage.",
       "genre": "Thriller",
-      "id": 6
+      "id": 6,
+      "releaseYear": 2017
+    },
+    {
+      "title": "The Purge",
+      "description": "Just a nice family-friendly movie to watch in a weekend.",
+      "genre": "Thriller",
+      "releaseYear": "2013",
+      "id": 7
     }
   ],
   "rentals": [
@@ -245,7 +266,7 @@
       "dueDate": "2023-06-15",
       "clientsId": 1,
       "moviesId": 1,
-      "status": "active",
+      "status": "returned",
       "id": 52
     },
     {
@@ -253,7 +274,7 @@
       "dueDate": "2023-06-22",
       "clientsId": 1,
       "moviesId": 5,
-      "status": "active",
+      "status": "returned",
       "id": 53
     },
     {
@@ -261,58 +282,56 @@
       "dueDate": "2023-06-28",
       "clientsId": 1,
       "moviesId": 2,
-      "status": "active",
+      "status": "returned",
       "id": 54
-    }
-  ],
-  "credentials": [
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 49
     },
     {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 50
-    },
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 51
-    },
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 52
-    },
-    {
-      "rentedDate": "",
-      "dueDate": "",
-      "clientsId": 12,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 53
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-17",
-      "clientsId": 12,
-      "moviesId": 1,
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 7,
       "status": "active",
-      "id": 54
+      "id": 55
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 7,
+      "status": "returned",
+      "id": 56
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 5,
+      "status": "active",
+      "id": 57
+    },
+    {
+      "rentedDate": "2023-06-09",
+      "dueDate": "2023-06-15",
+      "clientsId": 13,
+      "moviesId": 2,
+      "status": "active",
+      "id": 58
+    },
+    {
+      "rentedDate": "2023-06-13",
+      "dueDate": "2023-06-22",
+      "clientsId": 15,
+      "moviesId": 3,
+      "status": "active",
+      "id": 59
+    },
+    {
+      "rentedDate": "2023-06-13",
+      "dueDate": "2023-06-22",
+      "clientsId": 15,
+      "moviesId": 5,
+      "status": "active",
+      "id": 60
     }
   ],
   "credentials": []

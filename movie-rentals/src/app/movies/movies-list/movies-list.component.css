@@ -40,6 +40,17 @@ button {
   transform: translate(-50%,-50%);
 }
 
+.searchBox {
+  display: flex;
+  justify-content: center;
+}
+
 .searchInput {
   width: 30%;
+  margin: 0 auto;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
 }

@@ -1,17 +1,19 @@
 <h2 class="title is-1">Movies List</h2>
 <div>
-  <input style="margin-right: 30px;" class="input is-rounded searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)"
+  <div class="searchBox">
+    <input class="input is-rounded searchInput" name="searchTerm" type="text" (ngModelChange)="changed($event)"
          [(ngModel)]="searchTerm"
          id="searchTerm" placeholder="Search for a movie"/>
-  <div style="display: inline-block" class="control has-icons-left">
-  <div class="select is-rounded is-hovered">
-  <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
-    <option value="default">Select Genre</option>
-    <option *ngFor="let value of value" value="{{value.value}}">
-      {{value.display}}
-    </option>
-  </select>
   </div>
+  <div class="control has-icons-left">
+    <div class="select is-rounded is-hovered">
+      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
+        <option value="default">Select Genre</option>
+        <option *ngFor="let value of value" value="{{value.value}}">
+          {{value.display}}
+        </option>
+      </select>
+    </div>
     <div class="icon is-small is-left">
       <i style="font-weight: bold;color: blue" class="fa-solid fa-film"></i>
     </div>
@@ -19,17 +21,17 @@
   <div class="table-container">
     <table>
       <tr>
-        <th>Id</th>
         <th>Title</th>
         <th>Description</th>
         <th>Genre</th>
+        <th>Release Year</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">
-        <td>{{movie.id}}</td>
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>{{movie.genre}}</td>
+        <td>{{movie.releaseYear}}</td>
         <td>
           <button class="button is-success is-outlined is-rounded" (click)="onSelectedMovie(movie)">Rent</button>
           <button class="button is-info is-outlined is-rounded" (click)="editMovie(movie.id)">Edit</button>
