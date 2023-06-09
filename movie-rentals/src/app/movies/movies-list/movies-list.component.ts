@@ -14,17 +14,19 @@ import {RentMovieComponent} from "../../rental/rent-movie/rent-movie.component";
 export class MoviesListComponent implements OnInit {
   movies: Array<Movie> = [];
   searchTerm = '';
+  filteredMovies=this.movies;
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   moviesSearchCriterias = ['title', 'description'];
+  searchFilterCriterias: any = [];
   isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
-  filterType = 'genre'
+  filterType = 'genre,releaseYear'
   filter = '';
   value = [
     {
-      value: 'Science Fiction',
+      value: 'ScienceFiction',
       display: 'Science Fiction'
     },
     {
@@ -53,6 +55,7 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.isLoading = true;
     this.movieServices.getMovies()
       .subscribe(movies => {
@@ -100,5 +103,43 @@ export class MoviesListComponent implements OnInit {
 
   onSelectedFilter(filter: string) {
     this.filter = (filter === 'default') ? '' : filter;
+  }
+
+  empyArray(array:any){
+    array.splice(0,1);
+    return array;
+    console.log(array)
+  }
+
+
+  checkBoxSelected(filter: string) {
+    if (this.searchFilterCriterias.includes(filter)) {
+      this.searchFilterCriterias.forEach((element: any, index: any) => {
+        if (element === filter) this.searchFilterCriterias.splice(index, 1)
+      })
+      console.log(this.searchFilterCriterias)
+      if(this.searchFilterCriterias.length===0){
+        this.filteredMovies=this.movies
+      }
+
+    } else {
+      if(this.searchFilterCriterias.length===1 && this.searchFilterCriterias[0]==='default'){
+        console.log(this.searchFilterCriterias[0])
+        // this.searchFilterCriterias=this.searchFilterCriterias.splice(0,1);
+        this.empyArray(this.searchFilterCriterias);
+      }
+      this.searchFilterCriterias = [...this.searchFilterCriterias, filter];
+      console.log(this.searchFilterCriterias)
+      this.filteredMovies=this.movies.filter(movie => {
+        let found = false;
+        this.searchFilterCriterias.forEach((filter:any)=>{
+          if (movie.genre.toLowerCase() === filter) {
+          found = true
+        }
+        })
+        return found;
+        })
+
+    }
   }
 }
