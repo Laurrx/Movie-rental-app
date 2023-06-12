@@ -1,4 +1,4 @@
-<h2 style="text-align: center" class="title mt-4 mb-6">Clients</h2>
+<h2 style="text-align: center" class="title is-1 mt-4 mb-6">Clients</h2>
 <div>
   <input placeholder="Search Client" type="text" class="input is-rounded searchInput" (ngModelChange)="changed($event)"
          [(ngModel)]="searchTerm"/>
@@ -17,7 +17,6 @@
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>
-      <th>Id</th>
       <th>Name</th>
       <th>Surname</th>
       <th>Client type</th>
@@ -26,7 +25,6 @@
     </thead>
     <tbody>
     <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias:filter:filterType">
-      <td>{{client.id}}</td>
       <td>{{client.name}}</td>
       <td>{{client.surname}}</td>
       <td>{{client.type}}</td>

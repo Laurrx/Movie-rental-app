@@ -24,10 +24,10 @@
         <th>Title</th>
         <th>Description</th>
         <th>Genre</th>
-        <th>Release Year</th>
+        <th (click)="toggleSortDirection()">Release Year</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let movie of movies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">
+      <tr *ngFor="let movie of sortedMovies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>{{movie.genre}}</td>

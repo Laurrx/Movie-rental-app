@@ -20,6 +20,9 @@ export class MoviesListComponent implements OnInit {
   isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
+  sortedMovies: Movie[] = [];
+  sortDirection: 'asc' | 'desc' | null = null;
+  sortProperty: 'releaseYear' | 'genre' | null = null;
   filterType = 'genre'
   filter = '';
   value = [
@@ -58,6 +61,7 @@ export class MoviesListComponent implements OnInit {
       .subscribe(movies => {
         this.movies = movies
         this.isLoading = false;
+        this.sortMoviesByReleaseYear();
       });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
@@ -100,5 +104,30 @@ export class MoviesListComponent implements OnInit {
 
   onSelectedFilter(filter: string) {
     this.filter = (filter === 'default') ? '' : filter;
+  }
+
+  sortMoviesByReleaseYear(): void {
+    if (this.sortDirection === null) {
+    this.sortedMovies = this.movies.slice();
+    } else {
+      this.sortedMovies = this.movies.slice().sort((a: any, b: any) => {
+        if (this.sortDirection === 'asc') {
+         return a.releaseYear - b.releaseYear;
+       } else {
+         return b.releaseYear - a.releaseYear;
+       }
+     });
+    }
+  }
+
+  toggleSortDirection(): void {
+    if (this.sortDirection === null) {
+      this.sortDirection = 'asc';
+    } else if (this.sortDirection === 'asc') {
+      this.sortDirection = 'desc';
+    } else {
+      this.sortDirection = null;
+    }
+    this.sortMoviesByReleaseYear();
   }
 }
