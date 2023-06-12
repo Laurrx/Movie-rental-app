@@ -2,18 +2,19 @@
 <div>
   <input placeholder="Search Client" type="text" class="input is-rounded searchInput" (ngModelChange)="changed($event)"
          [(ngModel)]="searchTerm"/>
-  <div style="display: inline-block;" class="control has-icons-left">
-    <div class="select is-rounded">
-      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
-        <option *ngFor="let value of value" value="{{value.value}}">
-          {{value.display}}
-        </option>
-      </select>
-    </div>
-    <div class="icon is-small is-left">
-      <i style="font-weight: bold;color: blue" class="fa-regular fa-user"></i>
-    </div>
-  </div>
+
+  <!--  <div style="display: inline-block;" class="control has-icons-left">-->
+  <!--    <div class="select is-rounded">-->
+  <!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
+  <!--        <option *ngFor="let value of value" value="{{value.value}}">-->
+  <!--          {{value.display}}-->
+  <!--        </option>-->
+  <!--      </select>-->
+  <!--    </div>-->
+  <!--    <div class="icon is-small is-left">-->
+  <!--      <i style="font-weight: bold;color: blue" class="fa-regular fa-user"></i>-->
+  <!--    </div>-->
+  <!--  </div>-->
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>

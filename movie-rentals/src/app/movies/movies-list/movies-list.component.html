@@ -5,19 +5,36 @@
          [(ngModel)]="searchTerm"
          id="searchTerm" placeholder="Search for a movie"/>
   </div>
-  <div class="control has-icons-left">
-    <div class="select is-rounded is-hovered">
-      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">
-        <option value="default">Select Genre</option>
-        <option *ngFor="let value of value" value="{{value.value}}">
-          {{value.display}}
-        </option>
-      </select>
-    </div>
-    <div class="icon is-small is-left">
-      <i style="font-weight: bold;color: blue" class="fa-solid fa-film"></i>
-    </div>
+  <div >
+    <h2>Filter Genre</h2>
+    <label *ngFor="let value of value" class="checkbox">
+      <input (change)="checkBoxSelected(checkBox.value)" #checkBox type="checkbox" value="{{value.value}}">
+        {{value.display}}
+    </label>
   </div>
+  <div>
+    <select #selectedFilter (change)="selectedYear(selectedFilter.value)">
+      <option value="0">Select Year</option>
+      <option value="1995">1995</option>
+      <option value="1998">1998</option>
+      <option value="2000">2000</option>
+      <option value="2001">2001</option>
+
+    </select>
+  </div>
+<!--  <div class="control has-icons-left">-->
+<!--    <div class="select is-rounded is-hovered">-->
+<!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
+<!--        <option value="default">Select Genre</option>-->
+<!--        <option *ngFor="let value of value" value="{{value.value}}">-->
+<!--          {{value.display}}-->
+<!--        </option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <div class="icon is-small is-left">-->
+<!--      <i style="font-weight: bold;color: blue" class="fa-solid fa-film"></i>-->
+<!--    </div>-->
+<!--  </div>-->
   <div class="table-container">
     <table>
       <tr>
@@ -27,7 +44,7 @@
         <th (click)="toggleSortDirection()">Release Year</th>
         <th>Actions</th>
       </tr>
-      <tr *ngFor="let movie of sortedMovies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">
+      <tr *ngFor="let movie of filteredMovies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">
         <td>{{movie.title}}</td>
         <td>{{movie.description}}</td>
         <td>{{movie.genre}}</td>

@@ -14,16 +14,19 @@ import {RentMovieComponent} from "../../rental/rent-movie/rent-movie.component";
 export class MoviesListComponent implements OnInit {
   movies: Array<Movie> = [];
   searchTerm = '';
+  filteredMovies = this.movies;
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   moviesSearchCriterias = ['title', 'description'];
+  searchFilterCriterias: any = [];
   isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
-  sortedMovies: Movie[] = [];
+  // sortedMovies: Movie[] = [];
   sortDirection: 'asc' | 'desc' | null = null;
   sortProperty: 'releaseYear' | 'genre' | null = null;
-  filterType = 'genre'
+  filterType = 'genre,releaseYear';
+  selectYear = 0;
   filter = '';
   value = [
     {
@@ -56,10 +59,12 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.isLoading = true;
     this.movieServices.getMovies()
       .subscribe(movies => {
         this.movies = movies
+        this.filteredMovies = this.movies;
         this.isLoading = false;
         this.sortMoviesByReleaseYear();
       });
@@ -102,15 +107,66 @@ export class MoviesListComponent implements OnInit {
     this.isSelectedMovie = $event;
   }
 
-  onSelectedFilter(filter: string) {
-    this.filter = (filter === 'default') ? '' : filter;
+  // onSelectedFilter(filter: string) {
+  //   this.filter = (filter === 'default') ? '' : filter;
+  // }
+
+  checkBoxSelected(filter: string) {
+    if (this.searchFilterCriterias.includes(filter)) {
+      this.searchFilterCriterias.forEach((element: any, index: any) => {
+        if (element === filter) this.searchFilterCriterias.splice(index, 1)
+      })
+      // this.filteredMovies=this.movies.filter(movie => {
+      //   let found = false;
+      //   this.searchFilterCriterias.forEach((filter:any)=>{
+      //     if (movie.genre.toLowerCase() === filter.toLowerCase() || movie.releaseYear == this.selectYear) {
+      //       console.log("the filter value is"+filter.value)
+      //       found = true
+      //     }
+      //   })
+      //   return found;
+      // })
+      console.log("the searchFilterCriterias are "+this.searchFilterCriterias + "and length is "+this.searchFilterCriterias.length
+                  +"and the filteredMovies are "+this.filteredMovies)
+
+
+    } else {
+      // if (this.searchFilterCriterias.length === 1 && this.searchFilterCriterias[0] === 'default') {
+      //   console.log(this.searchFilterCriterias[0])
+      //   this.searchFilterCriterias = this.searchFilterCriterias.splice(0, 1);
+      // }
+      this.searchFilterCriterias = [...this.searchFilterCriterias, filter];
+    }
+    if (this.searchFilterCriterias.length === 0) {
+      this.filteredMovies=this.movies;
+      console.log("filtered movies are "+this.filteredMovies+"and movies are "+this.movies)
+    }
+    if(this.searchFilterCriterias!=0){
+      this.filteredMovies = this.movies.filter(movie => {
+        let found = false;
+        this.searchFilterCriterias.forEach((filter: any) => {
+          if (movie.genre.toLowerCase() === filter.toLowerCase() || movie.releaseYear===this.selectYear) {
+            found = true
+          }
+        })
+        return found;
+      })
+    }
+
+
+
+  }
+
+  selectedYear(value: string) {
+    this.selectYear= +value;
+    console.log(value)
   }
 
   sortMoviesByReleaseYear(): void {
     if (this.sortDirection === null) {
-    this.sortedMovies = this.movies.slice();
+    this.filteredMovies = this.movies.slice();
     } else {
-      this.sortedMovies = this.movies.slice().sort((a: any, b: any) => {
+      this.filteredMovies = this.movies.slice().sort((a: any, b: any) => {
         if (this.sortDirection === 'asc') {
          return a.releaseYear - b.releaseYear;
        } else {
