@@ -154,7 +154,7 @@ export class MoviesListComponent implements OnInit {
   }
 
   selectedYear(value: string) {
-    this.selectYear=+value;
+    this.selectYear= +value;
     console.log(value)
   }
 }
