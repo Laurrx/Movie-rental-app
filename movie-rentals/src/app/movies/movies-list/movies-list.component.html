@@ -13,8 +13,8 @@
     </label>
   </div>
   <div>
-    <select #selectedFilter (change)="checkBoxSelected(selectedFilter.value)">
-      <option value="default">Select Year</option>
+    <select #selectedFilter (change)="selectedYear(selectedFilter.value)">
+      <option value="0">Select Year</option>
       <option value="1995">1995</option>
       <option value="1998">1998</option>
       <option value="2000">2000</option>
