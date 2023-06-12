@@ -6,7 +6,7 @@
          id="searchTerm" placeholder="Search for a movie"/>
   </div>
   <div >
-    <h2>Filter Genre</h2>
+    <p>Filter Genre</p>
     <label *ngFor="let value of value" class="checkbox">
       <input (change)="checkBoxSelected(checkBox.value)" #checkBox type="checkbox" value="{{value.value}}">
         {{value.display}}
