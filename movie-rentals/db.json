@@ -82,6 +82,13 @@
       "genre": "Thriller",
       "releaseYear": "2013",
       "id": 7
+    },
+    {
+      "title": "Harry Potter And The Philosopher's Stone",
+      "description": "Harry finds out he is a wizzard.",
+      "genre": "Fiction",
+      "releaseYear": "2001",
+      "id": 8
     }
   ],
   "rentals": [

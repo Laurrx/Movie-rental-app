@@ -48,6 +48,10 @@ export class MoviesListComponent implements OnInit {
     {
       value: 'thriller',
       display: 'Thriller'
+    },
+    {
+      value: 'fiction',
+      display: 'Fiction'
     }
   ]
 
