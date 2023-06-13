@@ -1,16 +1,15 @@
-
+table th, table td {
+  padding: 10px;
+  border-bottom: 2px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
 
 table {
   width: 100%;
   margin-top: 20px;
 }
 
-th, td {
-  padding: 10px;
-  border-bottom: 2px solid black;
-  text-align: center;
-  vertical-align: middle;
-}
 
 tr:hover {
   background-color: coral;
@@ -53,4 +52,5 @@ button {
 h2 {
   width: 100%;
   text-align: center;
+  font-family: Verdana, Helvetica, sans-serif;
 }

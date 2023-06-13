@@ -2,7 +2,6 @@
 
 <table>
     <tr>
-        <th>Rental ID</th>
         <th>Movie Title</th>
         <th>Client Name</th>
         <th>Rented Date</th>
@@ -10,7 +9,6 @@
         <th>Actions</th>
     </tr>
     <tr *ngFor="let rental of rentals">
-        <td *ngIf="rental.status === 'active'">{{rental.id}}</td>
         <td *ngIf="rental.status === 'active'">{{rental.movieTitle}}</td>
         <td *ngIf="rental.status === 'active'">{{rental.clientFullname}}</td>
         <td *ngIf="rental.status === 'active'">{{rental.rentedDate}}</td>
