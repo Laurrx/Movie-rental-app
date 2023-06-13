@@ -19,6 +19,8 @@ export class ClientsListComponent implements OnInit {
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   selectedClient!: Client;
+  sortDirection: 'asc' | 'desc' | null = null;
+  sortedClients = this.clients;
   isLoading = false;
   filter = '';
   filterType = 'type';
@@ -44,6 +46,9 @@ export class ClientsListComponent implements OnInit {
       .subscribe(clients => {
         this.clients = clients
         this.isLoading = false;
+        this.sortClientsByBirthday();
+        this.sortClientsBySurname();
+        this.sortClientsByName();
       });
 
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
@@ -90,4 +95,89 @@ export class ClientsListComponent implements OnInit {
     this.filter = (filter === 'default') ? '' : filter;
   }
 
+  toggleSortDirection(sortMethod: () => void) {
+    if (this.sortDirection === null) {
+      this.sortDirection = 'asc';
+    } else if (this.sortDirection === 'asc') {
+      this.sortDirection = 'desc';
+    } else {
+      this.sortDirection = null;
+    }
+    sortMethod();
+  }
+
+  sortClientsByBirthday(): void {
+    if (this.sortDirection === null) {
+      this.sortedClients = this.clients.slice();
+    } else {
+      this.sortedClients = this.clients.slice().sort((a, b) => {
+        const dateA = new Date(a.birthday);
+        const dateB = new Date(b.birthday)
+        if (this.sortDirection === 'asc') {
+          if (dateA < dateB) {
+            return -1;
+          } else if (dateA > dateB) {
+            return 1;
+          }
+        } else if (this.sortDirection === 'desc') {
+          if (dateA > dateB) {
+            return -1;
+          } else if (dateA < dateB) {
+            return 1;
+          }
+        }
+        return 0;
+      });
+    }
+  }
+
+  sortClientsBySurname() {
+    if (this.sortDirection === null) {
+      this.sortedClients = this.clients.slice();
+    } else {
+      this.sortedClients = this.clients.slice().sort((a, b) => {
+        const surnameA = a.surname.toLowerCase();
+        const surnameB = b.surname.toLowerCase();
+        if (this.sortDirection === 'asc') {
+          if (surnameA < surnameB) {
+            return -1;
+          } else if (surnameA > surnameB) {
+            return 1;
+          }
+        } else if (this.sortDirection === 'desc') {
+          if (surnameA > surnameB) {
+            return -1;
+          } else if (surnameA < surnameB) {
+            return 1;
+          }
+        }
+        return 0;
+      });
+    }
+  }
+
+  sortClientsByName() {
+    if (this.sortDirection === null) {
+      this.sortedClients = this.clients.slice();
+    } else {
+      this.sortedClients = this.clients.slice().sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        if (this.sortDirection === 'asc') {
+          if (nameA < nameB) {
+            return -1;
+          } else if (nameA > nameB) {
+            return 1;
+          }
+        } else if (this.sortDirection === 'desc') {
+          if (nameA > nameB) {
+            return -1;
+          } else if (nameA < nameB) {
+            return 1;
+          }
+        }
+        return 0;
+      });
+    }
+  }
 }

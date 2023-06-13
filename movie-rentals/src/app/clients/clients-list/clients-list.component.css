@@ -28,3 +28,7 @@ input{
 h2 {
   font-family: Verdana, Helvetica, sans-serif;
 }
+
+.pointer {
+  cursor: pointer;
+}

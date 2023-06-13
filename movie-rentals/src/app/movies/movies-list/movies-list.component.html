@@ -38,10 +38,10 @@
   <div class="table-container">
     <table>
       <tr>
-        <th>Title</th>
+        <th class="pointer" (click)="toggleSortDirection(this.sortMoviesByTitle.bind(this))">Title</th>
         <th>Description</th>
-        <th>Genre</th>
-        <th (click)="toggleSortDirection()">Release Year</th>
+        <th class="pointer" (click)="toggleSortDirection(this.sortMoviesByGenre.bind(this))">Genre</th>
+        <th class="pointer" (click)="toggleSortDirection(this.sortMoviesByReleaseYear.bind(this))">Release Year</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let movie of filteredMovies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">

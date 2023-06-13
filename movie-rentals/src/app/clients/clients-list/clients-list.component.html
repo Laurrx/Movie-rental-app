@@ -3,7 +3,7 @@
   <input placeholder="Search Client" type="text" class="input is-rounded searchInput" (ngModelChange)="changed($event)"
          [(ngModel)]="searchTerm"/>
 
-  <!--  <div style="display: inline-block;" class="control has-icons-left">-->
+   <!-- <div style="display: inline-block;" class="control has-icons-left">-->
   <!--    <div class="select is-rounded">-->
   <!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
   <!--        <option *ngFor="let value of value" value="{{value.value}}">-->
@@ -14,20 +14,22 @@
   <!--    <div class="icon is-small is-left">-->
   <!--      <i style="font-weight: bold;color: blue" class="fa-regular fa-user"></i>-->
   <!--    </div>-->
-  <!--  </div>-->
+  <!--  </div> -->
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Surname</th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByName.bind(this))">Name</th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsBySurname.bind(this))">Surname</th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByBirthday.bind(this))">Birthday</th>
       <th>Client type</th>
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias:filter:filterType">
+    <tr *ngFor="let client of sortedClients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias:filter:filterType">
       <td>{{client.name}}</td>
       <td>{{client.surname}}</td>
+      <td>{{client.birthday}}</td>
       <td>{{client.type}}</td>
       <td>
         <div class="field is-grouped">

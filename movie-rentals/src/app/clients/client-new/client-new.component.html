@@ -134,7 +134,13 @@
       </p>
     </div>
   </div>
-
+  <div>
+    <label for="birthday">Birthday: <input formControlName="birthday" id="birthday" type="date"/>
+    </label>
+    <p *ngIf="newClientForm.controls.birthday.hasError('required')" class="help is-danger">
+        Birthday required
+      </p>
+  </div>
   <div>
     <label class="label">Client type</label>
     <div>
