@@ -1,3 +1,4 @@
-<p class="title">Are you sure you want to delete {{data.name + " " +data.surname}}?</p>
+<p *ngIf="data.title" class="title">Are you sure you want to delete {{data.title}}?</p>
+<p *ngIf="data.name" class="title">Are you sure you want to delete {{data.name + " " + data.surname}}?</p>
 <button class="button" (click)="closeDialog(true)">Yes</button>
 <button class="button" (click)="closeDialog(false)">No</button>

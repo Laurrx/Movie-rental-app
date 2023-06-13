@@ -89,6 +89,13 @@
       "genre": "Fiction",
       "releaseYear": "2001",
       "id": 8
+    },
+    {
+      "title": "Ice Age",
+      "description": "",
+      "genre": "Thriller",
+      "releaseYear": "2000",
+      "id": 9
     }
   ],
   "rentals": [

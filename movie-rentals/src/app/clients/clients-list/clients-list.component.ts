@@ -71,8 +71,6 @@ export class ClientsListComponent implements OnInit {
             .subscribe((items: Array<Client>) => this.clients = items);
         }
       })
-
-
   }
 
   itChanged = false;
