@@ -23,8 +23,12 @@ export class MoviesListComponent implements OnInit {
   selectedMovie?: any;
   isSelectedMovie = false;
   filterType = 'genre,releaseYear'
-  selectYear=0;
+  selectYear = 0;
   filter = '';
+  sortedMovies = [];
+  titleCount = 0;
+  genreCount = 0;
+  releaseYearCount = 0;
   value = [
     {
       value: 'Science Fiction',
@@ -122,8 +126,8 @@ export class MoviesListComponent implements OnInit {
       //   })
       //   return found;
       // })
-      console.log("the searchFilterCriterias are "+this.searchFilterCriterias + "and length is "+this.searchFilterCriterias.length
-                  +"and the filteredMovies are "+this.filteredMovies)
+      console.log("the searchFilterCriterias are " + this.searchFilterCriterias + "and length is " + this.searchFilterCriterias.length
+        + "and the filteredMovies are " + this.filteredMovies)
 
 
     } else {
@@ -134,14 +138,14 @@ export class MoviesListComponent implements OnInit {
       this.searchFilterCriterias = [...this.searchFilterCriterias, filter];
     }
     if (this.searchFilterCriterias.length === 0) {
-      this.filteredMovies=this.movies;
-      console.log("filtered movies are "+this.filteredMovies+"and movies are "+this.movies)
+      this.filteredMovies = this.movies;
+      console.log("filtered movies are " + this.filteredMovies + "and movies are " + this.movies)
     }
-    if(this.searchFilterCriterias!=0){
+    if (this.searchFilterCriterias != 0) {
       this.filteredMovies = this.movies.filter(movie => {
         let found = false;
         this.searchFilterCriterias.forEach((filter: any) => {
-          if (movie.genre.toLowerCase() === filter.toLowerCase() || movie.releaseYear===this.selectYear) {
+          if (movie.genre.toLowerCase() === filter.toLowerCase() || movie.releaseYear === this.selectYear) {
             found = true
           }
         })
@@ -150,11 +154,40 @@ export class MoviesListComponent implements OnInit {
     }
 
 
-
   }
 
   selectedYear(value: string) {
-    this.selectYear= +value;
+    this.selectYear = +value;
     console.log(value)
+  }
+
+  sortBy(value: string) {
+    this.sortedMovies = [];
+    let copyOfMovies = this.movies;
+    console.log(this.sortedMovies)
+    switch (value) {
+      case "title":
+        this.titleCount++;
+        if (this.titleCount === 1) {
+          this.filteredMovies = copyOfMovies.sort((a, b) => a.title > b.title ? 1 : -1)
+          this.filteredMovies = copyOfMovies.filter(movies => [...this.sortedMovies, movies])
+        } else if (this.titleCount === 2) {
+          this.filteredMovies = copyOfMovies.sort((a, b) => a.title < b.title ? 1 : -1)
+          this.filteredMovies = copyOfMovies.filter(movies => [...this.sortedMovies, movies])
+        } else {
+            this.filteredMovies=this.movies
+        }
+        break;
+      case "genre":
+        this.filteredMovies = this.movies.sort((a, b) => a.genre > b.genre ? 1 : -1)
+        this.filteredMovies = this.movies.filter(movies => [...this.sortedMovies, movies])
+        break;
+      case "releaseYear":
+        this.filteredMovies = this.movies.sort((a, b) => a.releaseYear > b.releaseYear ? 1 : -1)
+        this.filteredMovies = this.movies.filter(movies => [...this.sortedMovies, movies])
+        console.log(this.filteredMovies)
+        break;
+
+    }
   }
 }

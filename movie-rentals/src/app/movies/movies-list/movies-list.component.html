@@ -18,7 +18,7 @@
       <option value="1995">1995</option>
       <option value="1998">1998</option>
       <option value="2000">2000</option>
-      <option value="2001">20001</option>
+      <option value="2001">2001</option>
 
     </select>
   </div>
@@ -38,10 +38,10 @@
   <div class="table-container">
     <table>
       <tr>
-        <th>Title</th>
+        <th (click)="sortBy('title')">Title</th>
         <th>Description</th>
-        <th>Genre</th>
-        <th>Release Year</th>
+        <th (click)="sortBy('genre')">Genre</th>
+        <th (click)="sortBy('releaseYear')">Release Year</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let movie of filteredMovies | myCustomSearch:debouncedSearchTerm:moviesSearchCriterias:filter:filterType">
