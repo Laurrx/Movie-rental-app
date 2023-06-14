@@ -29,7 +29,7 @@ export class MovieNewComponent {
       title: this.form.controls.title.value,
       description: this.form.controls.description.value,
       genre: this.form.controls.genre.value,
-      releaseYear: this.form.controls.releaseYear.value
+      releaseYear: +this.form.controls.releaseYear.value!
     } as Movie;
 
     this.movieService.save(movie)

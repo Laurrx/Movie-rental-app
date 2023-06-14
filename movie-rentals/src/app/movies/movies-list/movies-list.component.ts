@@ -31,6 +31,7 @@ export class MoviesListComponent implements OnInit {
   titleCount = 0;
   genreCount = 0;
   releaseYearCount = 0;
+  releaseYears: any = [];
   value = [
     {
       value: 'Science Fiction',
@@ -68,6 +69,12 @@ export class MoviesListComponent implements OnInit {
     this.movieServices.getMovies()
       .subscribe(movies => {
         this.movies = movies
+        this.movies.forEach(movie => {
+          this.releaseYears = [...this.releaseYears, movie.releaseYear]
+
+        })
+        this.releaseYears = this.releaseYears.sort((a: any, b: any) => a > b ? 1 : -1)
+        this.releaseYears = this.uniqByFilter(this.releaseYears);
         this.filteredMovies = this.movies;
         this.isLoading = false;
       });
@@ -119,6 +126,10 @@ export class MoviesListComponent implements OnInit {
   // onSelectedFilter(filter: string) {
   //   this.filter = (filter === 'default') ? '' : filter;
   // }
+
+  uniqByFilter<T>(array: T[]) {
+    return array.filter((value, index) => array.indexOf(value) === index);
+  }
 
   checkBoxSelected(filter: string) {
     if (this.searchFilterCriterias.includes(filter)) {
