@@ -1,6 +1,6 @@
-input{
+.searchInput {
   width: 30%;
-  margin-right: 20px;
+  margin: 0 auto;
 }
 
 .table th, .table td {

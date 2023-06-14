@@ -24,16 +24,16 @@ export class ClientsListComponent implements OnInit {
   isLoading = false;
   filter = '';
   filterType = 'type';
-  value = [{
-    display: 'Select Filter',
-    value: 'default'
-  }, {
-    display: 'Standard',
-    value: 'standard'
-  }, {
-    display: 'Premium',
-    value: 'premium'
-  }]
+  searchFilterCriterias: any = [];
+  value = [
+    {
+      display: 'Standard',
+      value: 'standard'
+    }, {
+      display: 'Premium',
+      value: 'premium'
+    }
+  ]
 
   constructor(private clientService: ClientService,
               private router: Router,
@@ -46,6 +46,7 @@ export class ClientsListComponent implements OnInit {
       .subscribe(clients => {
         this.clients = clients
         this.isLoading = false;
+        this.sortedClients = this.clients;
         this.sortClientsByBirthday();
         this.sortClientsBySurname();
         this.sortClientsByName();
@@ -180,4 +181,29 @@ export class ClientsListComponent implements OnInit {
       });
     }
   }
+
+  checkBoxSelected(filter: string) {
+    if (this.searchFilterCriterias.includes(filter)) {
+      this.searchFilterCriterias.forEach((element: any, index: any) => {
+        if (element === filter) this.searchFilterCriterias.splice(index, 1)
+      })
+    } else {
+      this.searchFilterCriterias = [...this.searchFilterCriterias, filter];
+    }
+    if (this.searchFilterCriterias.length === 0) {
+      this.sortedClients = this.clients;
+    }
+    if (this.searchFilterCriterias != 0) {
+      this.sortedClients = this.clients.filter(clients => {
+        let found = false;
+        this.searchFilterCriterias.forEach((filter: any) => {
+          if (clients.type.toLowerCase() === filter.toLowerCase()) {
+            found = true
+          }
+        })
+        return found;
+      })
+    }
+  }
+
 }

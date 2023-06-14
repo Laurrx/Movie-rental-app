@@ -2,7 +2,13 @@
 <div>
   <input placeholder="Search Client" type="text" class="input is-rounded searchInput" (ngModelChange)="changed($event)"
          [(ngModel)]="searchTerm"/>
-
+  <div>
+    <p>Filter Client type</p>
+    <label *ngFor="let value of value" class="checkbox">
+      <input (change)="checkBoxSelected(checkBox.value)" #checkBox type="checkbox" value="{{value.value}}">
+        {{value.display}}
+    </label>
+  </div>
    <!-- <div style="display: inline-block;" class="control has-icons-left">-->
   <!--    <div class="select is-rounded">-->
   <!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
