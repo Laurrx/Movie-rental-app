@@ -24,9 +24,18 @@
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>
-      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByName.bind(this))">Name</th>
-      <th class="pointer" (click)="toggleSortDirection(this.sortClientsBySurname.bind(this))">Surname</th>
-      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByBirthday.bind(this))">Birthday</th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByName.bind(this))">
+        Name
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirection === 'asc', 'fa-arrow-down': sortDirection === 'desc'}"></i>
+      </th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsBySurname.bind(this))">
+        Surname
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirection === 'asc', 'fa-arrow-down': sortDirection === 'desc'}"></i>
+      </th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByBirthday.bind(this))">
+        Birthday
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirection === 'asc', 'fa-arrow-down': sortDirection === 'desc'}"></i>
+      </th>
       <th>Client type</th>
       <th>Actions</th>
     </tr>

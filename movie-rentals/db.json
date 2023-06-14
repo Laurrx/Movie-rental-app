@@ -44,6 +44,24 @@
       "type": "standard",
       "birthday": "2007-06-15",
       "id": 16
+    },
+    {
+      "name": "Andreea",
+      "surname": "Balan",
+      "email": "adbaobu@aosdao.com",
+      "password": "asjdbaod",
+      "type": "standard",
+      "birthday": "1989-11-25",
+      "id": 17
+    },
+    {
+      "name": "Iulia",
+      "surname": "Albu",
+      "email": "aosdaod@oandia.com",
+      "password": "adada",
+      "type": "premium",
+      "birthday": "1978-04-14",
+      "id": 18
     }
   ],
   "movies": [
