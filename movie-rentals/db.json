@@ -80,22 +80,15 @@
       "title": "The Purge",
       "description": "Just a nice family-friendly movie to watch in a weekend.",
       "genre": "Thriller",
-      "releaseYear": "2013",
+      "releaseYear": 2013,
       "id": 7
     },
     {
       "title": "Harry Potter And The Philosopher's Stone",
       "description": "Harry finds out he is a wizzard.",
       "genre": "Fiction",
-      "releaseYear": "2001",
+      "releaseYear": 2001,
       "id": 8
-    },
-    {
-      "title": "Ice Age",
-      "description": "",
-      "genre": "Thriller",
-      "releaseYear": "2000",
-      "id": 9
     }
   ],
   "rentals": [
@@ -202,102 +195,6 @@
       "moviesId": 5,
       "status": "returned",
       "id": 45
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-09",
-      "clientsId": 12,
-      "moviesId": 5,
-      "status": "returned",
-      "id": 46
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-10",
-      "clientsId": 12,
-      "moviesId": 3,
-      "status": "returned",
-      "id": 47
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-10",
-      "clientsId": 12,
-      "moviesId": 2,
-      "status": "active",
-      "id": 48
-    },
-    {
-      "rentedDate": "2023-06-07",
-      "dueDate": "2023-06-15",
-      "clientsId": 8,
-      "moviesId": 2,
-      "status": "returned",
-      "id": 46
-    },
-    {
-      "rentedDate": "2023-06-07",
-      "dueDate": "2023-06-08",
-      "clientsId": 1,
-      "moviesId": 2,
-      "status": "returned",
-      "id": 47
-    },
-    {
-      "rentedDate": "2023-06-07",
-      "dueDate": "2023-06-15",
-      "clientsId": 1,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 48
-    },
-    {
-      "rentedDate": "2023-06-15",
-      "dueDate": "2023-06-23",
-      "clientsId": 1,
-      "moviesId": 2,
-      "status": "returned",
-      "id": 49
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-14",
-      "clientsId": 1,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 50
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-14",
-      "clientsId": 8,
-      "moviesId": 3,
-      "status": "returned",
-      "id": 51
-    },
-    {
-      "rentedDate": "2023-06-08",
-      "dueDate": "2023-06-15",
-      "clientsId": 1,
-      "moviesId": 1,
-      "status": "returned",
-      "id": 52
-    },
-    {
-      "rentedDate": "2023-06-15",
-      "dueDate": "2023-06-22",
-      "clientsId": 1,
-      "moviesId": 5,
-      "status": "returned",
-      "id": 53
-    },
-    {
-      "rentedDate": "2023-06-15",
-      "dueDate": "2023-06-28",
-      "clientsId": 1,
-      "moviesId": 2,
-      "status": "returned",
-      "id": 54
     },
     {
       "rentedDate": "2023-06-09",

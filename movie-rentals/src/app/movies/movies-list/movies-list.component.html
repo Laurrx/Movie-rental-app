@@ -14,12 +14,8 @@
   </div>
   <div>
     <select #selectedFilter (change)="selectedYear(selectedFilter.value)">
-      <option value="0">Select Year</option>
-      <option value="1995">1995</option>
-      <option value="1998">1998</option>
-      <option value="2000">2000</option>
-      <option value="2001">2001</option>
-
+      <option value="default">Select Year</option>
+      <option *ngFor="let value of movies" value="{{value.releaseYear}}">{{value.releaseYear}}</option>
     </select>
   </div>
 <!--  <div class="control has-icons-left">-->
