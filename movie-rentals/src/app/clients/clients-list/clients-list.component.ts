@@ -6,6 +6,8 @@ import {debounceTime, Subject} from "rxjs";
 import {deleteFunction} from "../../shared/utilities";
 import {Dialog} from '@angular/cdk/dialog';
 import {DeleteModalComponent} from "../../delete-modal/delete-modal.component";
+import * as bulmaCalendar from 'bulma-calendar';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-clients-list',
@@ -19,7 +21,11 @@ export class ClientsListComponent implements OnInit {
   debouncedSearchTerm = '';
   modelChanged = new Subject<string>();
   selectedClient!: Client;
-  sortDirection: 'asc' | 'desc' | null = null;
+  sortDirections: {[key: string]: string | null} = {
+    birthday: null,
+    name: null,
+    surname: null
+  }
   sortedClients = this.clients;
   isLoading = false;
   filter = '';
@@ -33,11 +39,35 @@ export class ClientsListComponent implements OnInit {
       display: 'Premium',
       value: 'premium'
     }
-  ]
+  ];
+  filterForm: FormGroup;
 
-  constructor(private clientService: ClientService,
-              private router: Router,
-              private dialog: Dialog) {
+  constructor(private clientService: ClientService, private router: Router, private dialog: Dialog, private fb: FormBuilder) {
+    this.filterForm = this.fb.group({
+      range: ['']
+    });
+
+    const rangeControl = this.filterForm.get('range');
+    if (rangeControl) {
+      rangeControl.valueChanges.subscribe((range: string) => {
+        this.sortedClients = this.clients.filter((item) => {
+          const year = Number(item.birthday.substring(0, 4));
+  
+          if (range === '1949' && year < 1949) {
+            return true;
+          } else if (range === '1950-1969' && year >= 1950 && year <= 1969) {
+            return true;
+          } else if (range === '1970-1989' && year >= 1970 && year <= 1989) {
+            return true;
+          } else if (range === '1990-2009' && year >= 1990 && year <= 2009) {
+            return true;
+          } else if (range === '2010' && year > 2010) {
+            return true;
+          }
+          return false;
+        });
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -96,31 +126,32 @@ export class ClientsListComponent implements OnInit {
     this.filter = (filter === 'default') ? '' : filter;
   }
 
-  toggleSortDirection(sortMethod: () => void) {
-    if (this.sortDirection === null) {
-      this.sortDirection = 'asc';
-    } else if (this.sortDirection === 'asc') {
-      this.sortDirection = 'desc';
+  toggleSortDirection(sortMethod: () => void, sortedMethod: string) {
+    if (this.sortDirections[sortedMethod] === null) {
+      this.sortDirections[sortedMethod] = 'asc';
+    } else if (this.sortDirections[sortedMethod] === 'asc') {
+      this.sortDirections[sortedMethod] = 'desc';
     } else {
-      this.sortDirection = null;
+      this.sortDirections[sortedMethod] = null;
     }
     sortMethod();
   }
 
   sortClientsByBirthday(): void {
-    if (this.sortDirection === null) {
+    this.resetSortOrder(['name', 'surname']);
+    if (this.sortDirections['birthday'] === null) {
       this.sortedClients = this.clients.slice();
     } else {
-      this.sortedClients = this.clients.slice().sort((a, b) => {
+      this.sortedClients = this.sortedClients.slice().sort((a, b) => {
         const dateA = new Date(a.birthday);
-        const dateB = new Date(b.birthday)
-        if (this.sortDirection === 'asc') {
+        const dateB = new Date(b.birthday);
+        if (this.sortDirections['birthday'] === 'asc') {
           if (dateA < dateB) {
             return -1;
           } else if (dateA > dateB) {
             return 1;
           }
-        } else if (this.sortDirection === 'desc') {
+        } else if (this.sortDirections['birthday'] === 'desc') {
           if (dateA > dateB) {
             return -1;
           } else if (dateA < dateB) {
@@ -133,19 +164,20 @@ export class ClientsListComponent implements OnInit {
   }
 
   sortClientsBySurname() {
-    if (this.sortDirection === null) {
+    this.resetSortOrder(['birthday', 'name']);
+    if (this.sortDirections['surname'] === null) {
       this.sortedClients = this.clients.slice();
     } else {
-      this.sortedClients = this.clients.slice().sort((a, b) => {
+      this.sortedClients = this.sortedClients.slice().sort((a, b) => {
         const surnameA = a.surname.toLowerCase();
         const surnameB = b.surname.toLowerCase();
-        if (this.sortDirection === 'asc') {
+        if (this.sortDirections['surname'] === 'asc') {
           if (surnameA < surnameB) {
             return -1;
           } else if (surnameA > surnameB) {
             return 1;
           }
-        } else if (this.sortDirection === 'desc') {
+        } else if (this.sortDirections['surname'] === 'desc') {
           if (surnameA > surnameB) {
             return -1;
           } else if (surnameA < surnameB) {
@@ -158,19 +190,20 @@ export class ClientsListComponent implements OnInit {
   }
 
   sortClientsByName() {
-    if (this.sortDirection === null) {
+      this.resetSortOrder(['birthday', 'surname']);
+    if (this.sortDirections['name'] === null) {
       this.sortedClients = this.clients.slice();
     } else {
-      this.sortedClients = this.clients.slice().sort((a, b) => {
+      this.sortedClients = this.sortedClients.slice().sort((a, b) => {
         const nameA = a.name.toLowerCase();
         const nameB = b.name.toLowerCase();
-        if (this.sortDirection === 'asc') {
+        if (this.sortDirections['name'] === 'asc') {
           if (nameA < nameB) {
             return -1;
           } else if (nameA > nameB) {
             return 1;
           }
-        } else if (this.sortDirection === 'desc') {
+        } else if (this.sortDirections['name'] === 'desc') {
           if (nameA > nameB) {
             return -1;
           } else if (nameA < nameB) {
@@ -180,6 +213,12 @@ export class ClientsListComponent implements OnInit {
         return 0;
       });
     }
+  }
+
+  private resetSortOrder(columnNames: String[]) {
+    columnNames.forEach(element => {
+      this.sortDirections[`${element}`] = null;
+    });
   }
 
   checkBoxSelected(filter: string) {

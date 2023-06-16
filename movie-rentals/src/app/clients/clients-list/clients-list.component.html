@@ -9,6 +9,18 @@
         {{value.display}}
     </label>
   </div>
+  <form [formGroup]="filterForm">
+    <div>
+      <label>Select Birthday Range</label>
+      <select formControlName="range">
+        <option value="1949">&lt; 1949</option>
+        <option value="1950-1969">1950 - 1969</option>
+        <option value="1970-1989">1970 - 1989</option>
+        <option value="1990-2009">1990 - 2009</option>
+        <option value="2010">&gt; 2010</option>       
+      </select>
+    </div>
+  </form>
    <!-- <div style="display: inline-block;" class="control has-icons-left">-->
   <!--    <div class="select is-rounded">-->
   <!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
@@ -24,17 +36,17 @@
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>
-      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByName.bind(this))">
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByName.bind(this), 'name')">
         Name
-        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirection === 'asc', 'fa-arrow-down': sortDirection === 'desc'}"></i>
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirections['name'] === 'asc', 'fa-arrow-down': sortDirections['name'] === 'desc'}"></i>
       </th>
-      <th class="pointer" (click)="toggleSortDirection(this.sortClientsBySurname.bind(this))">
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsBySurname.bind(this), 'surname')">
         Surname
-        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirection === 'asc', 'fa-arrow-down': sortDirection === 'desc'}"></i>
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirections['surname'] === 'asc', 'fa-arrow-down': sortDirections['surname'] === 'desc'}"></i>
       </th>
-      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByBirthday.bind(this))">
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByBirthday.bind(this), 'birthday')">
         Birthday
-        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirection === 'asc', 'fa-arrow-down': sortDirection === 'desc'}"></i>
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirections['birthday'] === 'asc', 'fa-arrow-down': sortDirections['birthday'] === 'desc'}"></i>
       </th>
       <th>Client type</th>
       <th>Actions</th>
