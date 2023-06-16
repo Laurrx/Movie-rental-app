@@ -78,7 +78,6 @@ export class MoviesListComponent implements OnInit {
         this.filteredMovies = this.movies;
         this.isLoading = false;
       });
-
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
       this.debouncedSearchTerm = this.searchTerm;
     })
@@ -101,7 +100,8 @@ export class MoviesListComponent implements OnInit {
               this.movies = items;
             });
         }
-      })
+        this.ngOnInit();
+      });
   }
 
   addNewMovie() {
@@ -175,7 +175,7 @@ export class MoviesListComponent implements OnInit {
 
   selectedYear(value: string) {
     this.selectYear = value;
-    this.filteredMovies = this.filteredMovies.filter(movie => movie.releaseYear === +value
+    this.filteredMovies = this.movies.filter(movie => movie.releaseYear === +value
     )
     if (value === 'default') {
       this.filteredMovies = this.movies;
