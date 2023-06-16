@@ -41,32 +41,48 @@ export class ClientsListComponent implements OnInit {
     }
   ];
   filterForm: FormGroup;
+  ranges = [
+    { label: '< 1949', value: 'before1949' },
+    { label: '1950 - 1969', value: '1950-1969' },
+    { label: '1970 - 1989', value: '1970-1989' },
+    { label: '1990 - 2009', value: '1990-2009' },
+    { label: '> 2010', value: 'after2010' }
+  ];
 
   constructor(private clientService: ClientService, private router: Router, private dialog: Dialog, private fb: FormBuilder) {
-    this.filterForm = this.fb.group({
-      range: ['']
-    });
+    const rangeControls = this.ranges.reduce((group: any, range: any) => {
+      group[range.value] = this.fb.control(false);
+      return group;
+    }, {});
 
-    const rangeControl = this.filterForm.get('range');
-    if (rangeControl) {
-      rangeControl.valueChanges.subscribe((range: string) => {
-        this.sortedClients = this.clients.filter((item) => {
-          const year = Number(item.birthday.substring(0, 4));
-  
-          if (range === '1949' && year < 1949) {
-            return true;
-          } else if (range === '1950-1969' && year >= 1950 && year <= 1969) {
-            return true;
-          } else if (range === '1970-1989' && year >= 1970 && year <= 1989) {
-            return true;
-          } else if (range === '1990-2009' && year >= 1990 && year <= 2009) {
-            return true;
-          } else if (range === '2010' && year > 2010) {
-            return true;
-          }
-          return false;
+    this.filterForm = this.fb.group(rangeControls);
+
+    this.filterForm.valueChanges.subscribe(() => {
+      this.sortedClients = this.clients.filter((item) => {
+        const year = Number(item.birthday.substring(0, 4));
+
+        return this.ranges.some((range: any) => {
+          const rangeControl = this.filterForm.get(range.value);
+          return rangeControl && rangeControl.value && this.checkYearInRange(year, range.value);
         });
       });
+    });
+  }
+
+  checkYearInRange(year: number, range: string): boolean {
+    switch (range) {
+      case 'before1949':
+        return year <= 1949;
+      case '1950-1969':
+        return year >= 1950 && year <= 1969;
+      case '1970-1989':
+        return year >= 1970 && year <= 1989;
+      case '1990-2009':
+        return year >= 1990 && year <= 2009;
+      case 'after2010':
+        return year >= 2010;
+      default:
+        return false;
     }
   }
 
@@ -85,7 +101,6 @@ export class ClientsListComponent implements OnInit {
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
       this.debouncedSearchTerm = this.searchTerm;
     })
-
   }
 
   addNewClient() {
@@ -107,8 +122,6 @@ export class ClientsListComponent implements OnInit {
             .subscribe((items: Array<Client>) => this.clients = items);
         }
       })
-
-
   }
 
   itChanged = false;

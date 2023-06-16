@@ -12,13 +12,11 @@
   <form [formGroup]="filterForm">
     <div>
       <label>Select Birthday Range</label>
-      <select formControlName="range">
-        <option value="1949">&lt; 1949</option>
-        <option value="1950-1969">1950 - 1969</option>
-        <option value="1970-1989">1970 - 1989</option>
-        <option value="1990-2009">1990 - 2009</option>
-        <option value="2010">&gt; 2010</option>       
-      </select>
+      <div *ngFor="let range of ranges">
+        <label>
+          <input type="checkbox" [formControlName]="range.value" /> {{ range.label }}
+        </label>
+      </div>
     </div>
   </form>
    <!-- <div style="display: inline-block;" class="control has-icons-left">-->
