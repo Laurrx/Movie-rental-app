@@ -5,32 +5,20 @@
   <div>
     <p>Filter Client type</p>
     <label *ngFor="let value of value" class="checkbox">
-      <input (change)="checkBoxSelected(checkBox.value)" #checkBox type="checkbox" value="{{value.value}}">
+      <input (change)="checkBoxSelected($event, type.value, 'type')" #type type="checkbox" value="{{value.value}}">
         {{value.display}}
     </label>
   </div>
-  <form [formGroup]="filterForm">
-    <div>
-      <label>Select Birthday Range</label>
-      <div *ngFor="let range of ranges">
-        <label>
-          <input type="checkbox" [formControlName]="range.value" /> {{ range.label }}
-        </label>
-      </div>
+  
+  <div>
+    <label>Select Birthday Range</label>
+    <div *ngFor="let range of ranges">
+      <label>
+        <input type="checkbox" (change)="checkBoxSelected($event, range.value, 'birthday')" value="{{range.value}}" #range/> {{ range.label }}
+      </label>
     </div>
-  </form>
-   <!-- <div style="display: inline-block;" class="control has-icons-left">-->
-  <!--    <div class="select is-rounded">-->
-  <!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
-  <!--        <option *ngFor="let value of value" value="{{value.value}}">-->
-  <!--          {{value.display}}-->
-  <!--        </option>-->
-  <!--      </select>-->
-  <!--    </div>-->
-  <!--    <div class="icon is-small is-left">-->
-  <!--      <i style="font-weight: bold;color: blue" class="fa-regular fa-user"></i>-->
-  <!--    </div>-->
-  <!--  </div> -->
+  </div>
+
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>

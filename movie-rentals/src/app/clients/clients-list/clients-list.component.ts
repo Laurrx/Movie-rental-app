@@ -29,8 +29,13 @@ export class ClientsListComponent implements OnInit {
   sortedClients = this.clients;
   isLoading = false;
   filter = '';
-  filterType = 'type';
-  searchFilterCriterias: any = [];
+  filterType = 'type, birthday';
+  searchFilterCriterias: any = [
+    {
+      type: [], 
+      birthday: []
+    }
+  ];
   value = [
     {
       display: 'Standard',
@@ -40,7 +45,7 @@ export class ClientsListComponent implements OnInit {
       value: 'premium'
     }
   ];
-  filterForm: FormGroup;
+  // filterForm: FormGroup;
   ranges = [
     { label: '< 1949', value: 'before1949' },
     { label: '1950 - 1969', value: '1950-1969' },
@@ -50,23 +55,7 @@ export class ClientsListComponent implements OnInit {
   ];
 
   constructor(private clientService: ClientService, private router: Router, private dialog: Dialog, private fb: FormBuilder) {
-    const rangeControls = this.ranges.reduce((group: any, range: any) => {
-      group[range.value] = this.fb.control(false);
-      return group;
-    }, {});
-
-    this.filterForm = this.fb.group(rangeControls);
-
-    this.filterForm.valueChanges.subscribe(() => {
-      this.sortedClients = this.clients.filter((item) => {
-        const year = Number(item.birthday.substring(0, 4));
-
-        return this.ranges.some((range: any) => {
-          const rangeControl = this.filterForm.get(range.value);
-          return rangeControl && rangeControl.value && this.checkYearInRange(year, range.value);
-        });
-      });
-    });
+  
   }
 
   checkYearInRange(year: number, range: string): boolean {
@@ -234,28 +223,60 @@ export class ClientsListComponent implements OnInit {
     });
   }
 
-  checkBoxSelected(filter: string) {
-    if (this.searchFilterCriterias.includes(filter)) {
-      this.searchFilterCriterias.forEach((element: any, index: any) => {
-        if (element === filter) this.searchFilterCriterias.splice(index, 1)
-      })
+  checkBoxSelected(event:Event, filter: string, filterType: string) {
+    const isChecked = (<HTMLInputElement>event.target).checked;
+    if(isChecked) {
+      if (this.searchFilterCriterias[0][filterType].includes(filter)) {
+        this.searchFilterCriterias[0][filterType].forEach((element: any, index: any) => {
+          if (element === filter) 
+            this.searchFilterCriterias[0][filterType].splice(index, 1)
+        });
+      } else {
+        this.searchFilterCriterias[0][filterType] = [...this.searchFilterCriterias[0][filterType], filter];
+      }
     } else {
-      this.searchFilterCriterias = [...this.searchFilterCriterias, filter];
+      if (this.searchFilterCriterias[0][filterType].includes(filter)) {
+        this.searchFilterCriterias[0][filterType].forEach((element: any, index: any) => {
+          if (element === filter) 
+            this.searchFilterCriterias[0][filterType].splice(index, 1)
+        });
+      }
     }
-    if (this.searchFilterCriterias.length === 0) {
+
+    if (
+      this.searchFilterCriterias[0]['type'].length === 0 
+      && this.searchFilterCriterias[0]['birthday'].length === 0
+    ) {
       this.sortedClients = this.clients;
-    }
-    if (this.searchFilterCriterias != 0) {
+    } else {
       this.sortedClients = this.clients.filter(clients => {
+        const year = Number(clients.birthday.substring(0, 4));
+        const type = clients.type.toLowerCase();
         let found = false;
-        this.searchFilterCriterias.forEach((filter: any) => {
-          if (clients.type.toLowerCase() === filter.toLowerCase()) {
-            found = true
+
+        this.searchFilterCriterias[0]['birthday'].forEach((filter: any) => {
+          if (this.checkYearInRange(year, filter)) {
+            found = true;
           }
-        })
-        return found;
-      })
+        });
+
+        if (
+          this.searchFilterCriterias[0]['type'].length !== 0 
+          && this.searchFilterCriterias[0]['birthday'].length !== 0
+        ) {
+          return this.searchFilterCriterias[0]['type'].includes(type) && found;
+        } else if (
+          this.searchFilterCriterias[0]['type'].length !== 0 
+          && this.searchFilterCriterias[0]['birthday'].length === 0
+        ) {
+          return this.searchFilterCriterias[0]['type'].includes(type)
+        } else if (
+          this.searchFilterCriterias[0]['type'].length === 0 
+          && this.searchFilterCriterias[0]['birthday'].length !== 0
+        ) {
+          return found;
+        }
+      });
     }
   }
-
 }
