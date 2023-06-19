@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MovieService } from "../shared/movie.service";
-import { Movie } from "../shared/movie.model";
-import { Router } from "@angular/router";
-import { debounceTime, Subject } from "rxjs";
-import { deleteFunction } from "../../shared/utilities";
-import { RentMovieComponent } from "../../rental/rent-movie/rent-movie.component";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MovieService} from "../shared/movie.service";
+import {Movie} from "../shared/movie.model";
+import {Router} from "@angular/router";
+import {debounceTime, Subject} from "rxjs";
+import {deleteFunction} from "../../shared/utilities";
+import {RentMovieComponent} from "../../rental/rent-movie/rent-movie.component";
+import {DeleteModalComponent} from "../../delete-modal/delete-modal.component";
+import {Dialog} from "@angular/cdk/dialog";
 
 @Component({
   selector: 'app-movies-list',
@@ -26,8 +28,13 @@ export class MoviesListComponent implements OnInit {
   sortDirection: 'asc' | 'desc' | null = null;
   // sortProperty: 'releaseYear' | 'genre' | null = null;
   filterType = 'genre,releaseYear';
-  selectYear = 0;
+  selectYear = '';
   filter = '';
+  sortedMovies = [];
+  titleCount = 0;
+  genreCount = 0;
+  releaseYearCount = 0;
+  releaseYears: any = [];
   value = [
     {
       value: 'Science Fiction',
@@ -48,10 +55,6 @@ export class MoviesListComponent implements OnInit {
     {
       value: 'thriller',
       display: 'Thriller'
-    },
-    {
-      value: 'fiction',
-      display: 'Fiction'
     }
   ]
 
@@ -59,7 +62,8 @@ export class MoviesListComponent implements OnInit {
   rentMovieComponent!: RentMovieComponent;
 
   constructor(private movieServices: MovieService,
-    private router: Router) {
+              private router: Router,
+              private dialog: Dialog) {
   }
 
   ngOnInit(): void {
@@ -68,13 +72,18 @@ export class MoviesListComponent implements OnInit {
     this.movieServices.getMovies()
       .subscribe(movies => {
         this.movies = movies
+        this.movies.forEach(movie => {
+          this.releaseYears = [...this.releaseYears, movie.releaseYear]
+
+        })
+        this.releaseYears = this.releaseYears.sort((a: any, b: any) => a > b ? 1 : -1)
+        this.releaseYears = this.uniqByFilter(this.releaseYears);
         this.filteredMovies = this.movies;
         this.isLoading = false;
-        this.sortMoviesByReleaseYear();
-        this.sortMoviesByGenre();
-        this.sortMoviesByTitle();
+        // this.sortMoviesByReleaseYear();
+        // this.sortMoviesByGenre();
+        // this.sortMoviesByTitle();
       });
-
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
       this.debouncedSearchTerm = this.searchTerm;
     })
@@ -86,12 +95,19 @@ export class MoviesListComponent implements OnInit {
   }
 
   deleteMovie(movie: Movie) {
-    if (window.confirm("Are you sure you want to delete " + movie.title + "?")) {
-      deleteFunction(this.movieServices, movie.id, this.movies)
-        .subscribe((items: Array<Movie>) => {
-          this.movies = items;
-        });
-    }
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      width: '500px', data: movie
+    })
+    dialogRef.closed
+      .subscribe(response => {
+        if (response) {
+          deleteFunction(this.movieServices, movie.id, this.movies)
+            .subscribe((items: Array<Movie>) => {
+              this.movies = items;
+            });
+        }
+        this.ngOnInit();
+      });
   }
 
   addNewMovie() {
@@ -116,6 +132,10 @@ export class MoviesListComponent implements OnInit {
   // onSelectedFilter(filter: string) {
   //   this.filter = (filter === 'default') ? '' : filter;
   // }
+
+  uniqByFilter<T>(array: T[]) {
+    return array.filter((value, index) => array.indexOf(value) === index);
+  }
 
   checkBoxSelected(filter: string) {
     if (this.searchFilterCriterias.includes(filter)) {
@@ -146,28 +166,65 @@ export class MoviesListComponent implements OnInit {
       this.filteredMovies = this.movies.filter(movie => {
         let found = false;
         this.searchFilterCriterias.forEach((filter: any) => {
-          if (movie.genre.toLowerCase() === filter.toLowerCase() || movie.releaseYear === this.selectYear) {
+          if (movie.genre.toLowerCase() === filter.toLowerCase()) {
             found = true
           }
         })
         return found;
       })
     }
+
+
   }
 
   selectedYear(value: string) {
-    this.selectYear = +value;
+    this.selectYear = value;
+    this.filteredMovies = this.movies.filter(movie => movie.releaseYear === +value
+    )
+    if (value === 'default') {
+      this.filteredMovies = this.movies;
+    }
+    console.log(value)
   }
 
-  toggleSortDirection(sortMethod: () => void) {
-    if (this.sortDirection === null) {
-      this.sortDirection = 'asc';
-    } else if (this.sortDirection === 'asc') {
-      this.sortDirection = 'desc';
-    } else {
-      this.sortDirection = null;
+  sortBy(value: string) {
+    this.sortedMovies = [];
+    switch (value) {
+      case "title":
+        this.titleCount++;
+        if (this.titleCount === 1) {
+          this.filteredMovies = this.filteredMovies.sort((a, b) => a.title > b.title ? 1 : -1)
+          this.filteredMovies = this.filteredMovies.filter(movies => [...this.sortedMovies, movies])
+        } else if (this.titleCount === 2) {
+          this.filteredMovies = this.filteredMovies.sort((a, b) => a.title < b.title ? 1 : -1)
+          this.filteredMovies = this.filteredMovies.filter(movies => [...this.sortedMovies, movies])
+          this.titleCount = 0;
+        }
+        break;
+      case "genre":
+        this.genreCount++;
+        if (this.genreCount === 1) {
+          this.filteredMovies = this.filteredMovies.sort((a, b) => a.genre > b.genre ? 1 : -1)
+          this.filteredMovies = this.filteredMovies.filter(movies => [...this.sortedMovies, movies])
+        } else if (this.genreCount === 2) {
+          this.filteredMovies = this.filteredMovies.sort((a, b) => a.genre < b.genre ? 1 : -1)
+          this.filteredMovies = this.filteredMovies.filter(movies => [...this.sortedMovies, movies])
+          this.genreCount = 0;
+        }
+        break;
+      case "releaseYear":
+        this.releaseYearCount++;
+        if (this.releaseYearCount === 1) {
+          this.filteredMovies = this.filteredMovies.sort((a, b) => a.releaseYear > b.releaseYear ? 1 : -1)
+          this.filteredMovies = this.filteredMovies.filter(movies => [...this.sortedMovies, movies])
+        } else if (this.releaseYearCount === 2) {
+          this.filteredMovies = this.filteredMovies.sort((a, b) => a.releaseYear < b.releaseYear ? 1 : -1)
+          this.filteredMovies = this.filteredMovies.filter(movies => [...this.sortedMovies, movies])
+          this.releaseYearCount = 0;
+        }
+        break;
+
     }
-    sortMethod();
   }
   
   sortMoviesByReleaseYear(): void {
