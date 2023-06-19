@@ -35,7 +35,6 @@ export class RentalListComponent implements OnInit {
 
     this.getInfoSubscriber=combineLatest([this.rentalService.rentals$, clientsSubscriber, moviesSubscriber])
       .subscribe(response => {
-        console.log(response);
         [this.rentals, this.clients, this.movies] = response;
         this.rentals.forEach(rental => {
           const movie = this.movies.filter(movie => movie.id === rental.moviesId);

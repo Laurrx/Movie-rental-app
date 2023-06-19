@@ -2,32 +2,47 @@
 <div>
   <input placeholder="Search Client" type="text" class="input is-rounded searchInput" (ngModelChange)="changed($event)"
          [(ngModel)]="searchTerm"/>
+  <div>
+    <p>Filter Client type</p>
+    <label *ngFor="let value of value" class="checkbox">
+      <input (change)="checkBoxSelected($event, type.value, 'type')" #type type="checkbox" value="{{value.value}}">
+        {{value.display}}
+    </label>
+  </div>
+  
+  <div>
+    <label>Select Birthday Range</label>
+    <div *ngFor="let range of ranges">
+      <label>
+        <input type="checkbox" (change)="checkBoxSelected($event, range.value, 'birthday')" value="{{range.value}}" #range/> {{ range.label }}
+      </label>
+    </div>
+  </div>
 
-  <!--  <div style="display: inline-block;" class="control has-icons-left">-->
-  <!--    <div class="select is-rounded">-->
-  <!--      <select #selectedFilter (change)="onSelectedFilter(selectedFilter.value)">-->
-  <!--        <option *ngFor="let value of value" value="{{value.value}}">-->
-  <!--          {{value.display}}-->
-  <!--        </option>-->
-  <!--      </select>-->
-  <!--    </div>-->
-  <!--    <div class="icon is-small is-left">-->
-  <!--      <i style="font-weight: bold;color: blue" class="fa-regular fa-user"></i>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <table class="table is-striped is-hoverable is-fullwidth is-responsive">
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Surname</th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByName.bind(this), 'name')">
+        Name
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirections['name'] === 'asc', 'fa-arrow-down': sortDirections['name'] === 'desc'}"></i>
+      </th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsBySurname.bind(this), 'surname')">
+        Surname
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirections['surname'] === 'asc', 'fa-arrow-down': sortDirections['surname'] === 'desc'}"></i>
+      </th>
+      <th class="pointer" (click)="toggleSortDirection(this.sortClientsByBirthday.bind(this), 'birthday')">
+        Birthday
+        <i class="fa-solid" [ngClass]="{'fa-arrow-up': sortDirections['birthday'] === 'asc', 'fa-arrow-down': sortDirections['birthday'] === 'desc'}"></i>
+      </th>
       <th>Client type</th>
       <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let client of clients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias:filter:filterType">
+    <tr *ngFor="let client of sortedClients | myCustomSearch:debouncedSearchTerm:clientsSearchCriterias:filter:filterType">
       <td>{{client.name}}</td>
       <td>{{client.surname}}</td>
+      <td>{{client.birthday}}</td>
       <td>{{client.type}}</td>
       <td>
         <div class="field is-grouped">

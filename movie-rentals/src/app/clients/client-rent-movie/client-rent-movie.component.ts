@@ -54,7 +54,6 @@ export class ClientRentMovieComponent {
 
 
   onSubmit() {
-    console.log('orice2')
     this.isRented=true;
     const rentedMovie: Rental = {
       rentedDate: this.rentMovieForm.controls.rentedDate.value,

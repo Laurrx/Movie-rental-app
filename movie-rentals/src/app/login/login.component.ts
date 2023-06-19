@@ -28,7 +28,6 @@ loginForm=this.fb.group({
   onSubmit() {
      this.client.filter(client => {client.email===this.loginForm.controls.email.value
        if(this.loginForm.controls.password.value===client.password){
-         console.log("succes:" + client.name)
        }})
 
   }

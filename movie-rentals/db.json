@@ -6,7 +6,8 @@
       "email": "admin@admin.com",
       "password": "admin",
       "type": "premium",
-      "id": 12
+      "id": 12,
+      "birthday": "1995-11-27"
     },
     {
       "name": "John",
@@ -14,7 +15,8 @@
       "email": "pencil@kill.com",
       "password": "dog",
       "type": "standard",
-      "id": 13
+      "id": 13,
+      "birthday": "1980-08-20"
     },
     {
       "name": "George",
@@ -22,7 +24,8 @@
       "email": "test@test.com",
       "password": "asdgf",
       "type": "premium",
-      "id": 14
+      "id": 14,
+      "birthday": "1969-06-21"
     },
     {
       "name": "Ionut",
@@ -30,7 +33,35 @@
       "email": "123@321.com",
       "password": "123455",
       "type": "premium",
-      "id": 15
+      "id": 15,
+      "birthday": "1994-10-14"
+    },
+    {
+      "name": "Nimeni",
+      "surname": "De Nicaieri",
+      "email": "nimeni@nicaieri.ro",
+      "password": "12345",
+      "type": "standard",
+      "birthday": "2007-06-15",
+      "id": 16
+    },
+    {
+      "name": "Andreea",
+      "surname": "Balan",
+      "email": "adbaobu@aosdao.com",
+      "password": "asjdbaod",
+      "type": "standard",
+      "birthday": "1989-11-25",
+      "id": 17
+    },
+    {
+      "name": "Iulia",
+      "surname": "Albu",
+      "email": "aosdaod@oandia.com",
+      "password": "adada",
+      "type": "premium",
+      "birthday": "1978-04-14",
+      "id": 18
     }
   ],
   "movies": [
@@ -89,6 +120,13 @@
       "genre": "Fiction",
       "releaseYear": 2001,
       "id": 8
+    },
+    {
+      "title": "Ice Age",
+      "description": "",
+      "genre": "Thriller",
+      "releaseYear": 2000,
+      "id": 9
     }
   ],
   "rentals": [

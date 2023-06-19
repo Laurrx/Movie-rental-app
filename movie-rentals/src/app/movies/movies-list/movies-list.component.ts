@@ -24,14 +24,17 @@ export class MoviesListComponent implements OnInit {
   isLoading = false;
   selectedMovie?: any;
   isSelectedMovie = false;
-  filterType = 'genre,releaseYear'
-  selectYear = '0';
+  // sortedMovies: Movie[] = [];
+  sortDirection: 'asc' | 'desc' | null = null;
+  // sortProperty: 'releaseYear' | 'genre' | null = null;
+  filterType = 'genre,releaseYear';
+  selectYear = '';
   filter = '';
   sortedMovies = [];
   titleCount = 0;
   genreCount = 0;
   releaseYearCount = 0;
-  releaseYears: Movie[] = [];
+  releaseYears: any = [];
   value = [
     {
       value: 'Science Fiction',
@@ -68,9 +71,18 @@ export class MoviesListComponent implements OnInit {
     this.isLoading = true;
     this.movieServices.getMovies()
       .subscribe(movies => {
-        this.movies = movies;
+        this.movies = movies
+        this.movies.forEach(movie => {
+          this.releaseYears = [...this.releaseYears, movie.releaseYear]
+
+        })
+        this.releaseYears = this.releaseYears.sort((a: any, b: any) => a > b ? 1 : -1)
+        this.releaseYears = this.uniqByFilter(this.releaseYears);
         this.filteredMovies = this.movies;
         this.isLoading = false;
+        // this.sortMoviesByReleaseYear();
+        // this.sortMoviesByGenre();
+        // this.sortMoviesByTitle();
       });
     this.modelChanged.pipe(debounceTime(300)).subscribe(_ => {
       this.debouncedSearchTerm = this.searchTerm;
@@ -121,6 +133,10 @@ export class MoviesListComponent implements OnInit {
   //   this.filter = (filter === 'default') ? '' : filter;
   // }
 
+  uniqByFilter<T>(array: T[]) {
+    return array.filter((value, index) => array.indexOf(value) === index);
+  }
+
   checkBoxSelected(filter: string) {
     if (this.searchFilterCriterias.includes(filter)) {
       this.searchFilterCriterias.forEach((element: any, index: any) => {
@@ -136,8 +152,6 @@ export class MoviesListComponent implements OnInit {
       //   })
       //   return found;
       // })
-
-
     } else {
       // if (this.searchFilterCriterias.length === 1 && this.searchFilterCriterias[0] === 'default') {
       //   console.log(this.searchFilterCriterias[0])
@@ -212,4 +226,69 @@ export class MoviesListComponent implements OnInit {
 
     }
   }
+  
+  sortMoviesByReleaseYear(): void {
+    if (this.sortDirection === null) {
+      this.filteredMovies = this.movies.slice();
+    } else {
+      this.filteredMovies = this.movies.slice().sort((a: any, b: any) => {
+        if (this.sortDirection === 'asc') {
+          return a.releaseYear - b.releaseYear;
+        } else {
+          return b.releaseYear - a.releaseYear;
+        }
+      });
+    }
+  }
+
+  sortMoviesByGenre() {
+    if (this.sortDirection === null) {
+      this.filteredMovies = this.movies.slice();
+    } else {
+      this.filteredMovies = this.movies.slice().sort((a, b) => {
+        const genreA = a.genre.toLowerCase();
+        const genreB = b.genre.toLowerCase();
+        if (this.sortDirection === 'asc') {
+          if (genreA < genreB) {
+            return -1;
+          } else if (genreA > genreB) {
+            return 1;
+          }
+        } else if (this.sortDirection === 'desc') {
+          if (genreA > genreB) {
+            return -1;
+          } else if (genreA < genreB) {
+            return 1;
+          }
+        }
+        return 0;
+      });
+    }
+  }
+
+  sortMoviesByTitle() {
+    if (this.sortDirection === null) {
+      this.filteredMovies = this.movies.slice();
+    } else {
+      this.filteredMovies = this.movies.slice().sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+        if (this.sortDirection === 'asc') {
+          if (titleA < titleB) {
+            return -1;
+          } else if (titleA > titleB) {
+            return 1;
+          }
+        } else if (this.sortDirection === 'desc') {
+          if (titleA > titleB) {
+            return -1;
+          } else if (titleA < titleB) {
+            return 1;
+          }
+        }
+        return 0;
+      });
+    }
+  }
+
 }

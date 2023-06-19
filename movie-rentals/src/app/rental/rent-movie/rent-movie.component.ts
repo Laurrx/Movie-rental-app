@@ -50,7 +50,6 @@ export class RentMovieComponent implements OnInit {
 
   onSelected(value: string) {
     this.rentMovieForm.controls.clientsId.setValue(+value)
-    console.log(this.rentMovieForm.controls.clientsId.value)
   }
 
   onSubmit() {
